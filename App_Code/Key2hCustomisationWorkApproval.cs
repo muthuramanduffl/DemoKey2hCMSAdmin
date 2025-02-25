@@ -190,7 +190,35 @@ public class Key2hCustomisationWorkApproval
 
 
 
+    public DataTable ViewAllFlatCustomizationWorksApproval(string ProID, string BlockID, string FlatID, string CWAID, string AddedBy)
+    {
+        DataTable dt = new DataTable();
 
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("ViewAllFlatCustomizationWorksApproval", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProjectID", string.IsNullOrWhiteSpace(ProID) ? (object)DBNull.Value : Convert.ToInt32(ProID)));
+                command.Parameters.Add(new SqlParameter("@FlatID", string.IsNullOrWhiteSpace(FlatID) ? (object)DBNull.Value : Convert.ToInt32(FlatID)));
+                command.Parameters.Add(new SqlParameter("@BlockID", string.IsNullOrWhiteSpace(BlockID) ? (object)DBNull.Value : Convert.ToInt32(BlockID)));
+                command.Parameters.Add(new SqlParameter("@CWAID", string.IsNullOrWhiteSpace(CWAID) ? (object)DBNull.Value : Convert.ToInt32(CWAID)));
+                command.Parameters.Add(new SqlParameter("@AddedBy", string.IsNullOrWhiteSpace(AddedBy) ? (object)DBNull.Value : Convert.ToInt32(AddedBy)));
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                da.Fill(dt);
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+        return dt;
+    }
 
 
 

@@ -145,6 +145,7 @@
                                                             <th class="min-w-120">Project Name </th>
                                                             <th class="min-w-120">Block Name </th>
                                                             <th class="min-w-120">Flat No. </th>
+                                                            <th class="min-w-120">Customer Name</th>
                                                             <th class="min-w-120" style="display:none">Edit </th>
                                                         </tr>
                                                     </thead>
@@ -161,6 +162,7 @@
                                                     </td>
                                                     <td><%#BindBlockname(Convert.ToInt32(Eval("BlockID"))) %></td>
                                                     <td><%#ViewFlatNameByFlatID(Convert.ToInt32(Eval("FlatID"))) %></td> 
+                                                    <td><%# Eval("ApplicantFirstName") %></td> 
                                                     <td  style="display:none">
                                                         <asp:LinkButton class="edit-img me-3" data-bs-toggle="tooltip" title="Edit" ID="lkedit" runat="server" CommandName="Edit"
                                                             CommandArgument='<%# DataBinder.Eval(Container.DataItem, "FlatID") %>'>
@@ -169,7 +171,7 @@
                                                         <a class="swtAltCancel" style="display:none">
                                                             <i class="dlt-img bi bi-trash b5-icon-et-dlt" data-bs-toggle="tooltip" title="Delete"></i>
                                                         </a>
-                                                        <asp:LinkButton ID="LinkButton2" CausesValidation="false" runat="server" class="dlt-img hidden" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("FlatID") %>' Style="display: none">
+                                                        <asp:LinkButton ID="LinkButton2" CausesValidation="false" runat="server" class="dlt-img hidden" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("CWAID") %>' Style="display: none">
                                                         </asp:LinkButton>
                                                     </td>
                                                 </tr>

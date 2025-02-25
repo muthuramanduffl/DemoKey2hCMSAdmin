@@ -332,8 +332,18 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab4.Attributes["class"] = "tab-pane fade";
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
-        } 
-        
+        }
+         else if (currentPage.Contains("view-customization-work-approval.aspx"))
+        {
+            tabCust.Attributes["class"] = "nav-link active";
+            subviewMenuAddCWA.Attributes["class"] = "active";
+            tab3.Attributes["class"] = "tab-pane fade active show";
+            tab1.Attributes["class"] = "tab-pane fade";
+            tab4.Attributes["class"] = "tab-pane fade";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
+
         else if (currentPage.Contains("add-customization-work.aspx"))
         {
             tabCust.Attributes["class"] = "nav-link active";
@@ -544,7 +554,7 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab3.Attributes["class"] = "tab-pane fade";
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
-        } 
+        }
         else if (currentPage.Contains("view-block-floor-plan.aspx"))
         {
             tabMore.Attributes["class"] = "nav-link active";
@@ -629,17 +639,37 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
         else if (currentPage.Contains("add-quality-reports.aspx"))
         {
             tabMore.Attributes["class"] = "nav-link active";
-            subqualityreport.Attributes["class"] = "active";
+            subaddqualityreport.Attributes["class"] = "active";
+            tab4.Attributes["class"] = "tab-pane fade active show";
+            tab1.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }  
+        else if (currentPage.Contains("view-project-quality-reports.aspx"))
+        {
+            tabMore.Attributes["class"] = "nav-link active";
+            subviewqualityreport.Attributes["class"] = "active";
             tab4.Attributes["class"] = "tab-pane fade active show";
             tab1.Attributes["class"] = "tab-pane fade";
             tab3.Attributes["class"] = "tab-pane fade";
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
         }
-          else if (currentPage.Contains("add-flat-quality-reports.aspx"))
+        else if (currentPage.Contains("add-flat-quality-reports.aspx"))
         {
             tabMore.Attributes["class"] = "nav-link active";
-            subFlatqualityreport.Attributes["class"] = "active";
+            subaddFlatqualityreport.Attributes["class"] = "active";
+            tab4.Attributes["class"] = "tab-pane fade active show";
+            tab1.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
+        else if (currentPage.Contains("view-flat-quality-reports.aspx"))
+        {
+            tabMore.Attributes["class"] = "nav-link active";
+            subviewFlatqualityreport.Attributes["class"] = "active";
             tab4.Attributes["class"] = "tab-pane fade active show";
             tab1.Attributes["class"] = "tab-pane fade";
             tab3.Attributes["class"] = "tab-pane fade";

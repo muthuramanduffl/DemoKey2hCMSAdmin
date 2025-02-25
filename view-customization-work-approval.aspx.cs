@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
+public partial class view_customization_work_approval : System.Web.UI.Page
 {
     Key2hLeadSource LS = new Key2hLeadSource();
     ClientDashboardError CI = new ClientDashboardError();
@@ -17,7 +17,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
     ClientUsers CU = new ClientUsers();
     Key2hCostDetails KD = new Key2hCostDetails();
 
-    Key2hcustomizationWork KCZW = new Key2hcustomizationWork();
+    Key2hCustomisationWorkApproval KCWA = new Key2hCustomisationWorkApproval();
 
     private static string clientId;
     protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +53,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "ddlBindProject", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "ddlBindProject", ex.Message, "Not Fixed");
         }
     }
     protected string GetRowNo(string itemIndex)
@@ -78,7 +78,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "Bindproject", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Bindproject", ex.Message, "Not Fixed");
         }
         return Project;
     }
@@ -95,7 +95,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "BindBlockname", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "BindBlockname", ex.Message, "Not Fixed");
         }
 
         return Block;
@@ -113,7 +113,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "ViewFlatNameByFlatID", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "ViewFlatNameByFlatID", ex.Message, "Not Fixed");
         } 
         return Block;
     }
@@ -143,7 +143,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "Bind", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Bind", ex.Message, "Not Fixed");
         }
     }
     public DataTable Get()
@@ -159,19 +159,20 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
             {
                 projectid = ddlprojectname.SelectedValue;
             }
-            if (!string.Equals(ddflatNumber.SelectedValue, ""))
-            {
-                FlatID = ddflatNumber.SelectedValue;
-            }
             if (!string.Equals(ddlblocknumber.SelectedValue, ""))
             {
                 blockID = ddlblocknumber.SelectedValue;
             }
-            dt = KCZW.ViewAllFlatCustomizationWorks(projectid, FlatID, blockID, "",clientId);   
+            if (!string.Equals(ddflatNumber.SelectedValue, ""))
+            {
+                FlatID = ddflatNumber.SelectedValue;
+            }
+           
+            dt = KCWA.ViewAllFlatCustomizationWorksApproval(projectid,  blockID, FlatID, "",clientId);   
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "Get", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Get", ex.Message, "Not Fixed");
         } 
         return dt;
     }
@@ -182,12 +183,12 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
             try
             {
                 int ID = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect("add-customization-work.aspx?FlatID=" + ID, false);
+                Response.Redirect("add-customization-work-approval.aspx?FlatID=" + ID, false);
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
             catch (Exception ex)
             {
-                CI.StoreExceptionMessage("view-customization-work.aspx", "Repeater1_ItemCommand Edit", ex.Message, "Not Fixed");
+                CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Repeater1_ItemCommand Edit", ex.Message, "Not Fixed");
             }
         }
         else if (e.CommandName == "Delete")
@@ -196,12 +197,12 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
             {
                 int ID = Convert.ToInt32(e.CommandArgument);
                 int ret = 0;
-               // ret = KCZW.DeleteFlatCustomizationWorksTitle(ID);
+                ret = KCWA.DeleteCustomisationWorkApprovalByCWAIDandaddedby(Convert.ToString(ID), clientId);
                 if (ret >= 1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                      "Swal.fire({ " +
-                     "  title: 'Customization work details has been deleted ', " +
+                     "  title: 'Customization work approval details has been deleted ', " +
                      "  confirmButtonText: 'OK', " +  
                      "  customClass: { " +
                      "    confirmButton: 'handle-btn-success' " +
@@ -214,7 +215,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                       "Swal.fire({ " +
-                      "  title: 'Your customization work details not deleted. please try again', " + 
+                      "  title: 'Your customization work approval details not deleted. please try again', " + 
                       "  confirmButtonText: 'OK' " +
                      "  customClass: { " +
                      "    confirmButton: 'handle-btn-success' " +
@@ -226,7 +227,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                CI.StoreExceptionMessage("view-customization-work.aspx", "Repeater1_ItemCommand Delete", ex.Message, "Not Fixed");
+                CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Repeater1_ItemCommand Delete", ex.Message, "Not Fixed");
             }
         }
     }
@@ -265,7 +266,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "Bindblock", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "Bindblock", ex.Message, "Not Fixed");
         }
     }
     protected void ddlblocknumber_SelectedIndexChanged(object sender, EventArgs e)
@@ -304,7 +305,7 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            CI.StoreExceptionMessage("view-customization-work.aspx", "BindFlat", ex.Message, "Not Fixed");
+            CI.StoreExceptionMessage("view-customization-work-approval.aspx", "BindFlat", ex.Message, "Not Fixed");
         }
     }
     protected void ddflatNumber_SelectedIndexChanged(object sender, EventArgs e)

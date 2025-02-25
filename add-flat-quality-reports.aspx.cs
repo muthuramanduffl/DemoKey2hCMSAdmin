@@ -16,18 +16,94 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
     ClientUsers CU = new ClientUsers();
     Key2hFlat KF = new Key2hFlat();
     Key2hProjectblock KB = new Key2hProjectblock();
+
+    Key2hQualityReports KFQRS = new Key2hQualityReports();
     public static string Userid;
     protected void Page_Load(object sender, EventArgs e)
     {
         Userid = CU.GetClientLoginID();
-
         if (!IsPostBack)
         {
             Bindprojects();
             lbldisplaymsg.Text = " Add Flat Quality Reports";
             btnSave.Text = "Submit";
         }
+
+        if (Request.QueryString["ID"] != null)
+        {
+            int value = 0;
+            if (int.TryParse(Request.QueryString["ID"], out value))
+            {
+                lbldisplaymsg.Text = " Edit Flat Quality Reports";
+                btnSave.Text = "Submit";
+                //ddlProName.Attributes.Add("disabled", "true");
+                Bind(value);
+            }
+            else
+            {
+                string script = string.Format(@"<script>
+                        Swal.fire({{ 
+                        title: 'URL is incorrect. please try again', 
+                        confirmButtonText: 'OK', 
+                        customClass: {{ 
+                            confirmButton: 'handle-btn-success'  
+                        }}
+                        }}).then((result) => {{ 
+                                window.location.href = 'add-flat-floor-plan.aspx'; 
+                        }});
+                    </script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
+            }
+        }
+        else
+        {
+            lbldisplaymsg.Text = " Add Flat Quality Reports";
+            btnSave.Text = "Submit";
+        }
+
+
+
+
+
     }
+
+
+    public void Bind(int ID)
+    {
+        try
+        {
+            DataTable dt = KFQRS.ViewAllFlatQualityReports("", Convert.ToString(ID), "", "");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                if (!string.IsNullOrEmpty(dt.Rows[0]["ProjectID"].ToString()) && dt.Rows[0]["ProjectID"] != null)
+                {
+                    ddlProName.SelectedValue = dt.Rows[0]["ProjectID"].ToString();
+                    Bindblock();
+                }
+                if (!string.IsNullOrEmpty(dt.Rows[0]["BlockID"].ToString()) && dt.Rows[0]["BlockID"] != null)
+                {
+                    ddlblocknumber.SelectedValue = dt.Rows[0]["BlockID"].ToString();
+                    BindFlat();
+                }
+                if (!string.IsNullOrEmpty(dt.Rows[0]["FlatID"].ToString()) && dt.Rows[0]["FlatID"] != null)
+                {
+                    ddlflatNumber.SelectedValue = dt.Rows[0]["FlatID"].ToString();
+
+                }
+
+                BindUsersList(Convert.ToInt32(ddlProName.SelectedValue), Convert.ToInt32(ddlblocknumber.SelectedValue), Convert.ToInt32(ddlflatNumber.SelectedValue));
+
+
+
+
+            }
+        }
+        catch (Exception ex)
+        {
+            CI.StoreExceptionMessage("add-quality-reports.aspx", "Bind", ex.Message, "Not Fixed");
+        }
+    }
+
 
     public string BindBlockname(int ID)
     {
@@ -69,7 +145,7 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
         try
         {
             DataTable dt = K2.ViewActiveprojects();
-            if (dt!=null && dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 ddlProName.DataSource = dt;
                 ddlProName.DataTextField = "ProjectName";
@@ -90,11 +166,11 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
             CI.StoreExceptionMessage("add-flat-quality-reports.aspx", "Bindprojects", ex.Message, "Not Fixed");
         }
     }
-    public void BindUsersList(int PrID,int BlockID,int FlatID)
+    public void BindUsersList(int PrID, int BlockID, int FlatID)
     {
         try
         {
-            DataTable dt = KFQR.ViewAllQualityReportbyPIDBIDFID(PrID,BlockID,FlatID);
+            DataTable dt = KFQR.ViewAllQualityReportbyPIDBIDFID(PrID, BlockID, FlatID);
             if (dt != null && dt.Rows.Count > 0)
             {
                 divrptCustomers.Style.Add("display", "block");
@@ -161,7 +237,7 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
                 "});", true);
                 BindUsersList(Convert.ToInt32(ddlProName.SelectedValue), Convert.ToInt32(ddlblocknumber.SelectedValue), Convert.ToInt32(ddlflatNumber.SelectedValue));
                 txtTitle.Text = "";
-                ddlProName.SelectedIndex = 0;                
+                ddlProName.SelectedIndex = 0;
             }
             else
             {
@@ -229,7 +305,7 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
         }
         return ret;
     }
-   
+
     public string SaveFile(FileUpload uploadedFile, string appkey, string Projectname)
     {
         int savefile = 0;

@@ -42,7 +42,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
         {
             clientId = clientLoginId;
         }
-        
+
         if (!IsPostBack)
         {
             BindAllBankName();
@@ -87,6 +87,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
             }
         }
     }
+
     public void Bindprojects()
     {
         try
@@ -171,6 +172,8 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
             CI.StoreExceptionMessage("add-flat-booking.aspx", "BindLeadReferdBy", ex.Message, "Not Fixed");
         }
     }
+
+
     public void Bind(int ID)
     {
 
@@ -432,6 +435,19 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 // Applicant Photo
                 if (!string.IsNullOrEmpty(dt.Rows[0]["ApplicantPhoto"].ToString()) && dt.Rows[0]["ApplicantPhoto"] != null)
                 {
+                   // RequiredFieldValidator2.Visible = false;
+                    hdnApplicantPhoto.Value = dt.Rows[0]["ApplicantPhoto"].ToString();
+                    string applicantPhoto = dt.Rows[0]["ApplicantPhoto"].ToString();
+                    string filepath = System.Configuration.ConfigurationManager.AppSettings["ApplicantPhoto"];
+                    string fullFilePath = Path.Combine(filepath.Trim(), applicantPhoto);
+                    string fileUrl = ResolveUrl(fullFilePath);
+                    string formattedImagePath = HttpUtility.JavaScriptStringEncode(fileUrl);
+                    string script = string.Format("window.bindImageToPreviewphoto('{0}', 0, 'photo1');", formattedImagePath);
+                    ClientScript.RegisterStartupScript(this.GetType(), "bindApplicantPhoto", script, true);
+                }
+
+                if (!string.IsNullOrEmpty(dt.Rows[0]["ApplicantPhoto"].ToString()) && dt.Rows[0]["ApplicantPhoto"] != null)
+                {
                     //RequiredFieldValidator21.Visible = false;
                     hdnApplicantPhoto.Value = dt.Rows[0]["ApplicantPhoto"].ToString();
                     string applicantPhoto = dt.Rows[0]["ApplicantPhoto"].ToString();
@@ -452,7 +468,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 // Co-Applicant Photo
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoApplicantPhoto"].ToString()) && dt.Rows[0]["CoApplicantPhoto"] != null)
                 {
-                    //  RequiredFieldValidator24.Visible = false;
+                    // RequiredFieldValidator24.Visible = false;
                     hdnCoApplicantPhoto.Value = dt.Rows[0]["CoApplicantPhoto"].ToString();
                     string coApplicantPhoto = dt.Rows[0]["CoApplicantPhoto"].ToString();
                     string filepath = System.Configuration.ConfigurationManager.AppSettings["CoApplicantPhoto"];
@@ -478,8 +494,9 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 if (!string.IsNullOrEmpty(dt.Rows[0]["ApplicantAadhar"].ToString()) && dt.Rows[0]["ApplicantAadhar"] != null)
                 {
 
-                    //RequiredFieldValidator23.Visible = false;
+                  //  RequiredFieldValidator23.Visible = false;
                     hdnApplicantAadhar.Value = dt.Rows[0]["ApplicantAadhar"].ToString();
+                   
                     string filepath = System.Configuration.ConfigurationManager.AppSettings["ApplicantAadhar"];
                     string fullFilePath = Path.Combine(filepath.Trim(), hdnApplicantAadhar.Value); // Corrected to hdnApplicantAadhar
                     string fileUrl = fullFilePath;
@@ -739,7 +756,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
             && string.IsNullOrEmpty(txtmobilenumber1.Text) && string.IsNullOrEmpty(txtdateofbirth.Text) && string.IsNullOrEmpty(txtwhatsappnumber.Text) && string.IsNullOrEmpty(txtprofession.Text)
         && string.IsNullOrEmpty(txtPermanentAddress.Text)
        && string.IsNullOrEmpty(ddlstate.SelectedValue) && string.IsNullOrEmpty(ddlcity.SelectedValue)
-            && string.IsNullOrEmpty(txtpostalcode.Text)  &&
+            && string.IsNullOrEmpty(txtpostalcode.Text) &&
             string.IsNullOrEmpty(ddlLeadSource.SelectedValue) && string.IsNullOrEmpty(ddlprojectname.SelectedValue)
             && string.IsNullOrEmpty(ddlblocknumber.SelectedValue) && string.IsNullOrEmpty(ddlflatNumber.Text))
         {
@@ -833,7 +850,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                     {
                         // "muthuraman@duffldigital.com"
 
-                        
+
 
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                   "Swal.fire({ " +
@@ -930,16 +947,16 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
     {
         //try
         //{
-            SmtpClient smtpClient = new SmtpClient("relay-hosting.secureserver.net"); // Use your actual SMTP server
-            smtpClient.Credentials = new System.Net.NetworkCredential("forms@quick-query.info", "info2023##");
-            smtpClient.EnableSsl = true; // Set to false if SSL is not required
-            System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-            message.From = new MailAddress("forms@quick-query.info", "key2h testing mail");
-            message.Subject = subject;
-            message.To.Add(stTomail);          
-            message.Body = body;
-            message.IsBodyHtml = true;
-            smtpClient.Send(message);
+        SmtpClient smtpClient = new SmtpClient("relay-hosting.secureserver.net"); // Use your actual SMTP server
+        smtpClient.Credentials = new System.Net.NetworkCredential("forms@quick-query.info", "info2023##");
+        smtpClient.EnableSsl = true; // Set to false if SSL is not required
+        System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+        message.From = new MailAddress("forms@quick-query.info", "key2h testing mail");
+        message.Subject = subject;
+        message.To.Add(stTomail);
+        message.Body = body;
+        message.IsBodyHtml = true;
+        smtpClient.Send(message);
         //}
         //catch (Exception ex)
         //{
@@ -1101,257 +1118,257 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
         int customerID = 0;
         int ret = 0;
         try
-         {
-        if (!BasicdetailsAlreadyexist(txtmobilenumber1.Text))
         {
-            C.strGender = ddlgender.SelectedValue;
-            C.strEmailID = txtEmailid.Text;
-            C.strMobilenumber1 = txtmobilenumber1.Text;
-            C.strWhatsappNumber = txtwhatsappnumber.Text;
-            C.strAddedBy = clientId;
-            customerID = C.AddCustomerBasicDetails(C);
-        }
-        else
-        {
-
-
-            DataTable dt = C.ViewBasicCustomerDetailsByMobilenumber(txtmobilenumber1.Text);
-            if (dt.Rows.Count > 0)
+            if (!BasicdetailsAlreadyexist(txtmobilenumber1.Text))
             {
-                customerID = Convert.ToInt32(dt.Rows[0]["CustomerID"]);
-            }
-            //selecte basicdetailsby mobilenumber 
-        }
-
-        if (customerID != 0)
-        {
-            DateTime parsedDate;
-            string dateFormat = "dd-MM-yyyy";
-
-            C.intCustomerID = customerID;
-            C.intProjectID = Convert.ToInt32(ddlprojectname.SelectedValue);
-            C.intstrBlockID = Convert.ToInt32(ddlblocknumber.SelectedValue);
-            C.intFlatID = Convert.ToInt32(ddlflatNumber.SelectedValue);
-            C.strApplicantFirstName = txtapplicationname.Text;
-            C.strApplicantLastName = txtapplicationlastname.Text;
-            C.strCoapplicantFirstName = txtCoapplicantFirstName.Text;
-            C.strCoapplicantLastName = txtCoapplicantLastName.Text;
-            C.strGender = ddlgender.SelectedValue;
-            C.strEmailID = txtEmailid.Text;
-            C.strMobilenumber1 = txtmobilenumber1.Text;
-            C.strMobilenumber2 = txtmobilenumber2.Text;
-            C.strFatherorSpouseName = txtFatherORSpouseName.Text;
-            C.FlatName = ddlflatNumber.SelectedItem.Text;
-            C.FlatLoginCode = GetFlatLoginCodebyProjectID(ddlprojectname.SelectedValue) ;
-
-
-
-            if (DateTime.TryParseExact(txtdateofbirth.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
-            {
-                C.dtmDoB = parsedDate;
+                C.strGender = ddlgender.SelectedValue;
+                C.strEmailID = txtEmailid.Text;
+                C.strMobilenumber1 = txtmobilenumber1.Text;
+                C.strWhatsappNumber = txtwhatsappnumber.Text;
+                C.strAddedBy = clientId;
+                customerID = C.AddCustomerBasicDetails(C);
             }
             else
             {
-                C.dtmDoB = new DateTime(1753, 1, 1);
-            }
-            C.strWhatsappNumber = txtwhatsappnumber.Text;
-            C.strProfession = txtprofession.Text;
-            C.strCompanyName = txtcompanyname.Text;
-            C.strDesignation = txtDesignation.Text;
-            C.strCurrentAddress = txtCurrentResidingAddress.Text;
-            C.strPermanentAddress = txtPermanentAddress.Text;
-            C.strResidentialStatus = ddlResidentialStatus.SelectedValue;
-            C.strCoapplicantRelationship = ddlRelationshipwithCoApplicant.SelectedValue;
-            C.intCityID = Convert.ToInt32(ddlcity.SelectedValue);
-            C.intStateID = Convert.ToInt32(ddlstate.SelectedValue);
-            C.intPincode = Convert.ToInt32(txtpostalcode.Text);
 
 
-
-            C.strCoaGender = ddlCoGender.SelectedValue;
-
-
-
-            if (DateTime.TryParseExact(txtCoDOB.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
-            {
-                C.DtCoDOB = parsedDate;
-            }
-            else
-            {
-                C.DtCoDOB = new DateTime(1753, 1, 1);
-            }
-            C.strCoaEmailID = txtCoaEmailID.Text;
-            C.strCoaMobilenumber1 = txtcoatxtmobilenumber1.Text;
-            C.strCoaMobilenumber2 = txtcoatxtmobilenumber2.Text;
-            C.strCoaWhatsappNumber = txtCoaWhatsappNo.Text;
-            C.strCoaAddress = txtcoaAddress.Text;
-            C.strCoaResidentialStatus = ddlCoaResidentialStatus.Text;
-            C.IntCoaStateID = Convert.ToInt32(ddlCoState.SelectedValue);
-            //C.IntCoaCityID = Convert.ToInt32(ddlCoaCity.SelectedValue);
-            C.IntCoaCityID = Convert.ToInt32("365");
-            if (string.IsNullOrWhiteSpace(txtCoaPincode.Text))
-            {
-                C.IntCoaPinCode = 0; // Assign a default value (e.g., 0)
-            }
-            else
-            {
-                C.IntCoaPinCode = Convert.ToInt32(txtCoaPincode.Text);
-            }
-
-
-            C.strReference2 = txtreference2.Text;
-            C.intLeadSource = Convert.ToInt32(ddlLeadSource.SelectedValue);
-            if (ddlLeadSource.SelectedValue == "10")
-            {
-                C.ReferedBy = ddlReference.SelectedValue;
-                C.strReference1 = txtreference1.Text;
-            }
-            else
-            {
-                C.ReferedBy = "";
-                C.strReference1 = "";
-            }
-            C.blLoanTakenStatus = ddloantaken.SelectedValue == "0" ? false : true;
-            C.strBankName = ddlbankname.SelectedValue;
-
-
-
-            C.strApplicantPhoto = SaveFile(flPhoto, "ApplicantPhoto", ddlprojectname.SelectedItem.Text);
-            C.strApplicantAadhar = SaveFile(FluploadAadhar, "ApplicantAadhar", ddlprojectname.SelectedItem.Text);
-            C.strApplicantPAN = SaveFile(FluploadPan, "ApplicantPAN", ddlprojectname.SelectedItem.Text);
-
-            C.strCoApplicantPhoto = SaveFile(flPhoto2, "CoApplicantPhoto", ddlprojectname.SelectedItem.Text);
-            C.strCoApplicantAadhar = SaveFile(FluploadAadhar2, "CoApplicantAadhar", ddlprojectname.SelectedItem.Text);
-            C.strCoApplicantPAN = SaveFile(FluploadPan2, "CoApplicantPAN", ddlprojectname.SelectedItem.Text);
-
-            C.strPoAPAN = SaveFile(fluPAPAN, "PAPAN", ddlprojectname.SelectedItem.Text);
-            C.strPoAAdhar = SaveFile(flPAAadhar, "PAAadhar", ddlprojectname.SelectedItem.Text);
-            C.strBookingknowledgement = SaveFile(fluBookingAcknowledgement, "Bookingknowledgement", ddlprojectname.SelectedItem.Text);
-
-            if (!string.Equals(ddlcarparkallotted.SelectedValue, "0"))
-            {
-                C.blCarparkAllocated = ddlcarparkallotted.SelectedValue == "0" ? false : true;
-                if (!string.IsNullOrEmpty(txtnoofslots.Text))
+                DataTable dt = C.ViewBasicCustomerDetailsByMobilenumber(txtmobilenumber1.Text);
+                if (dt.Rows.Count > 0)
                 {
-                    if (string.Equals(txtnoofslots.Text, "1"))
-                    {
+                    customerID = Convert.ToInt32(dt.Rows[0]["CustomerID"]);
+                }
+                //selecte basicdetailsby mobilenumber 
+            }
 
-                        C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
-                        C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text;
-                    }
-                    else if (string.Equals(txtnoofslots.Text, "2"))
-                    {
+            if (customerID != 0)
+            {
+                DateTime parsedDate;
+                string dateFormat = "dd-MM-yyyy";
 
-                        C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
-                        C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text + "," + txtallottedcarparkslotnumber2.Text;
-                    }
-                    else if (string.Equals(txtnoofslots.Text, "3"))
+                C.intCustomerID = customerID;
+                C.intProjectID = Convert.ToInt32(ddlprojectname.SelectedValue);
+                C.intstrBlockID = Convert.ToInt32(ddlblocknumber.SelectedValue);
+                C.intFlatID = Convert.ToInt32(ddlflatNumber.SelectedValue);
+                C.strApplicantFirstName = txtapplicationname.Text;
+                C.strApplicantLastName = txtapplicationlastname.Text;
+                C.strCoapplicantFirstName = txtCoapplicantFirstName.Text;
+                C.strCoapplicantLastName = txtCoapplicantLastName.Text;
+                C.strGender = ddlgender.SelectedValue;
+                C.strEmailID = txtEmailid.Text;
+                C.strMobilenumber1 = txtmobilenumber1.Text;
+                C.strMobilenumber2 = txtmobilenumber2.Text;
+                C.strFatherorSpouseName = txtFatherORSpouseName.Text;
+                C.FlatName = ddlflatNumber.SelectedItem.Text;
+                C.FlatLoginCode = GetFlatLoginCodebyProjectID(ddlprojectname.SelectedValue);
+
+
+
+                if (DateTime.TryParseExact(txtdateofbirth.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
+                {
+                    C.dtmDoB = parsedDate;
+                }
+                else
+                {
+                    C.dtmDoB = new DateTime(1753, 1, 1);
+                }
+                C.strWhatsappNumber = txtwhatsappnumber.Text;
+                C.strProfession = txtprofession.Text;
+                C.strCompanyName = txtcompanyname.Text;
+                C.strDesignation = txtDesignation.Text;
+                C.strCurrentAddress = txtCurrentResidingAddress.Text;
+                C.strPermanentAddress = txtPermanentAddress.Text;
+                C.strResidentialStatus = ddlResidentialStatus.SelectedValue;
+                C.strCoapplicantRelationship = ddlRelationshipwithCoApplicant.SelectedValue;
+                C.intCityID = Convert.ToInt32(ddlcity.SelectedValue);
+                C.intStateID = Convert.ToInt32(ddlstate.SelectedValue);
+                C.intPincode = Convert.ToInt32(txtpostalcode.Text);
+
+
+
+                C.strCoaGender = ddlCoGender.SelectedValue;
+
+
+
+                if (DateTime.TryParseExact(txtCoDOB.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
+                {
+                    C.DtCoDOB = parsedDate;
+                }
+                else
+                {
+                    C.DtCoDOB = new DateTime(1753, 1, 1);
+                }
+                C.strCoaEmailID = txtCoaEmailID.Text;
+                C.strCoaMobilenumber1 = txtcoatxtmobilenumber1.Text;
+                C.strCoaMobilenumber2 = txtcoatxtmobilenumber2.Text;
+                C.strCoaWhatsappNumber = txtCoaWhatsappNo.Text;
+                C.strCoaAddress = txtcoaAddress.Text;
+                C.strCoaResidentialStatus = ddlCoaResidentialStatus.Text;
+                C.IntCoaStateID = Convert.ToInt32(ddlCoState.SelectedValue);
+                //C.IntCoaCityID = Convert.ToInt32(ddlCoaCity.SelectedValue);
+                C.IntCoaCityID = Convert.ToInt32("365");
+                if (string.IsNullOrWhiteSpace(txtCoaPincode.Text))
+                {
+                    C.IntCoaPinCode = 0; // Assign a default value (e.g., 0)
+                }
+                else
+                {
+                    C.IntCoaPinCode = Convert.ToInt32(txtCoaPincode.Text);
+                }
+
+
+                C.strReference2 = txtreference2.Text;
+                C.intLeadSource = Convert.ToInt32(ddlLeadSource.SelectedValue);
+                if (ddlLeadSource.SelectedValue == "10")
+                {
+                    C.ReferedBy = ddlReference.SelectedValue;
+                    C.strReference1 = txtreference1.Text;
+                }
+                else
+                {
+                    C.ReferedBy = "";
+                    C.strReference1 = "";
+                }
+                C.blLoanTakenStatus = ddloantaken.SelectedValue == "0" ? false : true;
+                C.strBankName = ddlbankname.SelectedValue;
+
+
+
+                C.strApplicantPhoto = SaveFile(flPhoto, "ApplicantPhoto", ddlprojectname.SelectedItem.Text);
+                C.strApplicantAadhar = SaveFile(FluploadAadhar, "ApplicantAadhar", ddlprojectname.SelectedItem.Text);
+                C.strApplicantPAN = SaveFile(FluploadPan, "ApplicantPAN", ddlprojectname.SelectedItem.Text);
+
+                C.strCoApplicantPhoto = SaveFile(flPhoto2, "CoApplicantPhoto", ddlprojectname.SelectedItem.Text);
+                C.strCoApplicantAadhar = SaveFile(FluploadAadhar2, "CoApplicantAadhar", ddlprojectname.SelectedItem.Text);
+                C.strCoApplicantPAN = SaveFile(FluploadPan2, "CoApplicantPAN", ddlprojectname.SelectedItem.Text);
+
+                C.strPoAPAN = SaveFile(fluPAPAN, "PAPAN", ddlprojectname.SelectedItem.Text);
+                C.strPoAAdhar = SaveFile(flPAAadhar, "PAAadhar", ddlprojectname.SelectedItem.Text);
+                C.strBookingknowledgement = SaveFile(fluBookingAcknowledgement, "Bookingknowledgement", ddlprojectname.SelectedItem.Text);
+
+                if (!string.Equals(ddlcarparkallotted.SelectedValue, "0"))
+                {
+                    C.blCarparkAllocated = ddlcarparkallotted.SelectedValue == "0" ? false : true;
+                    if (!string.IsNullOrEmpty(txtnoofslots.Text))
                     {
-                        C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
-                        C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text + "," + txtallottedcarparkslotnumber2.Text + "," + txtallottedcarparkslotnumber3.Text;
+                        if (string.Equals(txtnoofslots.Text, "1"))
+                        {
+
+                            C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
+                            C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text;
+                        }
+                        else if (string.Equals(txtnoofslots.Text, "2"))
+                        {
+
+                            C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
+                            C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text + "," + txtallottedcarparkslotnumber2.Text;
+                        }
+                        else if (string.Equals(txtnoofslots.Text, "3"))
+                        {
+                            C.intNumberofSlots = Convert.ToInt32(txtnoofslots.Text);
+                            C.strAllottedcarparkslotnumber = txtallottedcarparkslotnumber1.Text + "," + txtallottedcarparkslotnumber2.Text + "," + txtallottedcarparkslotnumber3.Text;
+                        }
+                        else
+                        {
+
+                            C.intNumberofSlots = 0;
+                            C.strAllottedcarparkslotnumber = "";
+                        }
                     }
                     else
                     {
-
                         C.intNumberofSlots = 0;
-                        C.strAllottedcarparkslotnumber = "";
+                        C.strAllottedcarparkslotnumber = "0";
                     }
                 }
                 else
                 {
+
+
                     C.intNumberofSlots = 0;
-                    C.strAllottedcarparkslotnumber = "0";
+                    C.strAllottedcarparkslotnumber = "";
+
                 }
-            }
-            else
-            {
+
+                if (!string.IsNullOrEmpty(txtregistrationcharges.Text.Trim('₹')))
+                {
+
+                    C.intRegistrationcharges = Convert.ToInt32(
+                        txtregistrationcharges.Text.Contains("₹")
+                            ? txtregistrationcharges.Text.Replace("₹", "")
+                            : txtregistrationcharges.Text
+                    );
+                }
+                else
+                {
+                    C.intRegistrationcharges = 0;
+                }
 
 
-                C.intNumberofSlots = 0;
-                C.strAllottedcarparkslotnumber = "";
-
-            }
-
-            if (!string.IsNullOrEmpty(txtregistrationcharges.Text.Trim('₹')))
-            {
-
-                C.intRegistrationcharges = Convert.ToInt32(
-                    txtregistrationcharges.Text.Contains("₹")
-                        ? txtregistrationcharges.Text.Replace("₹", "")
-                        : txtregistrationcharges.Text
-                );
-            }
-            else
-            {
-                C.intRegistrationcharges = 0;
-            }
+                if (DateTime.TryParseExact(txtRegistrationdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
+                {
+                    C.dtmRegistrationDate = parsedDate;
+                }
+                else
+                {
+                    C.dtmRegistrationDate = new DateTime(1753, 1, 1);
+                }
 
 
-            if (DateTime.TryParseExact(txtRegistrationdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
-            {
-                C.dtmRegistrationDate = parsedDate;
-            }
-            else
-            {
-                C.dtmRegistrationDate = new DateTime(1753, 1, 1);
-            }
+                if (DateTime.TryParseExact(txtBookingdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
+                {
+                    C.dtmBookingDate = parsedDate;
+                }
+                else
+                {
+                    C.dtmBookingDate = new DateTime(1753, 1, 1);
+                }
+                if (DateTime.TryParseExact(txtPAdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
+                {
+                    C.dtmPoADOB = parsedDate;
+                }
+                else
+                {
+                    C.dtmPoADOB = new DateTime(1753, 1, 1);
+                }
 
+                C.strPoAName = txtNamePowerofattorney.Text;
+                C.strPoAAddress = txtaddresspowerofattorney.Text;
+                C.strRegistrationOffice = txtregistrationoffice.Text;
 
-            if (DateTime.TryParseExact(txtBookingdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
-            {
-                C.dtmBookingDate = parsedDate;
-            }
-            else
-            {
-                C.dtmBookingDate = new DateTime(1753, 1, 1);
-            }
-            if (DateTime.TryParseExact(txtPAdate.Text, dateFormat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out parsedDate))
-            {
-                C.dtmPoADOB = parsedDate;
-            }
-            else
-            {
-                C.dtmPoADOB = new DateTime(1753, 1, 1);
-            }
+                C.strAddedBy = clientId;
 
-            C.strPoAName = txtNamePowerofattorney.Text;
-            C.strPoAAddress = txtaddresspowerofattorney.Text;
-            C.strRegistrationOffice = txtregistrationoffice.Text;
+                if (!string.IsNullOrEmpty(txtamountpaid.Text.Trim('₹')))
+                {
+                    C.Amountpaid = Convert.ToInt32(
+                        txtamountpaid.Text.Contains("₹")
+                            ? txtamountpaid.Text.Replace("₹", "")
+                            : txtamountpaid.Text
+                    );
+                }
+                else
+                {
+                    C.Amountpaid = 0;
+                }
+                if (!string.IsNullOrEmpty(ddlcrmname.SelectedValue))
+                {
+                    C.intCRMID = Convert.ToInt32(ddlcrmname.SelectedValue);
+                }
+                else
+                {
+                    C.intCRMID = 0;
+                }
 
-            C.strAddedBy = clientId;
+                if (!string.IsNullOrEmpty(ddlpaymentmode.SelectedValue))
+                {
+                    C.PaymentMode = Convert.ToInt32(ddlpaymentmode.SelectedValue);
+                }
+                else
+                {
+                    C.PaymentMode = Convert.ToInt32(0);
+                }
 
-            if (!string.IsNullOrEmpty(txtamountpaid.Text.Trim('₹')))
-            {
-                C.Amountpaid = Convert.ToInt32(
-                    txtamountpaid.Text.Contains("₹")
-                        ? txtamountpaid.Text.Replace("₹", "")
-                        : txtamountpaid.Text
-                );
+                ret = C.AddFlatCustomerBookingDetails(C);
             }
-            else
-            {
-                C.Amountpaid = 0;
-            }
-            if (!string.IsNullOrEmpty(ddlcrmname.SelectedValue))
-            {
-                C.intCRMID = Convert.ToInt32(ddlcrmname.SelectedValue);
-            }
-            else
-            {
-                C.intCRMID = 0;
-            }
-
-            if (!string.IsNullOrEmpty(ddlpaymentmode.SelectedValue))
-            {
-                C.PaymentMode = Convert.ToInt32(ddlpaymentmode.SelectedValue);
-            }
-            else
-            {
-                C.PaymentMode = Convert.ToInt32(0);
-            }
-
-            ret = C.AddFlatCustomerBookingDetails(C);
-        }
         }
         catch (Exception ex)
         {
@@ -1360,7 +1377,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
 
         return ret;
     }
-        public string GetFlatLoginCodebyProjectID(string ProjectID)
+    public string GetFlatLoginCodebyProjectID(string ProjectID)
     {
         string flatlogincode = string.Empty;
         DataSet ds = C.GetFlatLoginCodebyProjectID(Convert.ToInt32(ProjectID));

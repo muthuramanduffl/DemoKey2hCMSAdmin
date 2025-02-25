@@ -365,6 +365,12 @@
                                         Add Customization Work Approval
                                     </a>
                                 </li>
+                                <li id="subviewMenuAddCWA" runat="server">
+                                    <a href="view-customization-work-approval.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                        view Customization Work Approval
+                                    </a>
+                                </li>
                                 <li id="subMenuAddCW" runat="server">
                                     <a href="add-customization-work.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
@@ -488,7 +494,7 @@
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
                                         View Floor Plan
                                     </a>
-                                </li> 
+                                </li>
                                 <li id="subMenuAddFBP" runat="server">
                                     <a href="add-block-floor-plan.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
@@ -544,16 +550,30 @@
                                         Amenities
                                     </a>
                                 </li>
-                             <li id="subqualityreport" runat="server">
+                                <li id="subaddqualityreport" runat="server">
                                     <a href="add-quality-reports.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
-                                        Project Quality Report
+                                       Add Project Quality Report
                                     </a>
                                 </li>
-                             <li id="subFlatqualityreport" runat="server">
+                                <li id="subviewqualityreport" runat="server">
+                                    <a href="view-project-quality-reports.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                       View Project Quality Report
+                                    </a>
+                                </li>
+                                <li id="subaddFlatqualityreport" runat="server">
+                                   
                                     <a href="add-flat-quality-reports.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
-                                       Flat Quality Reports
+                                        add Flat Quality Reports
+                                    </a>
+                                </li> 
+                                <li id="subviewFlatqualityreport" runat="server">
+                                   
+                                    <a href="view-flat-quality-reports.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                        View Flat Quality Reports
                                     </a>
                                 </li>
                             </ul>

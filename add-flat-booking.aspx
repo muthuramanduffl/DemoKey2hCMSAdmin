@@ -390,22 +390,25 @@
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-3">
                                             <div class="input-icon input-icon-sm right">
-                                                <label>Photo <span class="text-danger">*</span></label>
+                                                <label>Photo <span class="text-danger"></span></label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="flPhoto" accept=".jpeg, .jpg, .png" class="form-control input-sm flPhoto file-upload" runat="server" />
+                                                <asp:FileUpload ID="flPhoto" accept=".jpeg, .jpg, .png" class="form-control input-sm  flPhoto" runat="server" />
                                                 <span class="handle-file-request">(upload max file size 1.5 MB)</span>
                                                 <asp:HiddenField ID="hdnApplicantPhoto" runat="server" />
                                             </div>
 
                                             <span class="error">
                                                 <asp:Label ID="lblflPhoto" CssClass="lblflPhoto" runat="server" Text=""></asp:Label>
+
                                             </span>
 
                                             <div class="view-pro-screen-img view-pro-screen btn-view-pop btn-view-Photo1" runat="server" id="viewpflphoto" style="display: none">
                                                 <i class="bi bi-eye"></i>View Image
-                                                 <p><i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i> </p>
                                             </div>
-                                          
+
+                                            <div class="btn-view-pop flPhoto-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-3">
                                             <div class="input-icon input-icon-sm right">
@@ -413,18 +416,19 @@
                                                 <i class="bi bi-file-earmark-image b5-icon"></i>
                                                 <asp:FileUpload ID="FluploadAadhar" ClientIDMode="Static" class="form-control input-sm file-upload" autocomplete="off" runat="server" accept=".pdf, .jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,doc-1.5 MB/image-1.5 MB)</span>
-                                                <asp:HiddenField ID="hdnApplicantAadhar" runat="server" />
+                                                <asp:HiddenField ID="hdnApplicantAadhar" ClientIDMode="Static" runat="server" />
                                             </div>
                                             <span class="error">
                                                 <asp:Label ID="lblFluploadAadhar" ClientIDMode="Static" CssClass="lblFluploadAadhar error-label" runat="server" Text=""></asp:Label>
                                             </span>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Display="Dynamic" runat="server" ControlToValidate="FluploadAadhar" ValidationGroup="CusVal" ErrorMessage="Upload aadhar card copy"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ClientIDMode="Static" Display="Dynamic" runat="server" ControlToValidate="FluploadAadhar" ValidationGroup="CusVal" ErrorMessage="Upload aadhar card copy"></asp:RequiredFieldValidator>
                                             </span>
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivAadhar" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card 
-                                                    <i class="bi bi-x-circle-fill remove-icon" cursor: pointer; color: red; font-size: 20px;"></i>
-
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-3">
@@ -433,10 +437,10 @@
                                                 <i class="bi bi-card-image b5-icon"></i>
                                                 <asp:FileUpload ID="FluploadPan" ClientIDMode="Static" class="form-control input-sm file-upload" autocomplete="off" runat="server" accept=".pdf, .jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,doc-1.5 MB/image- 1.5MB)</span>
-                                                <asp:HiddenField ID="hdnApplicantPAN" runat="server" />
+                                                <asp:HiddenField ID="hdnApplicantPAN" ClientIDMode="Static" runat="server" />
                                             </div>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Display="Dynamic" runat="server" ControlToValidate="FluploadPan" ValidationGroup="CusVal" ErrorMessage="Upload PAN card copy"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ClientIDMode="Static" Display="Dynamic" runat="server" ControlToValidate="FluploadPan" ValidationGroup="CusVal" ErrorMessage="Upload PAN card copy"></asp:RequiredFieldValidator>
                                             </span>
                                             <span class="error">
                                                 <asp:Label ID="lblFluploadPan" ClientIDMode="Static" CssClass="lblFluploadPan error-label" runat="server" Text="">
@@ -444,9 +448,11 @@
                                             </span>
                                             <div class="view-pan btn-view btn-view-pop" runat="server" clientidmode="Static" id="DivPan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card 
-                                                 <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
-
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -651,10 +657,9 @@
                                             <span class="error"></span>
                                             <div class="view-pro-screen-img view-pro-screen btn-view-pop btn-view-Photo2" clientidmode="Static" runat="server" id="viewpflphoto2" style="display: none">
                                                 <i class="bi bi-eye"></i>View Image
-                                            </div> 
-                                            <div class="view-pro-screen-img view-pro-screen btn-view-pop btn-view-Photo2" clientidmode="Static" runat="server" id="viewpflphoto3" style="display: none">
-                                               
-                                              <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                            </div>
+                                            <div class="btn-view-pop flPhoto2-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -673,7 +678,9 @@
                                             <span class="error"></span>
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="divaadhar2" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card
-                                                <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -693,7 +700,9 @@
                                             </span>
                                             <div class="view-pan btn-view btn-view-pop" runat="server" clientidmode="Static" id="divcoappliantpan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card
-                                                <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -738,7 +747,9 @@
                                             </span>
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="divpaaadhar" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card
-                                                <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -757,7 +768,9 @@
                                             </span>
                                             <div class="view-pan btn-view btn-view-pop" clientidmode="Static" runat="server" id="divpapan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card
-                                                <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -801,7 +814,7 @@
                                             </asp:UpdatePanel>
                                         </div>
                                         <span class="error">
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" Display="Dynamic" runat="server" InitialValue="" ControlToValidate="ddlprojectname" ValidationGroup="CusVal" ErrorMessage="Select project name"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" ClientIDMode="Static" Display="Dynamic" runat="server" InitialValue="" ControlToValidate="ddlprojectname" ValidationGroup="CusVal" ErrorMessage="Select project name"></asp:RequiredFieldValidator>
                                         </span>
 
                                     </div>
@@ -821,7 +834,7 @@
 
                                                 </div>
                                                 <span class="error">
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" Display="Dynamic" runat="server" InitialValue="" ControlToValidate="ddlblocknumber" ValidationGroup="CusVal" ErrorMessage="Select block name"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator29" ClientIDMode="Static" Display="Dynamic" runat="server" InitialValue="" ControlToValidate="ddlblocknumber" ValidationGroup="CusVal" ErrorMessage="Select block name"></asp:RequiredFieldValidator>
                                                 </span>
                                             </ContentTemplate>
                                             <Triggers>
@@ -844,7 +857,7 @@
                                                     <asp:RequiredFieldValidator
                                                         ID="RequiredFieldValidator31"
                                                         Display="Dynamic"
-                                                        runat="server"
+                                                        runat="server" ClientIDMode="Static"
                                                         InitialValue=""
                                                         ControlToValidate="ddlflatNumber"
                                                         ValidationGroup="CusVal"
@@ -898,7 +911,7 @@
                                                 <asp:RequiredFieldValidator
                                                     ID="RequiredFieldValidator27"
                                                     Display="Dynamic"
-                                                    runat="server"
+                                                    runat="server" ClientIDMode="Static"
                                                     InitialValue=""
                                                     ControlToValidate="ddlcrmname"
                                                     ValidationGroup="CusVal"
@@ -975,7 +988,9 @@
 
                                         <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="div1" style="display: none">
                                             <i class="bi bi-eye"></i>View 
-                                            <i class="bi bi-x-circle-fill remove-icon" style="display: none; cursor: pointer; color: red; font-size: 20px;"></i>
+                                        </div>
+                                        <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <i class="bi bi-x"></i>Remove 
                                         </div>
                                     </div>
 
@@ -1010,7 +1025,7 @@
                                             <asp:Label ID="lblerror" runat="server" class="errorLabel" ForeColor="#D41111" Text=""></asp:Label>
                                         </div>
                                         <span class="error">
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator24" runat="server" ControlToValidate="txtnoofslots" ValidationGroup="CusVal" ValidationExpression="^\d+$" ErrorMessage="Enter valid no.of slots" Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator24" ClientIDMode="Static" runat="server" ControlToValidate="txtnoofslots" ValidationGroup="CusVal" ValidationExpression="^\d+$" ErrorMessage="Enter valid no.of slots" Display="Dynamic"></asp:RegularExpressionValidator>
                                         </span>
                                     </div>
                                     <div class="col-sm-4 col-xl-2 pt-3 handle-click-yes" style="display: none;">
@@ -1021,7 +1036,7 @@
                                             <asp:TextBox ID="txtallottedcarparkslotnumber1" MaxLength="12" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                         </div>
                                         <span class="error">
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator296" runat="server" ControlToValidate="txtallottedcarparkslotnumber1" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator296" ClientIDMode="Static" runat="server" ControlToValidate="txtallottedcarparkslotnumber1" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
                                         </span>
                                     </div>
                                     <div class="col-sm-4 col-xl-2 pt-3 handle-click-yes" style="display: none;">
@@ -1032,7 +1047,7 @@
                                             <asp:TextBox ID="txtallottedcarparkslotnumber2" MaxLength="12" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                         </div>
                                         <span class="error">
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator291" runat="server" ControlToValidate="txtallottedcarparkslotnumber2" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator291" ClientIDMode="Static" runat="server" ControlToValidate="txtallottedcarparkslotnumber2" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
                                         </span>
                                     </div>
                                     <div class="col-sm-4 col-xl-2 pt-3 handle-click-yes" style="display: none;">
@@ -1042,7 +1057,7 @@
                                             <asp:TextBox ID="txtallottedcarparkslotnumber3" MaxLength="12" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                         </div>
                                         <span class="error">
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator25" runat="server" ControlToValidate="txtallottedcarparkslotnumber3" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator25" ClientIDMode="Static" runat="server" ControlToValidate="txtallottedcarparkslotnumber3" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\-,]+$" ErrorMessage="Enter valid allotted car park slot no." Display="Dynamic"></asp:RegularExpressionValidator>
                                         </span>
                                     </div>
                                 </div>
@@ -1080,7 +1095,7 @@
                                             <asp:TextBox ID="txtregistrationoffice" class="form-control input-sm capitalize-input" runat="server"></asp:TextBox>
                                         </div>
                                         <span class="error">
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator27" runat="server" ControlToValidate="txtregistrationoffice" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\s,.\-/'&]+$" ErrorMessage="Enter valid registration office" Display="Dynamic"></asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator27" ClientIDMode="Static" runat="server" ControlToValidate="txtregistrationoffice" ValidationGroup="CusVal" ValidationExpression="^[A-Za-z0-9\s,.\-/'&]+$" ErrorMessage="Enter valid registration office" Display="Dynamic"></asp:RegularExpressionValidator>
                                         </span>
                                     </div>
                                 </div>
@@ -1178,8 +1193,6 @@
         }
     </script>
 
-
-
     <script>
         function callcoFunction() {
             const chkSameasWhatsapp1 = document.getElementById('chkSameasWhatsapp1');
@@ -1204,8 +1217,6 @@
         }
 
     </script>
-
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1265,11 +1276,6 @@
             ddlReference.onchange();
         });
     </script>
-
-
-
-
-
 
     <script> 
         document.getElementById('<%= txtapplicationname.ClientID %>').addEventListener('keypress', function (e) {
@@ -1614,6 +1620,31 @@
             var req1ReferedBy = document.getElementById('<%= RequiredFieldValidator19.ClientID %>');
             var reqReference = document.getElementById('<%= RequiredFieldValidator16.ClientID %>');
             var ddlLeadSource = document.getElementById('<%= ddlLeadSource.ClientID %>');
+            var fluploadAadhar = document.getElementById('<%= FluploadAadhar.ClientID %>');
+            var fluploadPan = document.getElementById('<%= FluploadPan.ClientID %>');
+            var RequiredFieldValidator23 = document.getElementById('<%= RequiredFieldValidator23.ClientID %>');
+            var RequiredFieldValidator22 = document.getElementById('<%= RequiredFieldValidator22.ClientID %>');
+            var hdnApplicantAadhar = document.getElementById('hdnApplicantAadhar');
+            var hdnApplicantPAN = document.getElementById('hdnApplicantPAN');
+
+            if (fluploadAadhar && hdnApplicantAadhar) {
+                if (hdnApplicantAadhar.value === '' && (!fluploadAadhar.files || fluploadAadhar.files.length === 0)) {
+                    ValidatorEnable(RequiredFieldValidator23, true);
+                } else {
+                    ValidatorEnable(RequiredFieldValidator23, false);
+                }
+            }
+
+            if (fluploadPan && hdnApplicantPAN) {
+                if (hdnApplicantPAN.value === '' && (!fluploadPan.files || fluploadPan.files.length === 0)) {
+                    ValidatorEnable(RequiredFieldValidator22, true);
+                } else {
+                    ValidatorEnable(RequiredFieldValidator22, false);
+                }
+            }
+
+
+
 
 
             var selectedValue = dropdown.value;
@@ -1664,93 +1695,12 @@
 
 
 
+
+
+
+  <%--  file type and validation clientside--%>
+
     <script>
-        function setupFileUploader(fileUploaderSelector, viewButtonSelector, labelSelector) {
-            const fileUploader = document.querySelector(fileUploaderSelector);
-            const viewButton = document.querySelector(viewButtonSelector);
-            const label = document.querySelector(labelSelector);
-            let screensrc = null;
-
-            if (!fileUploader || !viewButton || !label) {
-                console.error("Required elements not found for selectors:", { fileUploaderSelector, viewButtonSelector, labelSelector });
-                return;
-            }
-
-            function resetFileInput() {
-                fileUploader.value = '';
-                screensrc = null;
-                viewButton.style.display = 'none';
-            }
-
-            fileUploader.addEventListener('change', function () {
-                const file = fileUploader.files[0];
-                const allowedFiles = [".png", ".jpg", ".jpeg"];
-
-                if (file) {
-                    const ext = file.name.split('.').pop().toLowerCase();
-
-                    if (!allowedFiles.includes("." + ext)) {
-                        label.textContent = "Select .png, .jpg, or .jpeg files only.";
-                        resetFileInput();
-                        return;
-                    }
-
-                    const size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
-                    if (size > 1536) {
-                        label.textContent = "Image size must be under 1.5 MB";
-                        resetFileInput();
-                        return;
-                    }
-
-                    label.textContent = "";
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        screensrc = e.target.result;
-                        viewButton.style.display = 'inline-block';
-                    };
-
-                    reader.onerror = function () {
-                        screensrc = null;
-                        console.error("Error reading file.");
-                    };
-
-                    reader.readAsDataURL(file);
-                } else {
-                    resetFileInput();
-                }
-            });
-
-            viewButton.addEventListener('click', function () {
-                if (!screensrc) {
-                    return;
-                }
-                Swal.fire({
-                    html: `
-            <div style="position: relative;">
-                <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
-                <h2 class="fw-bold">Photo</h2>
-                <img id="swalImage" src="" alt="Photo" class="img-fluid mt-3">
-            </div>
-        `,
-                    showConfirmButton: false,
-                    didOpen: () => {
-                        document.getElementById('swalImage').src = screensrc;
-                        document.querySelector('.btn-close-icon').addEventListener('click', () => Swal.close());
-                    }
-                });
-            });
-        }
-
-        // Initialize file uploaders with unique selectors
-        document.addEventListener('DOMContentLoaded', function () {
-            setupFileUploader('.flPhoto', '.btn-view-Photo1', '.lblflPhoto');
-            setupFileUploader('.flPhoto2', '.btn-view-Photo2', '.lblflPhoto2'); // Example for another uploader
-        });
-    </script>
-
-    <!-- previous code -->
-
-    <%--<script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             var fileUploaders = document.querySelectorAll('.file-upload');
             var viewLogoBtns = document.querySelectorAll('.btn-view');
@@ -1759,50 +1709,57 @@
             var fileType = {};
             var fileTitles = ['Aadhaar', 'PAN', 'Co-Applicant Aadhaar', 'Co-Applicant PAN', 'Power of Attorney PAN', 'Power of Attorney Aadhar', 'Booking Acknowledgement'];
 
-            if (!fileUploaders || !viewLogoBtns || !errorLabels) {
+            if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length) {
                 console.error("Required elements not found in the DOM.");
                 return;
             }
 
             fileUploaders.forEach(function (fileUploader, index) {
-                // Show file when selected
+                var container = fileUploader.closest('.col-sm-4'); // Find the parent container
+                var removeBtn = container.querySelector('.btn-remove'); // Get remove button within the same container
+                var viewLogoBtn = container.querySelector('.btn-view'); // Get view button within the same container
+                var errorLabel = container.querySelector('.error-label'); // Get error label within the same container
+
                 fileUploader.addEventListener('change', function (event) {
                     var input = event.target;
                     var file = input.files[0];
                     var validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
                     var validFileTypes = validImageTypes.concat(['application/pdf']);
-                    var isValidFileType = validFileTypes.includes(file.type);
-                    var viewLogoBtn = viewLogoBtns[index];
-                    var errorLabel = errorLabels[index];
-                    fileType[index] = file.type;
+                    var isValidFileType = validFileTypes.includes(file?.type);
 
+                    //console.log("Remove Button Found:", removeBtn); // Debugging
+
+                    fileType[index] = file?.type;
                     errorLabel.textContent = ''; // Clear previous error messages
 
                     if (!file) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
-                        errorLabel.textContent = "No file selected.";
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
+                        errorLabel.textContent = "";
                         return;
                     }
                     if (!isValidFileType) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "Invalid file type. Only PDF, PNG, JPEG, and JPG files are allowed.";
                         return;
                     }
                     if (file.type === 'application/pdf' && file.size > 1500 * 1024) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "PDF size must be under 1.5 MB";
                         return;
                     }
                     if (validImageTypes.includes(file.type) && file.size > 1500 * 1024) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "Image size must be under 1.5 MB";
                         return;
                     }
+
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         screensrc[index] = e.target.result;
                         viewLogoBtn.style.display = 'inline-block';
+                        removeBtn.style.display = 'inline-block'; // Show Remove button
                         viewLogoBtn.src = validImageTypes.includes(file.type) ? screensrc[index] : ''; // Show image preview for images
+                        console.log("File uploaded successfully, showing remove button.");
                     };
 
                     reader.onerror = function (err) {
@@ -1813,21 +1770,19 @@
                     reader.readAsDataURL(file);
                 });
 
-                // Reset the uploader when no file is chosen on click
-                fileUploader.addEventListener('click', function () {
-                    var errorLabel = errorLabels[index];
-                    resetUploader(viewLogoBtns[index], errorLabel, index);
+                // Remove Button Click
+                removeBtn.addEventListener('click', function () {
+                    resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                 });
 
                 // Open file in new tab or SweetAlert modal
-                viewLogoBtns[index].addEventListener('click', function () {
+                viewLogoBtn.addEventListener('click', function () {
                     if (!screensrc[index]) {
-                        var errorLabel = errorLabels[index];
-                        errorLabel.textContent = "No file uploaded yet!";
-                        resetUploader(viewLogoBtns[index], errorLabel, index); // Reset the file uploader if no file is uploaded
+                        errorLabel.textContent = "";
+                       // resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         return;
                     }
-                    //alert(fileTitles[index]);
+
                     var fileTitle = fileTitles[index];
 
                     if (fileType[index] === 'application/pdf') {
@@ -1852,31 +1807,228 @@
                 });
             });
 
-            // Reset the uploader
-            function resetUploader(viewLogoBtn, errorLabel, index) {
+       
+            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
                 screensrc[index] = null;
-                document.querySelectorAll('.file-upload')[index].value = '';
+                document.querySelectorAll('.file-upload')[index].value = ''; 
                 viewLogoBtn.src = '';
                 viewLogoBtn.style.display = 'none';
-                errorLabel.textContent = ''; // Clear error message
+                removeBtn.style.display = 'none'; 
+                errorLabel.textContent = ''; 
+             //   console.log("Reset uploader, hiding remove button.");
+
+                if (index === 0) {
+
+                    document.getElementById('hdnApplicantAadhar').value = '';
+                } else if (index === 1) {
+                    document.getElementById('hdnApplicantPAN').value = '';
+                }
             }
         });
-    </script>--%>
 
-    <!--previous code end-->
+    </script>
 
+  <%-- End file type and validation clientside--%>
+
+
+
+    <%--Flpload flPhoto2 only --%>
 
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            function handleFileChange(inputClass, removeClass, viewBtnClass) {
+                var fileInput = document.querySelector("." + inputClass);
+                var removeBtn = document.querySelector("." + removeClass);
+                var viewBtn = document.querySelector(viewBtnClass); // Corrected selector usage
+
+                fileInput.addEventListener("change", function () {
+                    var hasFile = fileInput.files.length > 0;
+                    removeBtn.style.display = hasFile ? "inline-block" : "none";
+                    viewBtn.style.display = hasFile ? "inline-block" : "none";
+                });
+
+                removeBtn.addEventListener("click", function () {
+                    fileInput.value = "";
+                    removeBtn.style.display = "none";
+                    viewBtn.style.display = "none";
+
+
+                });
+            }
+
+            handleFileChange("flPhoto", "flPhoto-remove", ".btn-view-Photo1");
+            handleFileChange("flPhoto2", "flPhoto2-remove", ".btn-view-Photo2");
+        });
+    </script>
+
+    <%--server side db image to bind ui element--%>
+
+    <script type="text/javascript">
+        //flupload flupload1 only bind server to client side image
+        window.screensrc = { photo1: [], photo2: [] };
+
+        function bindImageToPreviewphoto(srclogo, index, type) {
+            var viewLogoBtns = type === 'photo1' ? document.querySelectorAll('.btn-view-Photo1') : document.querySelectorAll('.btn-view-Photo2');
+            var removeBtns = type === 'photo1' ? document.querySelectorAll('.flPhoto-remove') : document.querySelectorAll('.flPhoto2-remove');
+
+            if (index !== -1 && viewLogoBtns[index] && removeBtns[index]) {
+                screensrc[type] = screensrc[type] || [];
+                screensrc[type][index] = srclogo;
+                viewLogoBtns[index].style.display = 'inline-block';
+                removeBtns[index].style.display = 'inline-block';
+                viewLogoBtns[index].src = srclogo; // Show the image preview
+            } else {
+                console.error("View logo button not found or index is invalid.");
+            }
+        }
+
+        function setupFileUploader(fileUploaderSelector, viewButtonSelector, removeButtonSelector, labelSelector, type) {
+            const fileUploaders = document.querySelectorAll(fileUploaderSelector);
+            const viewLogoBtns = document.querySelectorAll(viewButtonSelector);
+            const removeBtns = document.querySelectorAll(removeButtonSelector);
+            const errorLabels = document.querySelectorAll(labelSelector);
+
+            if (!fileUploaders.length || !viewLogoBtns.length || !removeBtns.length || !errorLabels.length) {
+                console.error("Required elements not found for selectors:", { fileUploaderSelector, viewButtonSelector, removeButtonSelector, labelSelector });
+                return;
+            }
+
+            fileUploaders.forEach((fileUploader, index) => {
+                const viewButton = viewLogoBtns[index];
+                const removeButton = removeBtns[index];
+                const label = errorLabels[index];
+
+                if (!fileUploader || !viewButton || !removeButton || !label) {
+                    console.error("Element at index " + index + " not found.");
+                    return;
+                }
+
+                // Function to reset file input
+                function resetFileInput() {
+                    fileUploader.value = '';
+                    screensrc[type][index] = null;
+                    viewButton.style.display = 'none';
+                    removeButton.style.display = 'none';
+
+                    // Trigger input event for validation
+                    var event = new Event("input", { bubbles: true });
+                    fileUploader.dispatchEvent(event);
+                }
+
+                fileUploader.addEventListener('change', function () {
+                    const file = fileUploader.files[0];
+                    const allowedFiles = [".png", ".jpg", ".jpeg"];
+
+                    if (file) {
+                        const ext = file.name.split('.').pop().toLowerCase();
+
+                        if (!allowedFiles.includes("." + ext)) {
+                            alert("Select .png, .jpg, or .jpeg files only.");
+                            resetFileInput();
+                            return;
+                        }
+
+                        const size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
+                        if (size > 1536) {
+                            label.textContent = "Image size must be under 1.5 MB";
+                            resetFileInput();
+                            return;
+                        }
+
+                        label.textContent = "";
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            screensrc[type][index] = e.target.result;
+                            viewButton.style.display = 'inline-block';
+                            removeButton.style.display = 'inline-block';
+                            viewButton.src = screensrc[type][index]; // Display image in button
+                        };
+
+                        reader.onerror = function () {
+                            screensrc[type][index] = null;
+                            console.error("Error reading file.");
+                        };
+
+                        reader.readAsDataURL(file);
+                    } else {
+                        resetFileInput();
+                    }
+                });
+
+                removeButton.addEventListener('click', function () {
+                    resetFileInput();
+                });
+
+                viewButton.addEventListener('click', function () {
+                    if (!screensrc[type][index]) {
+                        return;
+                    }
+                    Swal.fire({
+                        html: `
+          <div style="position: relative;">
+              <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
+              <h2 class="fw-bold">Photo</h2>
+              <img id="swalImage" src="${screensrc[type][index]}" alt="Photo" class="img-fluid mt-3">
+          </div>
+  `,
+                        showConfirmButton: false,
+                        didOpen: () => {
+                            document.querySelector('.btn-close-icon').addEventListener('click', () => Swal.close());
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize file uploaders with unique selectors
+        document.addEventListener('DOMContentLoaded', function () {
+            setupFileUploader('.flPhoto', '.btn-view-Photo1', '.flPhoto-remove', '.lblflPhoto', 'photo1');
+            setupFileUploader('.flPhoto2', '.btn-view-Photo2', '.flPhoto2-remove', '.lblflPhoto2', 'photo2'); // Example for another uploader
+        });
+
+        // Ensure global function is set
+        window.bindImageToPreviewphoto = bindImageToPreviewphoto;
+    </script>
+
+
+
+    <script type="text/javascript">
+        window.screensrc = {};
+
+        function bindImageToPreview(srclogo, index) {
+            var viewLogoBtns = document.querySelectorAll('.btn-view');
+            var removeBtns = document.querySelectorAll('.btn-remove');
+
+            if (index !== -1 && viewLogoBtns[index]) {
+                screensrc[index] = srclogo;
+                viewLogoBtns[index].style.display = 'inline-block';
+                removeBtns[index].style.display = 'inline-block';
+                viewLogoBtns[index].src = srclogo;
+            } else {
+                console.error("View logo button not found or index is invalid.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
             var fileUploaders = document.querySelectorAll('.file-upload');
-            var viewLogoBtns = document.querySelectorAll('.btn-view-pop'); // Updated selector
+            var viewLogoBtns = document.querySelectorAll('.btn-view');
+            var removeBtns = document.querySelectorAll('.btn-remove');
             var errorLabels = document.querySelectorAll('.error-label');
-            var screensrc = {};
             var fileType = {};
             var fileTitles = ['Aadhaar', 'PAN', 'Co-Applicant Aadhaar', 'Co-Applicant PAN', 'Power of Attorney PAN', 'Power of Attorney Aadhar', 'Booking Acknowledgement'];
 
-            fileUploaders.forEach(function (fileUploader, index) {
+            if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length || !removeBtns.length) {
+                console.error("Required elements not found in the DOM.");
+                return;
+            }
+
+            fileUploaders.forEach((fileUploader, index) => {
+                if (!fileUploader || !viewLogoBtns[index] || !removeBtns[index] || !errorLabels[index]) {
+                    console.error("Element at index " + index + " not found.");
+                    return;
+                }
+
                 fileUploader.addEventListener('change', function (event) {
                     var input = event.target;
                     var file = input.files[0];
@@ -1884,29 +2036,32 @@
                     var validFileTypes = validImageTypes.concat(['application/pdf']);
                     var isValidFileType = validFileTypes.includes(file.type);
                     var viewLogoBtn = viewLogoBtns[index];
-                    var removeIcon = viewLogoBtn.querySelector('.remove-icon'); // Get remove icon inside the div
+                    var removeBtn = removeBtns[index];
                     var errorLabel = errorLabels[index];
                     fileType[index] = file.type;
 
-                    errorLabel.textContent = ''; // Clear previous errors
+                    errorLabel.textContent = '';
 
                     if (!file) {
-                        resetUploader(index);
-                        errorLabel.textContent = "";
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
+                        errorLabel.textContent = "No file selected.";
                         return;
                     }
+
                     if (!isValidFileType) {
-                        resetUploader(index);
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
                         errorLabel.textContent = "Invalid file type. Only PDF, PNG, JPEG, and JPG files are allowed.";
                         return;
                     }
+
                     if (file.type === 'application/pdf' && file.size > 1500 * 1024) {
-                        resetUploader(index);
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
                         errorLabel.textContent = "PDF size must be under 1.5 MB";
                         return;
                     }
+
                     if (validImageTypes.includes(file.type) && file.size > 1500 * 1024) {
-                        resetUploader(index);
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
                         errorLabel.textContent = "Image size must be under 1.5 MB";
                         return;
                     }
@@ -1915,7 +2070,8 @@
                     reader.onload = function (e) {
                         screensrc[index] = e.target.result;
                         viewLogoBtn.style.display = 'inline-block';
-                        removeIcon.style.display = 'inline-block'; // Show remove icon
+                        removeBtn.style.display = 'inline-block';
+                        viewLogoBtn.src = validImageTypes.includes(file.type) ? screensrc[index] : '';
                     };
 
                     reader.onerror = function (err) {
@@ -1926,20 +2082,12 @@
                     reader.readAsDataURL(file);
                 });
 
-                // Remove file when clicking the remove icon
-                viewLogoBtns[index].querySelector('.remove-icon').addEventListener('click', function () {
-                    resetUploader(index);
-                });
-
-                // Open file in new tab or SweetAlert modal
                 viewLogoBtns[index].addEventListener('click', function () {
                     if (!screensrc[index]) {
-                        var errorLabel = errorLabels[index];
-                        errorLabel.textContent = "";
-                        resetUploader(index);
+                        errorLabels[index].textContent = "No file uploaded yet!";
+                        resetUploader(viewLogoBtns[index], removeBtns[index], errorLabels[index], index);
                         return;
                     }
-
                     var fileTitle = fileTitles[index];
 
                     if (fileType[index] === 'application/pdf') {
@@ -1948,36 +2096,54 @@
                     } else {
                         Swal.fire({
                             html: `
-                    <div style="position: relative;">
-                        <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
-                        <h2 class="fw-bold">${fileTitle}</h2>
-                        <img id="swalImage" src="" alt="${fileTitle}" class="img-fluid mt-3">
-                    </div>
-                `,
+                            <div style="position: relative;">
+                                <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
+                                <h2 class="fw-bold">${fileTitle}</h2>
+                                <img id="swalImage" src="${screensrc[index]}" alt="${fileTitle}" class="img-fluid mt-3">
+                            </div>
+                        `,
                             showConfirmButton: false,
                             didOpen: () => {
-                                document.getElementById('swalImage').src = screensrc[index];
                                 document.querySelector('.btn-close-icon').addEventListener('click', () => Swal.close());
                             }
+                        }).then(() => {
+                            viewLogoBtns[index].style.display = 'inline-block';
+                            removeBtns[index].style.display = 'inline-block';
                         });
                     }
                 });
+
+                removeBtns[index].addEventListener('click', function () {
+                    resetUploader(viewLogoBtns[index], removeBtns[index], errorLabels[index], index);
+                });
             });
 
-            // Reset the uploader
-            function resetUploader(index) {
+            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
                 screensrc[index] = null;
+                document.querySelectorAll('.file-upload')[index].value = '';
+                viewLogoBtn.src = '';
+                viewLogoBtn.style.display = 'none';
+                removeBtn.style.display = 'none';
+                errorLabel.textContent = '';
+                //   console.log("Reset uploader, hiding remove button.");
 
-                // Clear file input properly
-                fileUploaders[index].type = 'text';
-                fileUploaders[index].type = 'file';
-                viewLogoBtns[index].style.display = 'none';
-                removeIcons[index].style.display = 'none'; // Hide remove icon
-                errorLabels[index].textContent = ''; // Clear error message
+                if (index === 0) {
+
+                    document.getElementById('hdnApplicantAadhar').value = '';
+                } else if (index === 1) {
+                    document.getElementById('hdnApplicantPAN').value = '';
+                }
             }
         });
 
+        window.bindImageToPreview = bindImageToPreview;
     </script>
+
+
+
+
+    <%--End of server to Bind image in ui element--%>
+
 
 
 
@@ -2075,119 +2241,6 @@
             }
         }
 
-    </script>
-    <!-- Define global function -->
-    <script type="text/javascript">
-        window.screensrc = { photo1: [], photo2: [] }; // Global screensrc for binding images
-
-        function bindImageToPreviewphoto(srclogo, index, type) {
-            //console.log("Binding image to preview: ", srclogo, index, type); // Debugging line
-            var viewLogoBtns = type === 'photo1' ? document.querySelectorAll('.btn-view-Photo1') : document.querySelectorAll('.btn-view-Photo2');
-
-            if (index !== -1 && viewLogoBtns[index]) {
-                screensrc[type] = screensrc[type] || [];
-                screensrc[type][index] = srclogo;
-                viewLogoBtns[index].style.display = 'inline-block';
-                viewLogoBtns[index].src = srclogo; // Show the image preview
-            } else {
-                console.error("View logo button not found or index is invalid.");
-            }
-        }
-
-        function setupFileUploader(fileUploaderSelector, viewButtonSelector, labelSelector, type) {
-            const fileUploaders = document.querySelectorAll(fileUploaderSelector);
-            const viewLogoBtns = document.querySelectorAll(viewButtonSelector);
-            const errorLabels = document.querySelectorAll(labelSelector);
-
-            if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length) {
-                console.error("Required elements not found for selectors:", { fileUploaderSelector, viewButtonSelector, labelSelector });
-                return;
-            }
-
-            fileUploaders.forEach((fileUploader, index) => {
-                const viewButton = viewLogoBtns[index];
-                const label = errorLabels[index];
-
-                if (!fileUploader || !viewButton || !label) {
-                    console.error("Element at index " + index + " not found.");
-                    return;
-                }
-
-                // Function to reset file input
-                function resetFileInput() {
-                    fileUploader.value = '';
-                    screensrc[type][index] = null;
-                    viewButton.style.display = 'none';
-                }
-
-                fileUploader.addEventListener('change', function () {
-                    const file = fileUploader.files[0];
-                    const allowedFiles = [".png", ".jpg", ".jpeg"];
-
-                    if (file) {
-                        const ext = file.name.split('.').pop().toLowerCase();
-
-                        if (!allowedFiles.includes("." + ext)) {
-                            alert("Select .png, .jpg, or .jpeg files only.");
-                            resetFileInput();
-                            return;
-                        }
-
-                        const size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
-                        if (size > 1536) {
-                            label.textContent = "Image size must be under 1.5 MB";
-                            resetFileInput();
-                            return;
-                        }
-
-                        label.textContent = "";
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            screensrc[type][index] = e.target.result;
-                            viewButton.style.display = 'inline-block';
-                            viewButton.src = screensrc[type][index]; // Display image in button
-                        };
-
-                        reader.onerror = function () {
-                            screensrc[type][index] = null;
-                            console.error("Error reading file.");
-                        };
-
-                        reader.readAsDataURL(file);
-                    } else {
-                        resetFileInput();
-                    }
-                });
-
-                viewButton.addEventListener('click', function () {
-                    if (!screensrc[type][index]) {
-                        return;
-                    }
-                    Swal.fire({
-                        html: `
-                 <div style="position: relative;">
-                     <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
-                     <h2 class="fw-bold">Photo</h2>
-                     <img id="swalImage" src="${screensrc[type][index]}" alt="Photo" class="img-fluid mt-3">
-                 </div>
-         `,
-                        showConfirmButton: false,
-                        didOpen: () => {
-                            document.querySelector('.btn-close-icon').addEventListener('click', () => Swal.close());
-                        }
-                    });
-                });
-            });
-        }
-
-        // Initialize file uploaders with unique selectors
-        document.addEventListener('DOMContentLoaded', function () {
-            setupFileUploader('.flPhoto', '.btn-view-Photo1', '.lblflPhoto', 'photo1');
-            setupFileUploader('.flPhoto2', '.btn-view-Photo2', '.lblflPhoto2', 'photo2'); // Example for another uploader
-        });
-
-        // Ensure global function is set
-        window.bindImageToPreviewphoto = bindImageToPreviewphoto;
     </script>
 </asp:Content>
 

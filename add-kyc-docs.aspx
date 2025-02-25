@@ -138,6 +138,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" id="DivSaleDeedDraft" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
 
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -155,6 +158,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleDeedFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -174,6 +180,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementDraft" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
 
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -191,6 +200,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
 
@@ -210,6 +222,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivAllotmentLetter" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -226,6 +241,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivWelcomeLetter" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -241,6 +259,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivDemandLetter" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -259,6 +280,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivPaymentReceipt" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -275,6 +299,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivBill" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -290,6 +317,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivPaymentSchedule" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -308,6 +338,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivEBCard" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -324,6 +357,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivNOC" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -342,6 +378,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivCCUpdation" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -359,6 +398,9 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivBankDocuments" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
                                             <div class="input-icon input-icon-sm right">
@@ -374,6 +416,9 @@
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivHandingOverDocuments" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
+                                            </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -392,15 +437,18 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivOtherDocuments" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
+                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                                <i class="bi bi-x"></i>Remove 
+                                            </div>
                                         </div>
 
                                         <div class="col-sm-4 col-xl-4 pt-3">
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Other Documents Link <span class="text-danger"></span></label>
                                                 <i class="bi bi-geo-fill b5-icon"></i>
-                                                <asp:TextBox ID="txtLink" MaxLength="295" class="form-control capitalize-input"  runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtLink" MaxLength="295" class="form-control capitalize-input" runat="server"></asp:TextBox>
                                             </div>
-                                          
+
                                         </div>
 
 
@@ -483,41 +531,43 @@
             var fileUploaders = document.querySelectorAll('.file-upload');
             var viewLogoBtns = document.querySelectorAll('.btn-view');
             var errorLabels = document.querySelectorAll('.lblFileUpload');
+            var removeBtns = document.querySelectorAll('.btn-remove');
             var screensrc = {};
             var fileType = {};
             var fileTitles = ['Sale Deed Draft', 'Sale Deed Final', 'Sale Agreement Draft', 'Sale Agreement Final', 'Allotment Letter', 'Welcome Letter', 'Demand Letter', 'Payment Receipt', 'Bill', 'Payment Schedule', 'EB card', 'NOC for Handing over', 'CC Updation', 'Bank Documents', 'Handing Over Documents', 'Other Documents'];
 
-            if (!fileUploaders || !viewLogoBtns || !errorLabels) {
+            if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length || !removeBtns.length) {
                 console.error("Required elements not found in the DOM.");
                 return;
             }
 
             fileUploaders.forEach(function (fileUploader, index) {
-                // Show file when selected
                 fileUploader.addEventListener('change', function (event) {
                     var input = event.target;
                     var file = input.files[0];
-                    var validFileTypes = ['application/pdf']; // Only PDF files allowed
-                    var isValidFileType = validFileTypes.includes(file.type);
+                    var validFileTypes = ['application/pdf'];
+                    var isValidFileType = validFileTypes.includes(file?.type);
                     var viewLogoBtn = viewLogoBtns[index];
                     var errorLabel = errorLabels[index];
-                    fileType[index] = file.type;
-                    errorLabel.textContent = ''; // Clear any previous error messages
+                    var removeBtn = removeBtns[index]; // Fix: Access the correct remove button
+
+                    fileType[index] = file?.type || null;
+                    errorLabel.textContent = '';
 
                     if (!file) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "No file selected.";
                         return;
                     }
 
                     if (!isValidFileType) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "Invalid file type. Only PDF files are allowed.";
                         return;
                     }
 
-                    if (file.type === 'application/pdf' && file.size > 1500 * 1024) {
-                        resetUploader(viewLogoBtn, errorLabel, index);
+                    if (file.size > 1500 * 1024) {
+                        resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         errorLabel.textContent = "PDF size must be under 1500 KB";
                         return;
                     }
@@ -525,89 +575,118 @@
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         screensrc[index] = e.target.result;
-                        viewLogoBtn.style.display = 'inline-block'; // Show the view button
+                        viewLogoBtn.style.display = 'inline-block';
+                        removeBtn.style.display = 'inline-block'; // Fix: Show correct remove button
                     };
 
                     reader.onerror = function (err) {
                         console.error("Error reading file:", err);
                         screensrc[index] = null;
                     };
+
                     reader.readAsDataURL(file);
                 });
 
-                // Reset the uploader when no file is chosen on click
-                fileUploader.addEventListener('click', function () {
+                // Fix: Use `removeBtns[index]` to attach the event
+                removeBtns[index].addEventListener('click', function () {
+                    var viewLogoBtn = viewLogoBtns[index];
                     var errorLabel = errorLabels[index];
-                    resetUploader(viewLogoBtns[index], errorLabel, index);
+                    var removeBtn = removeBtns[index];
+                    resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                 });
 
-                // Open file in new tab or SweetAlert modal
                 viewLogoBtns[index].addEventListener('click', function () {
                     if (!screensrc[index]) {
                         var errorLabel = errorLabels[index];
                         errorLabel.textContent = "No file uploaded yet!";
-                        resetUploader(viewLogoBtns[index], errorLabel, index); // Reset the file uploader if no file is uploaded
+                        resetUploader(viewLogoBtns[index], errorLabel, removeBtns[index], index);
                         return;
                     }
 
-                    var fileTitle = fileTitles[index];
-                    if (fileType[index] === 'application/pdf') {
-                        var newWindow = window.open();
-                        newWindow.document.write(`<embed src="${screensrc[index]}" width="100%" height="100%">`);
-                    }
+                    var newWindow = window.open('', '_blank');
+                    newWindow.document.write(`
+                    <html>
+                        <head><title>PDF Viewer</title></head>
+                        <body style="margin:0">
+                            <embed src="${screensrc[index]}" width="100%" height="100%" type="application/pdf">
+                        </body>
+                    </html>
+                `);
                 });
             });
 
-            // Reset the uploader
-            function resetUploader(viewLogoBtn, errorLabel, index) {
+            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
                 screensrc[index] = null;
                 document.querySelectorAll('.file-upload')[index].value = '';
                 viewLogoBtn.style.display = 'none';
-                errorLabel.textContent = ''; // Clear error message
+                removeBtn.style.display = 'none';
+                errorLabel.textContent = '';
             }
         });
     </script>
 
 
 
-<script type="text/javascript">
-    function bindImageToPreview(srclogo, index, fileType) {
-        var viewLogoBtns = document.querySelectorAll('.btn-view');
 
-        if (index !== -1 && viewLogoBtns[index]) {
-            var viewLogoBtn = viewLogoBtns[index];
+    <script type="text/javascript">
+        function bindImageToPreview(srclogo, index, fileType) {
+            var viewLogoBtns = document.querySelectorAll('.btn-view');
+            var removeBtns = document.querySelectorAll('.btn-remove');
 
-            // Ensure button visibility is set correctly
-            viewLogoBtn.style.display = 'inline-block';
+            if (index !== -1 && viewLogoBtns[index] && removeBtns[index]) {
+                var viewLogoBtn = viewLogoBtns[index];
+                var removeBtn = removeBtns[index];
 
-            // Attach event listener only once
-            viewLogoBtn.removeEventListener('click', handleClick); // Remove any existing listeners
-            viewLogoBtn.addEventListener('click', handleClick);
+                // Ensure buttons are visible
+                viewLogoBtn.style.display = 'inline-block';
+                removeBtn.style.display = 'inline-block';
 
-            function handleClick() {
-                if (fileType === 'application/pdf') {
-                    setButtonStyle(viewLogoBtn); // Pass the actual button element
-                    window.open(srclogo, '_blank'); // Open the PDF in a new tab
+                // Remove previous click event listener before adding a new one
+                viewLogoBtn.replaceWith(viewLogoBtn.cloneNode(true));
+                viewLogoBtn = document.querySelectorAll('.btn-view')[index];
 
-                    // Reload the page with query string
-                    var currentUrl = window.location.href;
-                    var newUrl = addQueryStringToUrl(currentUrl);
-                    window.location.href = newUrl; // Reload the page with updated URL
-                }
+                removeBtn.replaceWith(removeBtn.cloneNode(true));
+                removeBtn = document.querySelectorAll('.btn-remove')[index];
+
+                // Add event listener for viewing PDF
+                viewLogoBtn.addEventListener('click', function () {
+                    if (fileType === 'application/pdf') {
+                        window.open(srclogo, '_blank'); // Open PDF in new tab
+
+                        // Reload the page with query string
+                        var currentUrl = window.location.href;
+                        var newUrl = addQueryStringToUrl(currentUrl, `viewed=${index}`);
+                        window.location.href = newUrl;
+                    }
+                });
+
+                // Add event listener for removing file
+                removeBtn.addEventListener('click', function () {
+                    removeImagePreview(index);
+                });
             }
         }
-    }
 
-    function setButtonStyle(viewLogoBtn) {
-        // Apply the style to the passed button element
-        viewLogoBtn.style.display = 'inline-block';
-    }
+        // Function to remove the preview and reset input
+        function removeImagePreview(index) {
+            var viewLogoBtns = document.querySelectorAll('.btn-view');
+            var removeBtns = document.querySelectorAll('.btn-remove');
+            var fileInputs = document.querySelectorAll('.file-upload');
 
-    function addQueryStringToUrl(url, queryString) {
-        var separator = url.indexOf('?') !== -1 ? '&' : '?';
-        return url + separator + queryString;
-    }
-</script>
+            if (viewLogoBtns[index] && removeBtns[index] && fileInputs[index]) {
+                viewLogoBtns[index].style.display = 'none';
+                removeBtns[index].style.display = 'none';
+                fileInputs[index].value = ''; // Reset file input
+            }
+        }
+
+        // Function to append query string to the URL
+        function addQueryStringToUrl(url, queryString) {
+            var separator = url.includes('?') ? '&' : '?';
+            return url + separator + queryString;
+        }
+
+    </script>
 
 
 

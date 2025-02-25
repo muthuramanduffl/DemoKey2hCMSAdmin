@@ -22,9 +22,44 @@ public partial class adminkey2hcom_AddFloorPlan : System.Web.UI.Page
         if (!IsPostBack)
         {
             Bindprojects();
+
+        }
+
+        if (Request.QueryString["ID"] != null)
+        {
+            int value = 0;
+            if (int.TryParse(Request.QueryString["ID"], out value))
+            {
+                lbldisplaymsg.Text = " Edit Project Quality Reports";
+                btnSave.Text = "Submit";
+                //ddlProName.Attributes.Add("disabled", "true");
+                 Bind(value);
+            }
+            else
+            {
+                string script = string.Format(@"<script>
+                        Swal.fire({{ 
+                        title: 'URL is incorrect. please try again', 
+                        confirmButtonText: 'OK', 
+                        customClass: {{ 
+                            confirmButton: 'handle-btn-success'  
+                        }}
+                        }}).then((result) => {{ 
+                                window.location.href = 'add-flat-floor-plan.aspx'; 
+                        }});
+                    </script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
+            }
+        }
+        else
+        {
             lbldisplaymsg.Text = " Add Project Quality Reports";
             btnSave.Text = "Submit";
         }
+
+
+
+       
     }
     public void Bind(int ID)
     {
