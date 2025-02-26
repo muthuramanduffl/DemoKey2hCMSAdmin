@@ -40,6 +40,16 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab4.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
         }
+        else if (currentPage.Contains("completion.aspx"))
+        {
+            tabProjects.Attributes["class"] = "nav-link active";
+            subMenuProjectstatusUpdate.Attributes["class"] = "active";
+            tab1.Attributes["class"] = "tab-pane fade active show";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab4.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
         else if (currentPage.Contains("view-project.aspx"))
         {
             tabProjects.Attributes["class"] = "nav-link active";
@@ -333,7 +343,7 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
         }
-         else if (currentPage.Contains("view-customization-work-approval.aspx"))
+        else if (currentPage.Contains("view-customization-work-approval.aspx"))
         {
             tabCust.Attributes["class"] = "nav-link active";
             subviewMenuAddCWA.Attributes["class"] = "active";
@@ -636,6 +646,16 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
         }
+        else if (currentPage.Contains("view-amenities.aspx"))
+        {
+            tabMore.Attributes["class"] = "nav-link active";
+            subviewamenities.Attributes["class"] = "active";
+            tab4.Attributes["class"] = "tab-pane fade active show";
+            tab1.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
         else if (currentPage.Contains("add-quality-reports.aspx"))
         {
             tabMore.Attributes["class"] = "nav-link active";
@@ -645,7 +665,7 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab3.Attributes["class"] = "tab-pane fade";
             tab2.Attributes["class"] = "tab-pane fade";
             tab21.Attributes["class"] = "tab-pane fade";
-        }  
+        }
         else if (currentPage.Contains("view-project-quality-reports.aspx"))
         {
             tabMore.Attributes["class"] = "nav-link active";

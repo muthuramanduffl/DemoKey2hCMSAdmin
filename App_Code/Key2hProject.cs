@@ -112,10 +112,10 @@ public class Key2hProject
                 command.Parameters.Add(new SqlParameter("@AddedBy", K2.AddedBy));
                 command.Parameters.Add(new SqlParameter("@AddedDate", Utility.IndianTime));
                 SqlParameter outputId = new SqlParameter("@ProjectID", SqlDbType.Int)
-            {
-                Direction = ParameterDirection.Output
-            };
-            command.Parameters.Add(outputId);
+                {
+                    Direction = ParameterDirection.Output
+                };
+                command.Parameters.Add(outputId);
 
 
                 command.ExecuteNonQuery();
@@ -149,6 +149,33 @@ public class Key2hProject
                 command.Parameters.Add(new SqlParameter("@Sqft", K2.Sqft));
                 command.Parameters.Add(new SqlParameter("@AddedBy", K2.AddedBy));
                 command.Parameters.Add(new SqlParameter("@AddedDate", Utility.IndianTime));
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            cnn.Close();
+        }
+        catch (Exception ex)
+        {
+        }
+        return rowsAffected;
+
+    }
+    public int UpdateProjectCompletionStatus(Key2hProject K2)
+    {
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("UpdateProjectCompletionStatus", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProjectID", K2.ProjectID));
+                command.Parameters.Add(new SqlParameter("@ProjectStatusPercentage", K2.ProjectStatusPercentage));
+                command.Parameters.Add(new SqlParameter("@AddedBy", K2.AddedBy));
+                command.Parameters.Add(new SqlParameter("@UpdatedDate", Utility.IndianTime));
                 rowsAffected = command.ExecuteNonQuery();
             }
             cnn.Close();
@@ -215,7 +242,7 @@ public class Key2hProject
 
     }
 
-public int UpdateProjectHomeScreen(Key2hProject K2)
+    public int UpdateProjectHomeScreen(Key2hProject K2)
     {
         string connetionString = null;
         SqlConnection cnn;
@@ -244,7 +271,7 @@ public int UpdateProjectHomeScreen(Key2hProject K2)
         return rowsAffected;
 
     }
-    
+
 
 
     public DataTable ViewAllProjects(string ID, string status, string prstatus)
@@ -496,7 +523,7 @@ public int UpdateProjectHomeScreen(Key2hProject K2)
     }
 
 
-    public int AlreadyExistProjectNamebyIDandName(string ID, string projectname,string AddedBy)
+    public int AlreadyExistProjectNamebyIDandName(string ID, string projectname, string AddedBy)
     {
         string connetionString = null;
         SqlConnection cnn;
@@ -751,6 +778,35 @@ public int UpdateProjectHomeScreen(Key2hProject K2)
 
         }
         return ProID;
+    }
+
+
+    public DataTable ViewAllProjectHomeScreenByFilter(string ProjectID,string PHID, string AddedBy)
+    {
+        DataTable dt = new DataTable();
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int ProID = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("ViewAllProjectHomeScreenByFilter", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProjectID", string.IsNullOrWhiteSpace(ProjectID) ? (object)DBNull.Value : Convert.ToInt32(ProjectID)));
+                command.Parameters.Add(new SqlParameter("@PHID", string.IsNullOrWhiteSpace(PHID) ? (object)DBNull.Value : Convert.ToInt32(PHID)));
+                command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
+                SqlDataAdapter DA = new SqlDataAdapter(command);
+                DA.Fill(dt);
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+        return dt;
     }
 
 

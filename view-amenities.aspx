@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="AdminKey2h.master" AutoEventWireup="true" CodeFile="view-flat-quality-reports.aspx.cs"
-    Inherits="viewFlatqualityreports" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="AdminKey2h.master" AutoEventWireup="true" CodeFile="view-amenities.aspx.cs"
+    Inherits="viewamenities" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -9,7 +9,7 @@
             <div class="page-inner py-5">
                 <div class="d-flex pb-2 align-items-left align-items-md-center flex-column flex-md-row justify-content-between">
                     <div class="d-flex">
-                        <h2 class="text-white mb-0 fw-bold text-uppercase">View Flat Quality Reports</h2>
+                        <h2 class="text-white mb-0 fw-bold text-uppercase">View Amenities</h2>
                         <ul class="breadcrumbs">
                             <li class="nav-home pt-1">
                                 <a href="dashboard.html">
@@ -56,10 +56,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="w-sno">#</th>
-                                                            <th class="min-w-120">Project Name</th>
-                                                            <th class="min-w-120">Block number</th>
-                                                            <th class="min-w-120">Flat number</th>
-                                                           
+                                                            <th class="min-w-120">Project Name</th>                                                                                                                      
                                                             <th class="min-w-120">Action </th>
                                                         </tr>
                                                     </thead>
@@ -70,18 +67,16 @@
                                                     <asp:HiddenField ID="HiddenField1" Value='<%# Eval("ProjectID") %>' runat="server" />
                                                     <td><%# GetRowNo(Convert.ToString(Container.ItemIndex + 1))%> </td>
                                                     <td><%# Bindprojectname(Convert.ToInt32(Eval("ProjectID"))) %> </td>
-                                                    <td><%# BindBlockname(Convert.ToInt32(Eval("BlockID"))) %> </td>
-                                                    <td><%# ViewFlatNameByFlatID(Convert.ToInt32(Eval("FlatID"))) %> </td>
                                                    
                                                     <td>
                                                         <asp:LinkButton class="edit-img me-3 " ID="lkedit" runat="server" CommandName="Edit"
-                                                            CommandArgument='<%# DataBinder.Eval(Container.DataItem, "FlatID") %>'>
+                                                            CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ProjectID") %>'>
                                                     <i class="bi bi-pencil-square b5-icon-et-dlt" data-bs-toggle="tooltip" title="Edit"></i>
                                                         </asp:LinkButton>
                                                         <a class="swtAltCancel ">
                                                             <i class="bi bi-trash b5-icon-et-dlt" data-bs-toggle="tooltip" title="Delete"></i>
                                                         </a>
-                                                        <asp:LinkButton ID="LinkButton2" ClientIDMode="Static" CausesValidation="false" runat="server" class="dlt-img hidden d-none" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("FlatID") %>' Style="display: none">
+                                                        <asp:LinkButton ID="LinkButton2" CausesValidation="false" runat="server" class="dlt-img hidden d-none" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("ProjectID") %>' Style="display: none">
                                                         </asp:LinkButton>
                                                     </td>
                                                 </tr>
@@ -150,6 +145,7 @@
                 });
             });
         }
+
 
         // Attach events on page load
         document.addEventListener('DOMContentLoaded', function () {

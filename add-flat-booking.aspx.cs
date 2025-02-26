@@ -249,20 +249,23 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 }
                 if (!string.IsNullOrEmpty(dt.Rows[0]["Mobilenumber1"].ToString()) && dt.Rows[0]["Mobilenumber1"] != null)
                 {
-                    txtmobilenumber1.Text = dt.Rows[0]["Mobilenumber1"].ToString();
-                    //txtmobilenumber1.ReadOnly = true;
+
+                    string strnumber = dt.Rows[0]["Mobilenumber1"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlmobilenumber1.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtmobilenumber1.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["Mobilenumber1"].ToString();
                 }
                 if (!string.IsNullOrEmpty(dt.Rows[0]["WhatsappNumber"].ToString()) && dt.Rows[0]["WhatsappNumber"] != null)
                 {
-                    txtwhatsappnumber.Text = dt.Rows[0]["WhatsappNumber"].ToString();
-                    //txtwhatsappnumber.ReadOnly = true;
+
+                    string strnumber = dt.Rows[0]["WhatsappNumber"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlwhatsappnumber.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtwhatsappnumber.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["WhatsappNumber"].ToString();
+
                 }
 
-                if (!string.IsNullOrEmpty(dt.Rows[0]["Mobilenumber1"].ToString()) && dt.Rows[0]["Mobilenumber1"] != null)
-                {
-                    txtmobilenumber1.Text = dt.Rows[0]["Mobilenumber1"].ToString();
-                    //txtmobilenumber1.ReadOnly = true;
-                }
+
 
                 if (!string.IsNullOrEmpty(dt.Rows[0]["EmailID"].ToString()) && dt.Rows[0]["EmailID"] != null)
                 {
@@ -272,7 +275,12 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
 
                 if (!string.IsNullOrEmpty(dt.Rows[0]["Mobilenumber2"].ToString()) && dt.Rows[0]["Mobilenumber2"] != null)
                 {
-                    txtmobilenumber2.Text = dt.Rows[0]["Mobilenumber2"].ToString();
+
+                    string strnumber = dt.Rows[0]["Mobilenumber2"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlmobilenumber2.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtmobilenumber2.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["Mobilenumber2"].ToString();
+
                 }
 
                 if (!string.IsNullOrEmpty(dt.Rows[0]["FatherorSpouseName"].ToString()) && dt.Rows[0]["FatherorSpouseName"] != null)
@@ -341,15 +349,29 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
 
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoaMobilenumber1"].ToString()) && dt.Rows[0]["CoaMobilenumber1"] != null)
                 {
-                    txtcoatxtmobilenumber1.Text = dt.Rows[0]["CoaMobilenumber1"].ToString();
+
+                    string strnumber = dt.Rows[0]["CoaMobilenumber1"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlcoatxtmobilenumber1.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtcoatxtmobilenumber1.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["CoaMobilenumber1"].ToString();
                 }
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoaMobilenumber2"].ToString()) && dt.Rows[0]["CoaMobilenumber2"] != null)
                 {
-                    txtcoatxtmobilenumber2.Text = dt.Rows[0]["CoaMobilenumber2"].ToString();
+
+                    string strnumber = dt.Rows[0]["CoaMobilenumber2"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlcoatxtmobilenumber2.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtcoatxtmobilenumber2.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["CoaMobilenumber2"].ToString();
                 }
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoaWhatsappNumber"].ToString()) && dt.Rows[0]["CoaWhatsappNumber"] != null)
                 {
-                    txtCoaWhatsappNo.Text = dt.Rows[0]["CoaWhatsappNumber"].ToString();
+
+
+                    string strnumber = dt.Rows[0]["CoaWhatsappNumber"].ToString();
+                    string[] parts = strnumber.Split(' ');
+                    ddlCoaWhatsappNo.SelectedValue = parts.Length > 0 ? parts[0] : "";
+                    txtCoaWhatsappNo.Text = parts.Length > 1 ? parts[1] : dt.Rows[0]["CoaWhatsappNumber"].ToString();
+
                 }
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoaAddress"].ToString()) && dt.Rows[0]["CoaAddress"] != null)
                 {
@@ -380,14 +402,14 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 if (!string.IsNullOrEmpty(dt.Rows[0]["CoDOB"].ToString()) && dt.Rows[0]["CoDOB"] != null)
                 {
                     DateTime DB = Convert.ToDateTime(dt.Rows[0]["CoDOB"]);
-                    txtCoDOB.Text = DB.ToString("dd-MM-yyyy");
-                    if (DB != DateTime.MinValue && DB != new DateTime(1753, 1, 1))
+                    txtCoDOB.Text = DB.ToString("dd-MM-yyyy");//1753-01-01 00:00:00.000
+                    if (DB != DateTime.MinValue && DB != new DateTime(1753, 01, 01))
                     {
                         txtCoDOB.Text = DB.ToString("dd-MM-yyyy");
                     }
                     else
                     {
-                        txtCoaPincode.Text = "";
+                        txtCoDOB.Text = "";
                     }
 
                 }
@@ -435,7 +457,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 // Applicant Photo
                 if (!string.IsNullOrEmpty(dt.Rows[0]["ApplicantPhoto"].ToString()) && dt.Rows[0]["ApplicantPhoto"] != null)
                 {
-                   // RequiredFieldValidator2.Visible = false;
+                    // RequiredFieldValidator2.Visible = false;
                     hdnApplicantPhoto.Value = dt.Rows[0]["ApplicantPhoto"].ToString();
                     string applicantPhoto = dt.Rows[0]["ApplicantPhoto"].ToString();
                     string filepath = System.Configuration.ConfigurationManager.AppSettings["ApplicantPhoto"];
@@ -494,9 +516,9 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 if (!string.IsNullOrEmpty(dt.Rows[0]["ApplicantAadhar"].ToString()) && dt.Rows[0]["ApplicantAadhar"] != null)
                 {
 
-                  //  RequiredFieldValidator23.Visible = false;
+                    //  RequiredFieldValidator23.Visible = false;
                     hdnApplicantAadhar.Value = dt.Rows[0]["ApplicantAadhar"].ToString();
-                   
+
                     string filepath = System.Configuration.ConfigurationManager.AppSettings["ApplicantAadhar"];
                     string fullFilePath = Path.Combine(filepath.Trim(), hdnApplicantAadhar.Value); // Corrected to hdnApplicantAadhar
                     string fileUrl = fullFilePath;
@@ -1123,8 +1145,8 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
             {
                 C.strGender = ddlgender.SelectedValue;
                 C.strEmailID = txtEmailid.Text;
-                C.strMobilenumber1 = txtmobilenumber1.Text;
-                C.strWhatsappNumber = txtwhatsappnumber.Text;
+                C.strMobilenumber1 = ddlmobilenumber1.SelectedValue + " " + txtmobilenumber1.Text;
+                C.strWhatsappNumber = ddlwhatsappnumber.SelectedValue + " " + txtwhatsappnumber.Text;
                 C.strAddedBy = clientId;
                 customerID = C.AddCustomerBasicDetails(C);
             }
@@ -1155,8 +1177,8 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 C.strCoapplicantLastName = txtCoapplicantLastName.Text;
                 C.strGender = ddlgender.SelectedValue;
                 C.strEmailID = txtEmailid.Text;
-                C.strMobilenumber1 = txtmobilenumber1.Text;
-                C.strMobilenumber2 = txtmobilenumber2.Text;
+                C.strMobilenumber1 = ddlmobilenumber1.SelectedValue + " " + txtmobilenumber1.Text;
+                C.strMobilenumber2 = ddlmobilenumber2.SelectedValue + " " + txtmobilenumber2.Text;
                 C.strFatherorSpouseName = txtFatherORSpouseName.Text;
                 C.FlatName = ddlflatNumber.SelectedItem.Text;
                 C.FlatLoginCode = GetFlatLoginCodebyProjectID(ddlprojectname.SelectedValue);
@@ -1171,7 +1193,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 {
                     C.dtmDoB = new DateTime(1753, 1, 1);
                 }
-                C.strWhatsappNumber = txtwhatsappnumber.Text;
+                C.strWhatsappNumber = ddlwhatsappnumber.SelectedValue + " " + txtwhatsappnumber.Text;
                 C.strProfession = txtprofession.Text;
                 C.strCompanyName = txtcompanyname.Text;
                 C.strDesignation = txtDesignation.Text;
@@ -1198,9 +1220,9 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                     C.DtCoDOB = new DateTime(1753, 1, 1);
                 }
                 C.strCoaEmailID = txtCoaEmailID.Text;
-                C.strCoaMobilenumber1 = txtcoatxtmobilenumber1.Text;
-                C.strCoaMobilenumber2 = txtcoatxtmobilenumber2.Text;
-                C.strCoaWhatsappNumber = txtCoaWhatsappNo.Text;
+                C.strCoaMobilenumber1 = ddlcoatxtmobilenumber1.SelectedValue + " " + txtcoatxtmobilenumber1.Text;
+                C.strCoaMobilenumber2 = ddlcoatxtmobilenumber2.SelectedValue + " " + txtcoatxtmobilenumber2.Text;
+                C.strCoaWhatsappNumber = ddlCoaWhatsappNo.SelectedValue + " " + txtCoaWhatsappNo.Text;
                 C.strCoaAddress = txtcoaAddress.Text;
                 C.strCoaResidentialStatus = ddlCoaResidentialStatus.Text;
                 C.IntCoaStateID = Convert.ToInt32(ddlCoState.SelectedValue);
@@ -1442,8 +1464,8 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                 C.strCoapplicantLastName = txtCoapplicantLastName.Text;
                 C.strGender = ddlgender.SelectedValue;
                 C.strEmailID = txtEmailid.Text;
-                C.strMobilenumber1 = txtmobilenumber1.Text;
-                C.strMobilenumber2 = txtmobilenumber2.Text;
+                C.strMobilenumber1 = ddlmobilenumber1.SelectedValue + " " + txtmobilenumber1.Text;
+                C.strMobilenumber2 = ddlmobilenumber2.SelectedValue + " " + txtmobilenumber2.Text;
                 C.strFatherorSpouseName = txtFatherORSpouseName.Text;
 
 
@@ -1456,7 +1478,7 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                     C.dtmDoB = new DateTime(1753, 1, 1);
                 }
 
-                C.strWhatsappNumber = txtwhatsappnumber.Text;
+                C.strWhatsappNumber = ddlwhatsappnumber.SelectedValue + " " + txtwhatsappnumber.Text;
                 C.strProfession = txtprofession.Text;
                 C.strCompanyName = txtcompanyname.Text;
                 C.strDesignation = txtDesignation.Text;
@@ -1497,9 +1519,9 @@ public partial class adminkey2hcom_AddFlatBooking : System.Web.UI.Page
                     C.DtCoDOB = new DateTime(1753, 1, 1);
                 }
                 C.strCoaEmailID = txtCoaEmailID.Text;
-                C.strCoaMobilenumber1 = txtcoatxtmobilenumber1.Text;
-                C.strCoaMobilenumber2 = txtcoatxtmobilenumber2.Text;
-                C.strCoaWhatsappNumber = txtCoaWhatsappNo.Text;
+                C.strCoaMobilenumber1 = ddlcoatxtmobilenumber1.SelectedValue + " " + txtcoatxtmobilenumber1.Text;
+                C.strCoaMobilenumber2 = ddlcoatxtmobilenumber2.SelectedValue + " " + txtcoatxtmobilenumber2.Text;
+                C.strCoaWhatsappNumber = ddlCoaWhatsappNo.SelectedValue + " " + txtCoaWhatsappNo.Text;
                 C.strCoaAddress = txtcoaAddress.Text;
                 C.strCoaResidentialStatus = ddlCoaResidentialStatus.Text;
                 C.IntCoaStateID = Convert.ToInt32(ddlCoState.SelectedValue);

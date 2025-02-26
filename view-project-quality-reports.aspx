@@ -56,9 +56,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="w-sno">#</th>
-                                                            <th class="min-w-120">Project Name</th>
-                                                            <th class="min-w-120">Title</th>
-                                                            <th class="min-w-120">PDF</th>
+                                                            <th class="min-w-120">Project Name</th>                                                          
                                                             <th class="min-w-120">Action </th>
                                                         </tr>
                                                     </thead>
@@ -69,14 +67,7 @@
                                                     <asp:HiddenField ID="HiddenField1" Value='<%# Eval("ProjectID") %>' runat="server" />
                                                     <td><%# GetRowNo(Convert.ToString(Container.ItemIndex + 1))%> </td>
                                                     <td><%# Bindprojectname(Convert.ToInt32(Eval("ProjectID"))) %> </td>
-                                                    <td><%# (Eval("Title")) %> </td>
-                                                    <td>
-                                                        <a href="#" class="me-3" data-bs-toggle="tooltip" title="View" onclick="window.open('<%#"/QualityReports/"+ Eval("PDFName") %>', '_blank')" "); return false;">
-                                                            <i class="bi bi-eye b5-icon-et-dlt "></i>
-                                                        </a>
-
-
-                                                       </td>
+                                                   
                                                     <td>
                                                         <asp:LinkButton class="edit-img me-3 " ID="lkedit" runat="server" CommandName="Edit"
                                                             CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ProjectID") %>'>
@@ -122,23 +113,6 @@
     </footer>
 
 
-
-    <script>
-        function showFile(fileUrl) {
-            Swal.fire({
-                html: `
-                <div style="position: relative;">
-                    <div class="btn-close-icon" onclick="Swal.close()" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
-                    <h2 class="fw-bold">Preview</h2>
-                    <iframe src="${fileUrl}" width="100%" height="400px"></iframe>
-                    <br>
-                    <button onclick="window.open('${fileUrl}', '_blank')" class="btn btn-primary mt-2">View in New Tab</button>
-                </div> 
-            `,
-                showConfirmButton: false, // Removes the OK button
-            });
-        }
-    </script>
 
 
     <script> 

@@ -35,11 +35,8 @@
 
 <body>
     <form id="form1" runat="server">
-
-
         <div class="wrapper sidebar_minimize">
             <div class="main-header">
-
                 <!-- Navbar Header -->
                 <nav class="navbar navbar-header navbar-expand " data-background-color="white">
 
@@ -219,6 +216,12 @@
                                     <a href="view-project.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
                                         View Projects
+                                    </a>
+                                </li> 
+                                <li id="subMenuProjectstatusUpdate" runat="server">
+                                    <a href="completion.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                        Project Completion Status  
                                     </a>
                                 </li>
                                 <li id="subMenuAddBlock" runat="server">
@@ -547,7 +550,13 @@
                                 <li id="subamenities" runat="server">
                                     <a href="add-amenities.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
-                                        Amenities
+                                       Add Amenities
+                                    </a>
+                                </li>  
+                                <li id="subviewamenities" runat="server">
+                                    <a href="view-amenities.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                      View Amenities
                                     </a>
                                 </li>
                                 <li id="subaddqualityreport" runat="server">

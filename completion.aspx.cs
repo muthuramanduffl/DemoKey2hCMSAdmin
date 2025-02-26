@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 public partial class adminkey2hcom_Completion : System.Web.UI.Page
 {
     Key2hProject k2 = new Key2hProject();
-    Key2hProjectblock K2b = new Key2hProjectblock();
+
     ClientUsers CU = new ClientUsers();
     ClientDashboardError CE = new ClientDashboardError();
     public static string Userid;
@@ -20,7 +20,7 @@ public partial class adminkey2hcom_Completion : System.Web.UI.Page
         if (!IsPostBack)
         {
             Bindprojects();
-             
+
         }
     }
 
@@ -28,16 +28,20 @@ public partial class adminkey2hcom_Completion : System.Web.UI.Page
     {
         try
         {
-            DataTable DT = K2b.ViewAllBlock(id, "", "");
+            DataTable DT =k2.ViewAllProjectsByid(Convert.ToInt32(id)) ;
             if (DT.Rows.Count > 0)
             {
                 if (!string.IsNullOrEmpty(Convert.ToString(DT.Rows[0]["ProjectID"])))
                 {
                     ddlprojects.SelectedValue = Convert.ToString(DT.Rows[0]["ProjectID"]);
                 }
+                if (!string.IsNullOrEmpty(Convert.ToString(DT.Rows[0]["ProjectStatusPercentage"])))
+                {
+                   txtCompletionPercentage.Text = Convert.ToString(DT.Rows[0]["ProjectStatusPercentage"]);
+                }
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             CE.StoreExceptionMessage("completion.aspx", "Bind", ex.Message, "Not Fixed");
         }
@@ -57,7 +61,7 @@ public partial class adminkey2hcom_Completion : System.Web.UI.Page
                 ddlprojects.Items.Insert(0, new ListItem("", ""));
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             CE.StoreExceptionMessage("completion.aspx", "Bindprojects", ex.Message, "Not Fixed");
         }
@@ -82,51 +86,39 @@ public partial class adminkey2hcom_Completion : System.Web.UI.Page
         {
             if (Request.QueryString["BlockID"] == null)
             {
-                if (!Isalreadyexist(ddlprojects.SelectedValue, txtCompletionPercentage.Text))
-                {
-                    if (Addblock() == 1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                          "Swal.fire({ " +
-                            "  title: 'Completion details added successfully', " +
-                            "  icon: 'success', " +
-                            "  allowOutsideClick: 'true', " +
-                            "  customClass: { " +
-                            "    icon: 'handle-icon-clr', " +
-                            "    confirmButton: 'handle-btn-success' " +
-                            "  } " +
-                            "}).then((result) => { " +
-                            "  window.location.href = '" + Request.Url.AbsolutePath + "'; " +
-                            "});", true);
-                    }
-                    else
-                    {
 
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                            "Swal.fire({ " +
-                            "  title: 'Completion details couldn't be added due to a server or network issue. Please try again in some time!', " +
-                            "  confirmButtonText: 'OK', " +
-                           "  customClass: { " +
-                            "      confirmButton: 'handle-btn-success', " +
-                            "  }" +
-                            "});", true);
-                    }
+                if (Updatestatus() == 1)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                      "Swal.fire({ " +
+                        "  title: 'Completion details updated successfully', " +
+                        "  icon: 'success', " +
+                        "  allowOutsideClick: 'true', " +
+                        "  customClass: { " +
+                        "    icon: 'handle-icon-clr', " +
+                        "    confirmButton: 'handle-btn-success' " +
+                        "  } " +
+                        "}).then((result) => { " +
+                        "  window.location.href = '" + Request.Url.AbsolutePath + "'; " +
+                        "});", true);
                 }
                 else
                 {
+
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                         "Swal.fire({ " +
-                          "  title: 'The completion details you’re trying to add already exists', " +
-                          "  confirmButtonText: 'OK', " +
-                           "  customClass: { " +
-                            "      confirmButton: 'handle-btn-success', " +
-                            "  }" +
-                          "});", true);
+                        "Swal.fire({ " +
+                        "  title: 'Completion details couldn't be added due to a server or network issue. Please try again in some time!', " +
+                        "  confirmButtonText: 'OK', " +
+                       "  customClass: { " +
+                        "      confirmButton: 'handle-btn-success', " +
+                        "  }" +
+                        "});", true);
                 }
+
             }
             else
             {
-                 
+
             }
         }
         else
@@ -144,47 +136,39 @@ public partial class adminkey2hcom_Completion : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Clear(); 
+        Clear();
     }
 
-    public bool Isalreadyexist(string PID, string Bname)
-    {
-        bool isavail = false;
-        try
-        {
-            string strbname = string.Empty;
-            DataTable dt = K2b.BlockAlreadyExistByProjectid(Convert.ToInt32(PID), Bname);
-            if (dt.Rows.Count > 0)
-            {
-                isavail = true;
-            }
-        }
-        catch(Exception ex)
-        {
-            CE.StoreExceptionMessage("completion.aspx", "Isalreadyexist", ex.Message, "Not Fixed");
-        }
-        return isavail;
-    }
 
-    public int Addblock()
+    public int Updatestatus()
     {
+        int ret = 0;
         try
         {
-            K2b.ProjectID = Convert.ToInt32(ddlprojects.SelectedValue);
-            K2b.Addedby = Userid;
-            int ret = 0;
-            ret = K2b.Addblocks(K2b);
+            k2.ProjectID = Convert.ToInt32(ddlprojects.SelectedValue);
+            k2.ProjectStatusPercentage = Convert.ToInt32(txtCompletionPercentage.Text);
+            k2.AddedBy = Userid;
+            ret = k2.UpdateProjectCompletionStatus(k2);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-            CE.StoreExceptionMessage("completion.aspx", "Addblock", ex.Message, "Not Fixed");
+            CE.StoreExceptionMessage("completion.aspx", "Updatestatus", ex.Message, "Not Fixed");
         }
         return ret;
     }
-     
+
     public void Clear()
     {
         ddlprojects.SelectedIndex = 0;
         txtCompletionPercentage.Text = "";
+    }
+
+    protected void ddlprojects_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(ddlprojects.SelectedValue))
+        {
+            Bind(ddlprojects.SelectedValue);
+        }
+        
     }
 }

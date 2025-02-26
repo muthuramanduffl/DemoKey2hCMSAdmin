@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <!-- jQuery UI library -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <link rel="stylesheet" href="assets/css/dtsel.css" />
     <style>
         .btn-view-pop {
@@ -104,6 +105,9 @@
                                                 <label>Date of Birth <span class="text-danger">*</span></label>
                                                 <i class="bi bi-calendar-week b5-icon"></i>
                                                 <asp:TextBox ID="txtdateofbirth" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <div class="btn-view-pop clearBtn">
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtdateofbirth')">Remove</i>
+                                                </div>
                                             </div>
                                             <span class="error">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" Display="Dynamic" runat="server" ControlToValidate="txtdateofbirth" ValidationGroup="CusVal" ErrorMessage="Select date of birth"></asp:RequiredFieldValidator>
@@ -129,12 +133,35 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Mobile Number 1 <span class="text-danger">*</span></label>
                                                 <i class="bi bi-telephone-fill b5-icon"></i>
-                                                <asp:TextBox ID="txtmobilenumber1" MaxLength="10" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlmobilenumber1" onchange="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+
+                                                <asp:TextBox ID="txtmobilenumber1" MaxLength="18" onkeyup="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
+
                                             </div>
                                             <span class="error">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" Display="Dynamic" runat="server" ControlToValidate="txtmobilenumber1" ValidationGroup="CusVal" ErrorMessage="Enter mobile no."></asp:RequiredFieldValidator>
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtmobilenumber1" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid mobile no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblmobilenumber1" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
                                             </span>
                                             <span class="handle-file-request">
                                                 <asp:CheckBox ID="chkSameaswhatsapp" runat="server" ClientIDMode="Static" onclick="callFunction();" />
@@ -144,11 +171,34 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Mobile Number 2</label>
                                                 <i class="bi bi-telephone b5-icon"></i>
-                                                <asp:TextBox ID="txtmobilenumber2" MaxLength="10" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlmobilenumber2" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:TextBox ID="txtmobilenumber2" ClientIDMode="Static" MaxLength="18" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
                                             <span class="error">
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtmobilenumber2" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid mobile no. 2" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblmobilenumber2" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
+
+
                                             </span>
                                         </div>
 
@@ -156,13 +206,34 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>WhatsApp Number <span class="text-danger">*</span></label>
                                                 <i class="bi bi-whatsapp b5-icon"></i>
-                                                <asp:TextBox ID="txtwhatsappnumber" MaxLength="10" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlwhatsappnumber" onchange="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:TextBox ID="txtwhatsappnumber" MaxLength="18" onkeyup="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
 
                                             </div>
                                             <span class="error">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" Display="Dynamic" runat="server" ControlToValidate="txtwhatsappnumber" ValidationGroup="CusVal" ErrorMessage="Enter whatsapp no."></asp:RequiredFieldValidator>
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator9" runat="server" ControlToValidate="txtwhatsappnumber" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid whatsapp no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblwhatsappnumber" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
                                             </span>
                                         </div>
 
@@ -196,7 +267,6 @@
                                                 <label>Designation </label>
                                                 <i class="bi bi-person-workspace b5-icon"></i>
                                                 <asp:TextBox ID="txtDesignation" class="form-control input-sm capitalize-input" MaxLength="50" runat="server"></asp:TextBox>
-
                                             </div>
                                             <span class="error">
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator12" runat="server" ControlToValidate="txtDesignation" ValidationGroup="CusVal"
@@ -208,7 +278,6 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Relationship with Co-Applicant</label>
                                                 <i class="bi bi-person-plus"></i>
-
                                                 <asp:DropDownList ID="ddlRelationshipwithCoApplicant" class="bs-select form-control input-sm" runat="server">
                                                     <asp:ListItem Value="" Text="" />
                                                     <asp:ListItem Value="1" Text="Spouse" />
@@ -228,7 +297,6 @@
                                                 
                                               </span> -->
                                         </div>
-
                                         <div class="col-sm-4 col-xl-4 pt-3">
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Current Residing Address <span class="text-danger">*</span></label>
@@ -508,6 +576,13 @@
                                                 <label>Date of Birth <span class="text-danger"></span></label>
                                                 <i class="bi bi-calendar-week b5-icon"></i>
                                                 <asp:TextBox ID="txtCoDOB" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+
+                                                <div class="btn-view-pop clearBtn" id="clearBtn">
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtCoDOB')">Remove</i>
+                                                </div>
+
+
+
                                             </div>
                                             <span class="error"></span>
                                         </div>
@@ -530,12 +605,37 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Mobile Number 1 <span class="text-danger"></span></label>
                                                 <i class="bi bi-telephone-fill b5-icon"></i>
-                                                <asp:TextBox ID="txtcoatxtmobilenumber1" MaxLength="10" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlcoatxtmobilenumber1" onchange="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                   
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                     <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:TextBox ID="txtcoatxtmobilenumber1" onkeyup="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" MaxLength="18" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
                                             <span class="error">
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator21" runat="server" ControlToValidate="txtcoatxtmobilenumber1" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid mobile no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblcoatxtmobilenumber1" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
+
                                             </span>
+
+
                                             <span class="handle-file-request">
                                                 <asp:CheckBox ID="chkSameasWhatsapp1" runat="server" ClientIDMode="Static" onclick="callcoFunction();" />
                                                 The mobile number is the same as the WhatsApp number  </span>
@@ -544,11 +644,33 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Mobile Number 2 <span class="text-danger"></span></label>
                                                 <i class="bi bi-telephone-fill b5-icon"></i>
-                                                <asp:TextBox ID="txtcoatxtmobilenumber2" MaxLength="10" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlcoatxtmobilenumber2" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:TextBox ID="txtcoatxtmobilenumber2" MaxLength="18" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
                                             <span class="error">
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator211" runat="server" ControlToValidate="txtcoatxtmobilenumber2" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid mobile no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblcoatxtmobilenumber2" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
+
                                             </span>
 
                                         </div>
@@ -556,14 +678,38 @@
 
                                         <div class="col-sm-4 col-xl-2 pt-3">
                                             <div class="input-icon input-icon-sm right">
+
                                                 <label>WhatsApp Number <span class="text-danger"></span></label>
+
                                                 <i class="bi bi-whatsapp b5-icon"></i>
-                                                <asp:TextBox ID="txtCoaWhatsappNo" MaxLength="10" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                                <asp:DropDownList ID="ddlCoaWhatsappNo" onchange="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
+                                                    <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
+                                                    <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
+                                                    <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
+                                                    <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
+                                                    <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
+                                                    <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
+                                                    <asp:ListItem Value="+86">🇨🇳(+86)</asp:ListItem>
+                                                    <asp:ListItem Value="+7">🇷🇺(+7)</asp:ListItem>
+                                                    <asp:ListItem Value="+55">🇧🇷(+55)</asp:ListItem>
+                                                    <asp:ListItem Value="+27">🇿🇦(+27)</asp:ListItem>
+                                                    <asp:ListItem Value="+39">🇮🇹(+39)</asp:ListItem>
+                                                    <asp:ListItem Value="+34">🇪🇸(+34)</asp:ListItem>
+                                                    <asp:ListItem Value="+62">🇮🇩(+62)</asp:ListItem>
+                                                    <asp:ListItem Value="+92">🇵🇰(+92)</asp:ListItem>
+                                                    <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
+                                                    <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
+                                                    <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                </asp:DropDownList>
+                                                <asp:TextBox ID="txtCoaWhatsappNo" MaxLength="18" onkeyup="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
 
                                             </div>
                                             <span class="error">
-                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator22" runat="server" ControlToValidate="txtCoaWhatsappNo" ValidationGroup="CusVal"
-                                                    ValidationExpression="^[1-9]\d{5,14}$" ErrorMessage="Enter valid whatsapp no." Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:Label ID="lblCoaWhatsappNo" ClientIDMode="Static" runat="server" Style="color: #D41111;"></asp:Label>
+
                                             </span>
                                         </div>
 
@@ -731,6 +877,9 @@
                                                 <label>Date of Birth </label>
                                                 <i class="bi bi-calendar-week b5-icon"></i>
                                                 <asp:TextBox ID="txtPAdate" ClientIDMode="Static" class="form-control input-sm " autocomplete="off" placeholder="" runat="server"></asp:TextBox>
+                                                <div class="btn-view-pop clearBtn">
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtPAdate')">Remove</i>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-3">
@@ -934,7 +1083,9 @@
                                             <label>Booking Date </label>
                                             <i class="bi bi-calendar-check b5-icon"></i>
                                             <asp:TextBox ID="txtBookingdate" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
-
+                                            <div class="btn-view-pop clearBtn">
+                                                <i class="bi bi-x" onclick="clearTextBox('txtBookingdate')">Remove</i>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -1086,6 +1237,9 @@
                                             <label>Registration Date </label>
                                             <i class="bi bi-calendar2-plus b5-icon"></i>
                                             <asp:TextBox ID="txtRegistrationdate" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
+                                            <div class="btn-view-pop clearBtn">
+                                                <i class="bi bi-x" onclick="clearTextBox('txtRegistrationdate')">Remove</i>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-4 col-xl-3 pt-3">
@@ -1141,10 +1295,27 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- jQuery library -->
     <script src="assets/js/core/jquery.3.2.1.min.js"></script>
     <!-- Date Picker -->
     <script src="assets/js/dtsel.js"></script>
+
+
+
+    <script>
+
+
+
+
+
+        function clearTextBox(id) {
+            document.getElementById(id).value = "";
+        }
+</script>
+
+
+
 
     <script>
         var inputField1 = document.getElementById("txtBookingdate");
@@ -1168,27 +1339,72 @@
             event.preventDefault();
         });
     </script>
+
+
+    <script>
+        function validatePhoneNumber(input, txtorign, chk) {
+            var Input = document.getElementById(input);
+
+
+            // var ddlinput = document.getElementById('ddl' + txtorign);
+            var originalInput = document.getElementById(txtorign);
+
+            var chkInput = document.getElementById(chk);
+
+
+
+            var ddlinput = document.getElementById(Input.id.replace("txt", "ddl"));
+            var ddloriginal = document.getElementById(originalInput.id.replace("txt", "ddl"));
+
+            //console.log(ddlinput.value);
+            //console.log(ddloriginal.value);
+
+            if (Input.value != '' && originalInput.value != '') {
+                if (Input.value != originalInput.value || ddlinput.value != ddloriginal.value) {
+                    chkInput.checked = false;
+                }
+                else if (Input.value == originalInput.value && ddlinput.value == ddloriginal) {
+                    chkInput.checked = true;
+                }
+            }
+            else {
+                chkInput.checked = false;
+            }
+
+        }
+    </script>
+
+
+
+
+
+
     <script>
         function callFunction() {
             // JavaScript logic for checkbox click
             const checkbox = document.getElementById('chkSameaswhatsapp');
             const chkSameasWhatsapp1 = document.getElementById('chkSameasWhatsapp1');
             const txtmobilenumber1 = document.getElementById('txtmobilenumber1').value;
+            const ddlvalue1 = document.getElementById('ddlmobilenumber1');
             const txtcoatxtmobilenumber1 = document.getElementById('txtcoatxtmobilenumber1').value;
             // alert(txtmobilenumber1);
             const txtwhatsappnumber = document.getElementById('txtwhatsappnumber');
+            const ddlvalue2 = document.getElementById('ddlwhatsappnumber');
             const txtCoaWhatsappNo = document.getElementById('txtCoaWhatsappNo');
             if (checkbox.checked) {
                 if (txtmobilenumber1.trim() !== '') {
                     // alert("it not empty");
                     txtwhatsappnumber.value = txtmobilenumber1;
+                    ddlvalue2.value = ddlvalue1.value;
                 }
                 else {
                     txtwhatsappnumber.value = '';
+                    ddlvalue2.value = '+91';
                 }
             }
             else {
                 txtwhatsappnumber.value = '';
+                ddlvalue2.value = '+91';
             }
         }
     </script>
@@ -1197,6 +1413,8 @@
         function callcoFunction() {
             const chkSameasWhatsapp1 = document.getElementById('chkSameasWhatsapp1');
             const txtcoatxtmobilenumber1 = document.getElementById('txtcoatxtmobilenumber1').value;
+            const ddlcoatxtmobilenumber1 = document.getElementById('ddlcoatxtmobilenumber1');
+            const ddlCoaWhatsappNo = document.getElementById('ddlCoaWhatsappNo');
             const txtCoaWhatsappNo = document.getElementById('txtCoaWhatsappNo');
 
 
@@ -1204,13 +1422,16 @@
                 if (txtcoatxtmobilenumber1.trim() !== '') {
                     // alert("it not empty");
                     txtCoaWhatsappNo.value = txtcoatxtmobilenumber1;
+                    ddlCoaWhatsappNo.value = ddlcoatxtmobilenumber1.value;
                 }
                 else {
                     txtCoaWhatsappNo.value = '';
+                    ddlCoaWhatsappNo.value = '+91';
                 }
             }
             else {
                 txtCoaWhatsappNo.value = '';
+                ddlCoaWhatsappNo.value = '+91';
             }
 
 
@@ -1686,6 +1907,49 @@
 
             }
 
+
+
+
+
+            document.querySelectorAll(".validPhoneNumber").forEach(function (phoneInput) {
+                var phoneId = phoneInput.id.replace("txt", "ddl");
+                var countryCode = document.getElementById(phoneId).value;
+                var errorLabel = document.getElementById(phoneInput.id.replace("txt", "lbl"));
+
+                var regexPatterns = {
+                    "+91": { regex: /^[6-9]\d{9}$/, format: "10 digits number (6-9 start)" }, // India
+                    "+1": { regex: /^\d{10}$/, format: "10 digits (e.g., 1234567890)" }, // USA
+                    "+44": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 07123456789)" }, // UK
+                    "+61": { regex: /^\d{9}$/, format: "9 digits (e.g., 412345678)" }, // Australia
+                    "+971": { regex: /^\d{9}$/, format: "9 digits (e.g., 501234567)" }, // UAE
+                    "+81": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 9012345678)" }, // Japan
+                    "+49": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 15123456789)" }, // Germany
+                    "+33": { regex: /^\d{9}$/, format: "9 digits (e.g., 612345678)" }, // France
+                    "+86": { regex: /^\d{11}$/, format: "11 digits (e.g., 13812345678)" }, // China
+                    "+7": { regex: /^\d{10}$/, format: "10 digits (e.g., 9123456789)" }, // Russia
+                    "+55": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 11987654321)" }, // Brazil
+                    "+27": { regex: /^\d{9}$/, format: "9 digits (e.g., 721234567)" }, // South Africa
+                    "+39": { regex: /^\d{9, 10}$/, format: "9 or 10 digits (e.g., 3123456789)" }, // Italy
+                    "+34": { regex: /^\d{9}$/, format: "9 digits (e.g., 612345678)" }, // Spain
+                    "+62": { regex: /^\d{9, 10}$/, format: "9 or 10 digits (e.g., 8123456789)" }, // Indonesia
+                    "+92": { regex: /^\d{10}$/, format: "10 digits (e.g., 3123456789)" }, // Pakistan
+                    "+880": { regex: /^\d{10}$/, format: "10 digits (e.g., 1712345678)" }, // Bangladesh
+                    "+90": { regex: /^\d{10}$/, format: "10 digits (e.g., 5012345678)" }, // Turkey
+                    "+20": { regex: /^\d{10}$/, format: "10 digits (e.g., 1012345678)" }, // Egypt
+                    "+65": { regex: /^\d{8}$/, format: "8 digits (e.g., 81234567)" },
+                };
+
+                if (phoneInput.value !== '') {
+                    if (!regexPatterns[countryCode] || !regexPatterns[countryCode].regex.test(phoneInput.value)) {
+                        errorLabel.innerText = `Enter a valid number. Format: ${regexPatterns[countryCode]?.format || "Invalid format"}`;
+                        flag = false;
+                    } else {
+                        errorLabel.innerText = "";
+                    }
+                }
+            });
+
+
             /* alert(flag);*/
             return flag;
         }
@@ -1698,7 +1962,7 @@
 
 
 
-  <%--  file type and validation clientside--%>
+    <%--  file type and validation clientside--%>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -1779,7 +2043,7 @@
                 viewLogoBtn.addEventListener('click', function () {
                     if (!screensrc[index]) {
                         errorLabel.textContent = "";
-                       // resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
+                        // resetUploader(viewLogoBtn, errorLabel, removeBtn, index);
                         return;
                     }
 
@@ -1807,15 +2071,15 @@
                 });
             });
 
-       
+
             function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
                 screensrc[index] = null;
-                document.querySelectorAll('.file-upload')[index].value = ''; 
+                document.querySelectorAll('.file-upload')[index].value = '';
                 viewLogoBtn.src = '';
                 viewLogoBtn.style.display = 'none';
-                removeBtn.style.display = 'none'; 
-                errorLabel.textContent = ''; 
-             //   console.log("Reset uploader, hiding remove button.");
+                removeBtn.style.display = 'none';
+                errorLabel.textContent = '';
+                //   console.log("Reset uploader, hiding remove button.");
 
                 if (index === 0) {
 
@@ -1828,7 +2092,7 @@
 
     </script>
 
-  <%-- End file type and validation clientside--%>
+    <%-- End file type and validation clientside--%>
 
 
 
@@ -1966,11 +2230,11 @@
                     }
                     Swal.fire({
                         html: `
-          <div style="position: relative;">
-              <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
-              <h2 class="fw-bold">Photo</h2>
-              <img id="swalImage" src="${screensrc[type][index]}" alt="Photo" class="img-fluid mt-3">
-          </div>
+                                                        <div style="position: relative;">
+                                                            <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
+                                                            <h2 class="fw-bold">Photo</h2>
+                                                            <img id="swalImage" src="${screensrc[type][index]}" alt="Photo" class="img-fluid mt-3">
+                                                        </div>
   `,
                         showConfirmButton: false,
                         didOpen: () => {

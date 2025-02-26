@@ -26,6 +26,59 @@ public partial class add_amenities : System.Web.UI.Page
             lbldisplaymsg.Text = " Add Amenities";
             btnSave.Text = "Submit";
         }
+
+        if (Request.QueryString["ID"] != null)
+        {
+            int value = 0;
+            if (int.TryParse(Request.QueryString["ID"], out value))
+            {
+                lbldisplaymsg.Text = " Edit Amenities";
+                btnSave.Text = "Submit";
+                //ddlProName.Attributes.Add("disabled", "true");
+                Bind(value);
+            }
+            else
+            {
+                string script = string.Format(@"<script>
+                        Swal.fire({{ 
+                        title: 'URL is incorrect. please try again', 
+                        confirmButtonText: 'OK', 
+                        customClass: {{ 
+                            confirmButton: 'handle-btn-success'  
+                        }}
+                        }}).then((result) => {{ 
+                                window.location.href = 'add-amenities.aspx'; 
+                        }});
+                    </script>");
+                ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
+            }
+        }
+        else
+        {
+            lbldisplaymsg.Text = " Add Amenities";
+            btnSave.Text = "Submit";
+        }
+    }
+
+
+    public void Bind(int ID)
+    {
+        try
+        {
+            DataTable dt = K2A.ViewAllAmenities(ID, Userid);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                if (!string.IsNullOrEmpty(dt.Rows[0]["ProjectID"].ToString()) && dt.Rows[0]["ProjectID"] != null)
+                {
+                    ddlProName.SelectedValue = dt.Rows[0]["ProjectID"].ToString();
+                    BindUsersList(Convert.ToInt32(ddlProName.SelectedValue));
+                }             
+            }
+        }
+        catch (Exception ex)
+        {
+            CI.StoreExceptionMessage("add-amenities.aspx", "Bind", ex.Message, "Not Fixed");
+        }
     }
 
     public void Bindprojects()

@@ -45,7 +45,7 @@ public partial class adminkey2hcom_AddFloorPlan : System.Web.UI.Page
                             confirmButton: 'handle-btn-success'  
                         }}
                         }}).then((result) => {{ 
-                                window.location.href = 'add-flat-floor-plan.aspx'; 
+                                window.location.href = 'add-quality-reports.aspx'; 
                         }});
                     </script>");
                 ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);

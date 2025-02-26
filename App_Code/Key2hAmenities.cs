@@ -104,6 +104,34 @@ public class Key2hAmenities
         return dt;
     }
 
+
+
+    public DataTable ViewAllAmenitiesByFilter(string ProjectID,string AID,string AddedBy)
+    {
+        string connectionString = GetSqlConnection();
+        SqlConnection cnn = new SqlConnection(connectionString);
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (SqlCommand command = new SqlCommand("ViewAllAmenitiesByFilter", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProjectID", string.IsNullOrWhiteSpace(ProjectID) ? (object)DBNull.Value : Convert.ToInt32(ProjectID)));
+                command.Parameters.Add(new SqlParameter("@AID", string.IsNullOrWhiteSpace(AID) ? (object)DBNull.Value : Convert.ToInt32(AID)));
+                command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                da.Fill(dt);
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+        return dt;
+    }
+
     public int DeleteProjectAmenities(int AID, string AddedBy)
     {
         int rowaffected = 0;
@@ -121,6 +149,34 @@ public class Key2hAmenities
                 command.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(command);
                 command.Parameters.Add(new SqlParameter("@AID", AID));
+                command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
+                rowaffected = command.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+
+        return rowaffected;
+    }
+    
+    public int DeleteAmenitiesByProjectID(int ProID, string AddedBy)
+    {
+        int rowaffected = 0;
+
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("DeleteAmenitiesByProjectID", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                command.Parameters.Add(new SqlParameter("@ProjectID", ProID));
                 command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
                 rowaffected = command.ExecuteNonQuery();
             }

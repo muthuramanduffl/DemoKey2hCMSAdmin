@@ -25,8 +25,8 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
         if (!IsPostBack)
         {
             Bindprojects();
-            lbldisplaymsg.Text = " Add Flat Quality Reports";
-            btnSave.Text = "Submit";
+           // lbldisplaymsg.Text = " Add Flat Quality Reports";
+           // btnSave.Text = "Submit";
         }
 
         if (Request.QueryString["ID"] != null)
@@ -49,7 +49,7 @@ public partial class add_flat_quality_reports : System.Web.UI.Page
                             confirmButton: 'handle-btn-success'  
                         }}
                         }}).then((result) => {{ 
-                                window.location.href = 'add-flat-floor-plan.aspx'; 
+                                window.location.href = 'add-flat-quality-reports.aspx'; 
                         }});
                     </script>");
                 ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
