@@ -51,6 +51,14 @@ public class Key2hProject
     public string AddedDate { get; set; }
     public int ReferScreenID { get; set; }
 
+    public string homescreenProjectLogo { get; set; }
+    public string Splacescreen { get; set; }
+    public string HighlightImage1 { get; set; }
+    public string HighlightImage2 { get; set; }
+    public string HighlightImage3 { get; set; }
+    public string HighlightImage4 { get; set; }
+    public string HighlightImage5 { get; set; }
+
 
     #region GetSqlConnectionstring
     public string GetSqlConnection()
@@ -689,6 +697,39 @@ public class Key2hProject
                 command.Parameters.Add(new SqlParameter("@Question", K2.Question));
                 command.Parameters.Add(new SqlParameter("@Content", K2.Content));
                 command.Parameters.Add(new SqlParameter("@MessageContent", K2.MessageContent));
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            cnn.Close();
+        }
+        catch (Exception ex)
+        {
+        }
+        return rowsAffected;
+
+    }
+    public int UpdateProjectHomeScreenByProjectID(Key2hProject K2)
+    {
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("UpdateProjectHomeScreenByProjectID", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ProjectID", K2.ProjectID));
+                command.Parameters.Add(new SqlParameter("@HighlightImage1", K2.HighlightImage1));
+                command.Parameters.Add(new SqlParameter("@HighlightImage2", K2.HighlightImage2));
+                command.Parameters.Add(new SqlParameter("@HighlightImage3", K2.HighlightImage3));
+                command.Parameters.Add(new SqlParameter("@HighlightImage4", K2.HighlightImage4));
+                command.Parameters.Add(new SqlParameter("@HighlightImage5", K2.HighlightImage5));
+                command.Parameters.Add(new SqlParameter("@Splacescreen", K2.Splacescreen));
+                command.Parameters.Add(new SqlParameter("@Logo", K2.homescreenProjectLogo));
+                command.Parameters.Add(new SqlParameter("@UpdatedDate", Utility.IndianTime));
+                command.Parameters.Add(new SqlParameter("@UpdatedBy", K2.UpdatedBy));
                 rowsAffected = command.ExecuteNonQuery();
             }
             cnn.Close();

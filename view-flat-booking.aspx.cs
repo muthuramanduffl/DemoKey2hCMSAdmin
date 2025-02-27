@@ -816,9 +816,8 @@ public partial class adminkey2hcom_ViewFlatBooking : System.Web.UI.Page
     public void Clear()
     {
         txtsearch.Text = "";
-        ddlprojectname.SelectedIndex = 0 ;
+        ddlprojectname.SelectedIndex = 0;
         Bindblock();
         BindFlat(); 
-    }
-     
+    }     
 }

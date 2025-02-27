@@ -239,6 +239,7 @@ public partial class add_customization_work_approval : System.Web.UI.Page
                     ddlFlatNumber.Items.Insert(0, new ListItem("", ""));
                     txtCustomerName.Text = "";
                     lblcustomernameerror.Text = "";
+                    txtCustomerName.Text = "";
                 }
             }
             else
@@ -309,6 +310,7 @@ public partial class add_customization_work_approval : System.Web.UI.Page
                 txtCustomerName.Text = "";
                 divrptCustomers.Style.Add("Display", "none");
                 lblcustomernameerror.Text = "";
+                txtCustomerName.Text = "";
             }
         }
         catch (Exception ex)

@@ -231,7 +231,7 @@
                                                                 <th># </th>
                                                                 <th>Cost Label </th>
                                                                 <th class="min-w-150">Cost</th>
-                                                                <th style="display:none">Action</th>
+                                                                <th>Action</th>
                                                             </thead>
                                                             <tbody>
                                                     </HeaderTemplate>

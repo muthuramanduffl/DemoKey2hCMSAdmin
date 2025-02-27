@@ -161,6 +161,27 @@ public partial class adminkey2com_AdminKey2h : System.Web.UI.MasterPage
             tab21.Attributes["class"] = "tab-pane fade";
         }
 
+        else if (currentPage.Contains("add-project-home-screen.aspx"))
+        {
+            tabProjects.Attributes["class"] = "nav-link active";
+            subMenuaddscreenpage.Attributes["class"] = "active";
+            tab1.Attributes["class"] = "tab-pane fade active show";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab4.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
+        else if (currentPage.Contains("view-project-home-screen.aspx"))
+        {
+            tabProjects.Attributes["class"] = "nav-link active";
+            subMenuviewscreenpage.Attributes["class"] = "active";
+            tab1.Attributes["class"] = "tab-pane fade active show";
+            tab2.Attributes["class"] = "tab-pane fade";
+            tab3.Attributes["class"] = "tab-pane fade";
+            tab4.Attributes["class"] = "tab-pane fade";
+            tab21.Attributes["class"] = "tab-pane fade";
+        }
+
         else if (currentPage.Contains("flatbulkupload.aspx"))
         {
             tabProjects.Attributes["class"] = "nav-link active";

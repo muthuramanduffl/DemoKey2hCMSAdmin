@@ -109,8 +109,8 @@
                                     <div class="row mx-0 margin-top20 mb-4">
 
                                         <div class="col-sm-4 col-xl-3 pt-3">
-                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                                                <ContentTemplate>
+                                            <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                                                <ContentTemplate>--%>
                                                     <div class="input-icon input-icon-sm right">
                                                         <label>Project Name <span class="text-danger">*</span></label>
                                                         <i class="bi bi-journal-bookmark-fill b5-icon"></i>
@@ -118,12 +118,12 @@
                                                             <asp:ListItem Value=""> </asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
-                                                </ContentTemplate>
+                                                <%--</ContentTemplate>
                                                 <Triggers>
                                                     <asp:AsyncPostBackTrigger ControlID="ddlProName" EventName="SelectedIndexChanged" />
                                                     <asp:AsyncPostBackTrigger ControlID="btnCancel" EventName="Click" />
                                                 </Triggers>
-                                            </asp:UpdatePanel>
+                                            </asp:UpdatePanel>--%>
                                             <span class="error">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="projval"
                                                     ControlToValidate="ddlProName" InitialValue="" ErrorMessage="Select project name">
@@ -136,14 +136,15 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Highlight Image 1</label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="FileUploadSaleDeedDraft" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
+                                                <asp:FileUpload ID="fluploadhighlight1" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload valhiglights" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,only Image-1500 KB)</span>
-                                                <asp:HiddenField ID="hdnFileUploadSaleDeedDraft" runat="server" />
+                                                <%-- <asp:HiddenField ID="hdnfluploadhighlight1" runat="server" />--%>
+                                                <input type="hidden" id="hdnfluploadhighlight1" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblFileUploadSaleDeedDraft" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight1" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" id="DivSaleDeedDraft" style="display: none">
+                                            <div class="btn-view btn-view-pop" clientidmode="Static" id="Divhighlight1" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
                                             <div class="btn-view-pop btn-remove" style="display: none;">
@@ -155,12 +156,13 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Highlight Image 2</label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="FileUploadSaleDeedFinal" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
-                                                <span class="handle-file-request">(upload max file size,pdf-1500 KB)</span>
-                                                <asp:HiddenField ID="hdnFileUploadSaleDeedFinal" runat="server" />
+                                                <asp:FileUpload ID="fluploadhighlight2" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload valhiglights" accept=".jpeg, .jpg, .png" />
+                                                <span class="handle-file-request">(upload max file size,only Image -1500 KB)</span>
+                                                <%--<asp:HiddenField ID="hdnfluploadhighlight2"  runat="server" />--%>
+                                                <input type="hidden" id="hdnfluploadhighlight2" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblFileUploadSaleDeedFinal" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight2" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleDeedFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
@@ -174,12 +176,13 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Highlight Image 3</label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="FileUploadSaleAgreementDraft" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
+                                                <asp:FileUpload ID="fluploadhighlight3" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload valhiglights" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,pdf-1500 KB)</span>
-                                                <asp:HiddenField ID="hdnFileUploadSaleAgreementDraft" runat="server" />
+                                                <%--<asp:HiddenField ID="hdnfluploadhighlight3" class="valhiglights" runat="server" />--%>
+                                                <input type="hidden" id="hdnfluploadhighlight3" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblFileUploadSaleAgreementDraft" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight3" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementDraft" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
@@ -193,12 +196,13 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Highlight Image 4</label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="FileUploadSaleAgreementFinal" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
+                                                <asp:FileUpload ID="fluploadhighlight4" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload valhiglights" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,pdf-1500 KB)</span>
-                                                <asp:HiddenField ID="hdnFileUploadSaleAgreementFinal" runat="server" />
+                                                <%--                                                <asp:HiddenField ID="hdnfluploadhighlight4" class="valhiglights" runat="server" />--%>
+                                                <input type="hidden" id="hdnfluploadhighlight4" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblFileUploadSaleAgreementFinal" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight4" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
@@ -212,12 +216,13 @@
                                             <div class="input-icon input-icon-sm right">
                                                 <label>Highlight Image 5</label>
                                                 <i class="bi bi-images b5-icon"></i>
-                                                <asp:FileUpload ID="FileUploadAllotmentLetter" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
+                                                <asp:FileUpload ID="fluploadhighlight5" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload valhiglights" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,pdf-1500 KB)</span>
-                                                <asp:HiddenField ID="hdnFileUploadAllotmentLetter" runat="server" />
+                                                <%--                                                <asp:HiddenField ID="hdnfluploadhighlight5" class="valhiglights" runat="server" />--%>
+                                                <input type="hidden" id="hdnfluploadhighlight5" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblFileUploadAllotmentLetter" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight5" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivAllotmentLetter" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
@@ -234,17 +239,18 @@
                                                 <i class="bi bi-images b5-icon"></i>
                                                 <asp:FileUpload ID="uploadflashscreen" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,only Image -1500 KB)</span>
-                                                <asp:HiddenField ID="HiddenField1" runat="server" />
+                                                <%--  <asp:HiddenField ID="hdnsplacescreen" runat="server" />--%>
+                                                <input type="hidden" id="hdnsplacescreen" clientidmode="Static" runat="server" class="ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="uploadflashscreen" ValidationGroup="projval" runat="server" ErrorMessage="Upload flash Screen"></asp:RequiredFieldValidator>
-                                                <asp:Label ID="Label1" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ClientIDMode="Static" ControlToValidate="uploadflashscreen" ValidationGroup="projval" runat="server" ErrorMessage="Upload flash Screen"></asp:RequiredFieldValidator>
+                                                <asp:Label ID="lblsplacescreen" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="Div1" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
                                             <div class="btn-view-pop btn-remove" style="display: none;">
-                                                <i class="bi bi-x"></i>Remove 
+                                                <i class="bi bi-x">Remove</i>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-4">
@@ -253,24 +259,25 @@
                                                 <i class="bi bi-images b5-icon"></i>
                                                 <asp:FileUpload ID="UploadLOGO" ClientIDMode="Static" runat="server" CssClass="form-control input-sm file-upload" accept=".jpeg, .jpg, .png" />
                                                 <span class="handle-file-request">(upload max file size,only Image -1500 KB)</span>
-                                                <asp:HiddenField ID="hd1" runat="server" />
+                                                <%--<asp:HiddenField ID="hdnUploadLOGO" runat="server" />--%>
+                                                <input type="hidden" id="hdnUploadLOGO" clientidmode="Static" runat="server" class="ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ValidationGroup="projval" ControlToValidate="UploadLOGO" runat="server" ErrorMessage="Upload logo"></asp:RequiredFieldValidator>
-                                                <asp:Label ID="lbl2" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblUploadLOGO" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="div2" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
                                             <div class="btn-view-pop btn-remove" style="display: none;">
-                                                <i class="bi bi-x"></i>Remove 
+                                                <i class="bi bi-x">Remove</i>
                                             </div>
                                         </div>
 
 
                                     </div>
-                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
-                                        <ContentTemplate>
+                                   <%-- <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                                        <ContentTemplate>--%>
                                             <div class="card-footer mx-2 pb-4">
                                                 <div class="d-flex justify-content-center">
                                                     <asp:Button
@@ -284,13 +291,13 @@
                                                     <asp:Button ID="btnCancel" ClientIDMode="Static" runat="server" Text="Cancel Project" OnClick="btnCancel_Click" Style="display: none;" />
                                                 </div>
                                             </div>
-                                        </ContentTemplate>
+                                      <%--  </ContentTemplate>
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="ddlProName" EventName="SelectedIndexChanged" />
                                             <asp:AsyncPostBackTrigger ControlID="btnCancel" EventName="Click" />
                                             <asp:PostBackTrigger ControlID="btnSave" />
                                         </Triggers>
-                                    </asp:UpdatePanel>
+                                    </asp:UpdatePanel>--%>
                                 </div>
 
 
@@ -364,25 +371,53 @@
     <script>
         function validatePage() {
             var flag = window.Page_ClientValidate('projval');
+            var flag2 = false;
 
-            var fileInputs = document.querySelectorAll(".file-upload");
+            var fileInputs = document.querySelectorAll(".valhiglights");
+            var hdnvalhiglights = document.querySelectorAll(".hdnvalhiglights");
             var errorSpan = document.getElementById("fileError");
-            var isFileSelected = false;
 
-            if (flag == true) {
-                fileInputs.forEach(function (fileInput) {
-                    if (!fileInput.files.length > 0) {
-                        flag = false;
-                        Swal.fire({
-                            title: 'Please upload at least one highlight',
-                            confirmButtonText: 'Ok',
-                            customClass: {
-                                confirmButton: 'handle-btn-success'
-                            }
-                        })
-                    }
-                });
+            var uploadflashscreen = document.getElementById('<%= uploadflashscreen.ClientID %>');
+            var hdnsplacescreen = document.getElementById('<%= hdnsplacescreen.ClientID %>');
+            var UploadLOGO = document.getElementById('<%= UploadLOGO.ClientID %>');
+            var hdnUploadLOGO = document.getElementById('<%= hdnUploadLOGO.ClientID %>');
+
+            var requireuploadflashscreen = document.getElementById('<%= RequiredFieldValidator2.ClientID %>');
+            var requireUploadLOGo = document.getElementById('<%= RequiredFieldValidator3.ClientID %>');
+
+            if (flag) {
+                let isAnyFileUploaded = Array.from(fileInputs).some(input => input.files.length > 0);
+                let isAnyHiddenFieldFilled = Array.from(hdnvalhiglights).some(input => input.value.trim() !== "");
+
+                if (!isAnyFileUploaded && !isAnyHiddenFieldFilled) {
+                    Swal.fire({
+                        title: 'Please upload at least one highlight',
+                        confirmButtonText: 'Ok',
+                        customClass: {
+                            confirmButton: 'handle-btn-success'
+                        }
+                    });
+
+                    flag2= false; // Stop further execution
+                }
+                else {
+                    flag2 = true;
+                }
             }
+
+            // Validate uploadflashscreen
+            if (uploadflashscreen && hdnsplacescreen) {
+                ValidatorEnable(requireuploadflashscreen, hdnsplacescreen.value === '' && (!uploadflashscreen.files || uploadflashscreen.files.length === 0));
+            }
+
+            // Validate UploadLOGO
+            if (UploadLOGO && hdnUploadLOGO) {
+                ValidatorEnable(requireUploadLOGo, hdnUploadLOGO.value === '' && (!UploadLOGO.files || UploadLOGO.files.length === 0));
+            }
+
+            flag = flag2;
+           
+
             return flag;
         }
     </script>
@@ -395,7 +430,7 @@
             var removeBtns = document.querySelectorAll('.btn-remove');
             var screensrc = {};
             var fileType = {};
-            var fileTitles = ['Sale Deed Draft', 'Sale Deed Final', 'Sale Agreement Draft', 'Sale Agreement Final', 'Allotment Letter', 'Welcome Letter', 'Demand Letter', 'Payment Receipt', 'Bill', 'Payment Schedule', 'EB card', 'NOC for Handing over', 'CC Updation', 'Bank Documents', 'Handing Over Documents', 'Other Documents'];
+            var fileTitles = ['Highlights 1', 'Highlights 2', 'Highlights 3', 'Highlights 4', 'Highlights 6', 'Splace Screen', 'Logo'];
 
             if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length || !removeBtns.length) {
                 return;
@@ -461,9 +496,8 @@
                         return;
                     }
 
-                    // ✅ SweetAlert2 Modal for Image Preview
+
                     Swal.fire({
-                        title: 'Uploaded Image',
                         imageUrl: screensrc[index],
                         imageAlt: 'Uploaded Image Preview',
                         showConfirmButton: false,
@@ -486,62 +520,152 @@
 
 
     <script type="text/javascript">
-        function bindImageToPreview(srclogo, index, fileType) {
+        window.screensrc = {};
+
+        function bindImageToPreview(srclogo, index) {
             var viewLogoBtns = document.querySelectorAll('.btn-view');
             var removeBtns = document.querySelectorAll('.btn-remove');
 
-            if (index !== -1 && viewLogoBtns[index] && removeBtns[index]) {
-                var viewLogoBtn = viewLogoBtns[index];
-                var removeBtn = removeBtns[index];
+            if (index !== -1 && viewLogoBtns[index]) {
+                screensrc[index] = srclogo;
+                viewLogoBtns[index].style.display = 'inline-block';
+                removeBtns[index].style.display = 'inline-block';
+                viewLogoBtns[index].src = srclogo;
+            } else {
+                console.error("View logo button not found or index is invalid.");
+            }
+        }
 
-                // Ensure buttons are visible
-                viewLogoBtn.style.display = 'inline-block';
-                removeBtn.style.display = 'inline-block';
+        document.addEventListener('DOMContentLoaded', function () {
+            var fileUploaders = document.querySelectorAll('.file-upload');
+            var viewLogoBtns = document.querySelectorAll('.btn-view');
+            var removeBtns = document.querySelectorAll('.btn-remove');
+            var errorLabels = document.querySelectorAll('.lblFileUpload');
 
-                // Remove previous click event listener before adding a new one
-                viewLogoBtn.replaceWith(viewLogoBtn.cloneNode(true));
-                viewLogoBtn = document.querySelectorAll('.btn-view')[index];
 
-                removeBtn.replaceWith(removeBtn.cloneNode(true));
-                removeBtn = document.querySelectorAll('.btn-remove')[index];
 
-                // Add event listener for viewing PDF
-                viewLogoBtn.addEventListener('click', function () {
-                    if (fileType === 'application/pdf') {
-                        window.open(srclogo, '_blank'); // Open PDF in new tab
+            var fileType = {};
+            var fileTitles = ['Highlights 1', 'Highlights 2', 'Highlights 3', 'Highlights 4', 'Highlights 6', 'Splace Screen', 'Logo'];
 
-                        // Reload the page with query string
-                        var currentUrl = window.location.href;
-                        var newUrl = addQueryStringToUrl(currentUrl, `viewed=${index}`);
-                        window.location.href = newUrl;
+            if (!fileUploaders.length || !viewLogoBtns.length || !errorLabels.length || !removeBtns.length) {
+                console.error("Required elements not found in the DOM.");
+                return;
+            }
+
+            fileUploaders.forEach((fileUploader, index) => {
+                if (!fileUploader || !viewLogoBtns[index] || !removeBtns[index] || !errorLabels[index]) {
+                    console.error("Element at index " + index + " not found.");
+                    return;
+                }
+
+                fileUploader.addEventListener('change', function (event) {
+                    var input = event.target;
+                    var file = input.files[0];
+                    var validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                    var validFileTypes = validImageTypes.concat(['application/pdf']);
+                    var isValidFileType = validFileTypes.includes(file.type);
+                    var viewLogoBtn = viewLogoBtns[index];
+                    var removeBtn = removeBtns[index];
+                    var errorLabel = errorLabels[index];
+
+                    fileType[index] = file.type;
+
+                    errorLabel.textContent = '';
+
+                    if (!file) {
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
+                        errorLabel.textContent = "No file selected.";
+                        return;
+                    }
+
+                    if (!isValidFileType) {
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
+                        errorLabel.textContent = "Invalid file type. Only PDF, PNG, JPEG, and JPG files are allowed.";
+                        return;
+                    }
+
+                    if (file.type === 'application/pdf' && file.size > 1500 * 1024) {
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
+                        errorLabel.textContent = "PDF size must be under 1.5 MB";
+                        return;
+                    }
+
+                    if (validImageTypes.includes(file.type) && file.size > 1500 * 1024) {
+                        resetUploader(viewLogoBtn, removeBtn, errorLabel, index);
+                        errorLabel.textContent = "Image size must be under 1.5 MB";
+                        return;
+                    }
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        screensrc[index] = e.target.result;
+                        viewLogoBtn.style.display = 'inline-block';
+                        removeBtn.style.display = 'inline-block';
+                        viewLogoBtn.src = validImageTypes.includes(file.type) ? screensrc[index] : '';
+                    };
+
+                    reader.onerror = function (err) {
+                        console.error("Error reading file:", err);
+                        screensrc[index] = null;
+                    };
+
+                    reader.readAsDataURL(file);
+                });
+
+                viewLogoBtns[index].addEventListener('click', function () {
+                    if (!screensrc[index]) {
+                        errorLabels[index].textContent = "No file uploaded yet!";
+                        resetUploader(viewLogoBtns[index], removeBtns[index], errorLabels[index], index);
+                        return;
+                    }
+                    var fileTitle = fileTitles[index];
+
+                    if (fileType[index] === 'application/pdf') {
+                        var newWindow = window.open();
+                        newWindow.document.write(`<embed src="${screensrc[index]}" width="100%" height="100%">`);
+                    } else {
+                        Swal.fire({
+                            html: `
+                            <div style="position: relative;">
+                                <div class="btn-close-icon" style="cursor: pointer; position: absolute; top: -15px; right: -25px;">&times;</div>
+                                <h2 class="fw-bold">${fileTitle}</h2>
+                                <img id="swalImage" src="${screensrc[index]}" alt="${fileTitle}" class="img-fluid mt-3">
+                            </div>
+                        `,
+                            showConfirmButton: false,
+                            didOpen: () => {
+                                document.querySelector('.btn-close-icon').addEventListener('click', () => Swal.close());
+                            }
+                        }).then(() => {
+                            viewLogoBtns[index].style.display = 'inline-block';
+                            removeBtns[index].style.display = 'inline-block';
+                        });
                     }
                 });
 
-                // Add event listener for removing file
-                removeBtn.addEventListener('click', function () {
-                    removeImagePreview(index);
+                removeBtns[index].addEventListener('click', function () {
+                    resetUploader(viewLogoBtns[index], removeBtns[index], errorLabels[index], index);
                 });
+            });
+
+            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
+                screensrc[index] = null;
+                document.querySelectorAll('.file-upload')[index].value = '';
+                document.querySelectorAll('.ermovehdnvalhiglights')[index].value = '';
+                viewLogoBtn.src = '';
+                viewLogoBtn.style.display = 'none';
+                removeBtn.style.display = 'none';
+                errorLabel.textContent = '';
+                //   console.log("Reset uploader, hiding remove button.");
+
+
+
+
+                //
             }
-        }
+        });
 
-        // Function to remove the preview and reset input
-        function removeImagePreview(index) {
-            var viewLogoBtns = document.querySelectorAll('.btn-view');
-            var removeBtns = document.querySelectorAll('.btn-remove');
-            var fileInputs = document.querySelectorAll('.file-upload');
-
-            if (viewLogoBtns[index] && removeBtns[index] && fileInputs[index]) {
-                viewLogoBtns[index].style.display = 'none';
-                removeBtns[index].style.display = 'none';
-                fileInputs[index].value = ''; // Reset file input
-            }
-        }
-
-        // Function to append query string to the URL
-        function addQueryStringToUrl(url, queryString) {
-            var separator = url.includes('?') ? '&' : '?';
-            return url + separator + queryString;
-        }
+        window.bindImageToPreview = bindImageToPreview;
     </script>
 
 

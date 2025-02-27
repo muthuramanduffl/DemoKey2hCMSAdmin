@@ -248,6 +248,18 @@
                                         View Flats
                                     </a>
                                 </li>
+                                <li id="subMenuaddscreenpage" runat="server">
+                                    <a href="add-project-home-screen.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                        Update project home screen
+                                    </a>
+                                </li>
+                                <li id="subMenuviewscreenpage" runat="server">
+                                    <a href="view-project-home-screen.aspx">
+                                        <i class="bi bi-kanban" aria-hidden="true"></i>
+                                        view project home screen
+                                    </a>
+                                </li>
                                 <li id="subMenuBulkFlat" runat="server">
                                     <a href="flatbulkupload.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>

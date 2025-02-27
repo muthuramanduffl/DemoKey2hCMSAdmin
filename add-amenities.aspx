@@ -155,14 +155,14 @@
                                                 <label>Upload Image<span class="text-danger">*</span></label>
                                                 <i class="bi bi-images b5-icon"></i>
                                                 <asp:FileUpload ID="FluploadImageUpload" ClientIDMode="Static" accept=".jpeg, .jpg, .png" class="form-control input-sm FluploadImageUpload" autocomplete="off" placeholder="" runat="server" />
-                                                <span class="handle-file-request">(max file size of 500 KB)</span>
+                                                <span class="handle-file-request">(max file size of 1500 KB)</span>
                                                 <asp:HiddenField ID="hdnImageUpload" runat="server" />
                                             </div>
                                             <span class="error">
                                                 <asp:Label ID="lblFluploadImageUpload" CssClass="lblFluploadImageUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator EnableClientScript="true" SetFocusOnError="true" ControlToValidate="FluploadImageUpload" ValidationGroup="projval" ID="RequiredFieldValidator2" runat="server" ErrorMessage=" Upload image "></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator EnableClientScript="true" SetFocusOnError="true" ControlToValidate="FluploadImageUpload" ValidationGroup="projval" ID="RequiredFieldValidator2" runat="server" ErrorMessage=" Upload file "></asp:RequiredFieldValidator>
                                             </span>
                                             <div class="view-pro-screen-img view-pro-screen btn-view-pop fluploadbtn-view-pop" runat="server" id="viewpflphoto" style="display: none">
                                                 <i class="bi bi-eye"></i>View PDF
@@ -316,7 +316,7 @@
             const fileUploader = document.querySelector('.FluploadImageUpload');
             const viewLogoBtn = document.querySelector('.fluploadbtn-view-pop');
             const fileSizeErrorLabel = document.querySelector('.lblFluploadImageUpload');
-            const maxFileSize = 500 * 1024;
+            const maxFileSize = 1500 * 1024;
             const allowedExtensions = [".jpg", ".jpeg", ".png"];
             let screensrc = null;
 
@@ -345,7 +345,7 @@
                 }
 
                 if (file.size > maxFileSize) {
-                    fileSizeErrorLabel.textContent = `File size must be under 500 KB`;
+                    fileSizeErrorLabel.textContent = `File size must be under 1500 KB`;
                     event.target.value = '';
                     return;
                 }
@@ -651,7 +651,7 @@
                     }
                     const size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
                     if (size > 500) {
-                        label.textContent = "File size must be under 500 KB";
+                        label.textContent = "File size must be under 1500 KB";
                         resetFileInput();
                         return;
                     }

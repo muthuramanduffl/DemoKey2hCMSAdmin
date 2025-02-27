@@ -615,7 +615,7 @@
                 if (allowedFiles.includes("." + ext)) {
                     var size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
                     if (size > 1500) {
-                        lbl.textContent = "Image size must be under 1500 KB";
+                        lbl.textContent = "File size must be under 1500 KB";
                         //alert();
                         resetFileInput(fileInput);
                         var viewLogoBtn = document.querySelector('.view-pro-screen-img');

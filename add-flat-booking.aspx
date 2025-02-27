@@ -106,7 +106,7 @@
                                                 <i class="bi bi-calendar-week b5-icon"></i>
                                                 <asp:TextBox ID="txtdateofbirth" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                                 <div class="btn-view-pop clearBtn">
-                                                    <i class="bi bi-x" onclick="clearTextBox('txtdateofbirth')">Remove</i>
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtdateofbirth')">Clear</i>
                                                 </div>
                                             </div>
                                             <span class="error">
@@ -134,6 +134,7 @@
                                                 <label>Mobile Number 1 <span class="text-danger">*</span></label>
                                                 <i class="bi bi-telephone-fill b5-icon"></i>
                                                 <asp:DropDownList ID="ddlmobilenumber1" onchange="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" Style="width: 110px;" ClientIDMode="Static" class="bs-select form-control input-sm" runat="server">
+
                                                     <asp:ListItem Value="+91" Selected="True">🇮🇳(+91)</asp:ListItem>
                                                     <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
                                                     <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
@@ -154,7 +155,30 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
                                                 </asp:DropDownList>
+
 
                                                 <asp:TextBox ID="txtmobilenumber1" MaxLength="18" onkeyup="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
 
@@ -192,6 +216,29 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
+
                                                 </asp:DropDownList>
                                                 <asp:TextBox ID="txtmobilenumber2" ClientIDMode="Static" MaxLength="18" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
@@ -227,6 +274,28 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
                                                 </asp:DropDownList>
                                                 <asp:TextBox ID="txtwhatsappnumber" MaxLength="18" onkeyup="validatePhoneNumber('txtwhatsappnumber','txtmobilenumber1','chkSameaswhatsapp')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
 
@@ -578,7 +647,7 @@
                                                 <asp:TextBox ID="txtCoDOB" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
 
                                                 <div class="btn-view-pop clearBtn" id="clearBtn">
-                                                    <i class="bi bi-x" onclick="clearTextBox('txtCoDOB')">Remove</i>
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtCoDOB')">Clear</i>
                                                 </div>
 
 
@@ -610,9 +679,8 @@
                                                     <asp:ListItem Value="+1">🇺🇸(+1)</asp:ListItem>
                                                     <asp:ListItem Value="+44">🇬🇧(+44)</asp:ListItem>
                                                     <asp:ListItem Value="+61">🇦🇺(+61)</asp:ListItem>
-                                                   
                                                     <asp:ListItem Value="+971">🇦🇪(+971)</asp:ListItem>
-                                                     <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
+                                                    <asp:ListItem Value="+65">🇸🇬(+65)</asp:ListItem>
                                                     <asp:ListItem Value="+81">🇯🇵(+81)</asp:ListItem>
                                                     <asp:ListItem Value="+49">🇩🇪(+49)</asp:ListItem>
                                                     <asp:ListItem Value="+33">🇫🇷(+33)</asp:ListItem>
@@ -627,6 +695,29 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
+
                                                 </asp:DropDownList>
                                                 <asp:TextBox ID="txtcoatxtmobilenumber1" onkeyup="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" MaxLength="18" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
@@ -665,6 +756,29 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
+
                                                 </asp:DropDownList>
                                                 <asp:TextBox ID="txtcoatxtmobilenumber2" MaxLength="18" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
                                             </div>
@@ -703,6 +817,29 @@
                                                     <asp:ListItem Value="+880">🇧🇩(+880)</asp:ListItem>
                                                     <asp:ListItem Value="+90">🇹🇷(+90)</asp:ListItem>
                                                     <asp:ListItem Value="+20">🇪🇬(+20)</asp:ListItem>
+                                                    <asp:ListItem Value="+94">🇱🇰(+94)</asp:ListItem>
+                                                    <asp:ListItem Value="+66">🇹🇭(+66)</asp:ListItem>
+                                                    <asp:ListItem Value="+82">🇰🇷(+82)</asp:ListItem>
+                                                    <asp:ListItem Value="+98">🇮🇷(+98)</asp:ListItem>
+                                                    <asp:ListItem Value="+963">🇸🇾(+963)</asp:ListItem>
+                                                    <asp:ListItem Value="+968">🇴🇲(+968)</asp:ListItem>
+                                                    <asp:ListItem Value="+974">🇶🇦(+974)</asp:ListItem>
+                                                    <asp:ListItem Value="+852">🇭🇰(+852)</asp:ListItem>
+                                                    <asp:ListItem Value="+853">🇲🇴(+853)</asp:ListItem>
+                                                    <asp:ListItem Value="+60">🇲🇾(+60)</asp:ListItem>
+                                                    <asp:ListItem Value="+48">🇵🇱(+48)</asp:ListItem>
+                                                    <asp:ListItem Value="+46">🇸🇪(+46)</asp:ListItem>
+                                                    <asp:ListItem Value="+31">🇳🇱(+31)</asp:ListItem>
+                                                    <asp:ListItem Value="+32">🇧🇪(+32)</asp:ListItem>
+                                                    <asp:ListItem Value="+43">🇦🇹(+43)</asp:ListItem>
+                                                    <asp:ListItem Value="+351">🇵🇹(+351)</asp:ListItem>
+                                                    <asp:ListItem Value="+386">🇸🇮(+386)</asp:ListItem>
+                                                    <asp:ListItem Value="+63">🇵🇭(+63)</asp:ListItem>
+                                                    <asp:ListItem Value="+30">🇬🇷(+30)</asp:ListItem>
+                                                    <asp:ListItem Value="+64">🇳🇿(+64)</asp:ListItem>
+                                                    <asp:ListItem Value="+1758">🇱🇨(+1758)</asp:ListItem>
+                                                    <asp:ListItem Value="+972">🇮🇱(+972)</asp:ListItem>
+
                                                 </asp:DropDownList>
                                                 <asp:TextBox ID="txtCoaWhatsappNo" MaxLength="18" onkeyup="validatePhoneNumber('txtCoaWhatsappNo','txtcoatxtmobilenumber1','chkSameasWhatsapp1')" ClientIDMode="Static" class="form-control input-sm validPhoneNumber" runat="server"></asp:TextBox>
 
@@ -878,7 +1015,7 @@
                                                 <i class="bi bi-calendar-week b5-icon"></i>
                                                 <asp:TextBox ID="txtPAdate" ClientIDMode="Static" class="form-control input-sm " autocomplete="off" placeholder="" runat="server"></asp:TextBox>
                                                 <div class="btn-view-pop clearBtn">
-                                                    <i class="bi bi-x" onclick="clearTextBox('txtPAdate')">Remove</i>
+                                                    <i class="bi bi-x" onclick="clearTextBox('txtPAdate')">Clear</i>
                                                 </div>
                                             </div>
                                         </div>
@@ -1084,7 +1221,7 @@
                                             <i class="bi bi-calendar-check b5-icon"></i>
                                             <asp:TextBox ID="txtBookingdate" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                             <div class="btn-view-pop clearBtn">
-                                                <i class="bi bi-x" onclick="clearTextBox('txtBookingdate')">Remove</i>
+                                                <i class="bi bi-x" onclick="clearTextBox('txtBookingdate')">Clear</i>
                                             </div>
                                         </div>
                                     </div>
@@ -1238,7 +1375,7 @@
                                             <i class="bi bi-calendar2-plus b5-icon"></i>
                                             <asp:TextBox ID="txtRegistrationdate" ClientIDMode="Static" class="form-control input-sm" runat="server"></asp:TextBox>
                                             <div class="btn-view-pop clearBtn">
-                                                <i class="bi bi-x" onclick="clearTextBox('txtRegistrationdate')">Remove</i>
+                                                <i class="bi bi-x" onclick="clearTextBox('txtRegistrationdate')">Clear</i>
                                             </div>
                                         </div>
                                     </div>
@@ -1891,11 +2028,6 @@
                         ValidatorEnable(reqReference, false);
                     }
                 }
-                else {
-                    //reqReference.style.display = 'none';   
-                    //ValidatorEnable(reqReference, false);
-                }
-
             }
             else {
                 //alert("alert !=10");
@@ -1908,8 +2040,7 @@
             }
 
 
-
-
+            var flag2;
 
             document.querySelectorAll(".validPhoneNumber").forEach(function (phoneInput) {
                 var phoneId = phoneInput.id.replace("txt", "ddl");
@@ -1917,40 +2048,67 @@
                 var errorLabel = document.getElementById(phoneInput.id.replace("txt", "lbl"));
 
                 var regexPatterns = {
-                    "+91": { regex: /^[6-9]\d{9}$/, format: "10 digits number (6-9 start)" }, // India
+                    "+91": { regex: /^[6-9]\d{9}$/, format: "10 digits (starts with 6-9)" }, // India
                     "+1": { regex: /^\d{10}$/, format: "10 digits (e.g., 1234567890)" }, // USA
-                    "+44": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 07123456789)" }, // UK
+                    "+44": { regex: /^\d{10,11}$/, format: "10 or 11 digits (e.g., 07123456789)" }, // UK
                     "+61": { regex: /^\d{9}$/, format: "9 digits (e.g., 412345678)" }, // Australia
                     "+971": { regex: /^\d{9}$/, format: "9 digits (e.g., 501234567)" }, // UAE
-                    "+81": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 9012345678)" }, // Japan
-                    "+49": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 15123456789)" }, // Germany
+                    "+81": { regex: /^\d{10,11}$/, format: "10 or 11 digits (e.g., 9012345678)" }, // Japan
+                    "+49": { regex: /^\d{10,11}$/, format: "10 or 11 digits (e.g., 15123456789)" }, // Germany
                     "+33": { regex: /^\d{9}$/, format: "9 digits (e.g., 612345678)" }, // France
                     "+86": { regex: /^\d{11}$/, format: "11 digits (e.g., 13812345678)" }, // China
                     "+7": { regex: /^\d{10}$/, format: "10 digits (e.g., 9123456789)" }, // Russia
-                    "+55": { regex: /^\d{10, 11}$/, format: "10 or 11 digits (e.g., 11987654321)" }, // Brazil
+                    "+55": { regex: /^\d{10,11}$/, format: "10 or 11 digits (e.g., 11987654321)" }, // Brazil
                     "+27": { regex: /^\d{9}$/, format: "9 digits (e.g., 721234567)" }, // South Africa
-                    "+39": { regex: /^\d{9, 10}$/, format: "9 or 10 digits (e.g., 3123456789)" }, // Italy
+                    "+39": { regex: /^\d{9,10}$/, format: "9 or 10 digits (e.g., 3123456789)" }, // Italy
                     "+34": { regex: /^\d{9}$/, format: "9 digits (e.g., 612345678)" }, // Spain
-                    "+62": { regex: /^\d{9, 10}$/, format: "9 or 10 digits (e.g., 8123456789)" }, // Indonesia
+                    "+62": { regex: /^\d{9,10}$/, format: "9 or 10 digits (e.g., 8123456789)" }, // Indonesia
                     "+92": { regex: /^\d{10}$/, format: "10 digits (e.g., 3123456789)" }, // Pakistan
                     "+880": { regex: /^\d{10}$/, format: "10 digits (e.g., 1712345678)" }, // Bangladesh
                     "+90": { regex: /^\d{10}$/, format: "10 digits (e.g., 5012345678)" }, // Turkey
                     "+20": { regex: /^\d{10}$/, format: "10 digits (e.g., 1012345678)" }, // Egypt
-                    "+65": { regex: /^\d{8}$/, format: "8 digits (e.g., 81234567)" },
+                    "+94": { regex: /^\d{9}$/, format: "9 digits (e.g., 712345678)" }, // Sri Lanka
+                    "+66": { regex: /^\d{9}$/, format: "9 digits (e.g., 812345678)" }, // Thailand
+                    "+82": { regex: /^\d{9,10}$/, format: "9 or 10 digits (e.g., 1023456789)" }, // South Korea
+                    "+98": { regex: /^\d{10}$/, format: "10 digits (e.g., 9123456789)" }, // Iran
+                    "+963": { regex: /^\d{9}$/, format: "9 digits (e.g., 912345678)" }, // Syria
+                    "+968": { regex: /^\d{8}$/, format: "8 digits (e.g., 90123456)" }, // Oman
+                    "+974": { regex: /^\d{8}$/, format: "8 digits (e.g., 31234567)" }, // Qatar
+                    "+852": { regex: /^\d{8}$/, format: "8 digits (e.g., 61234567)" }, // Hong Kong
+                    "+853": { regex: /^\d{8}$/, format: "8 digits (e.g., 61234567)" }, // Macau
+                    "+60": { regex: /^\d{9,10}$/, format: "9 or 10 digits (e.g., 1234567890)" }, // Malaysia
+                    "+48": { regex: /^\d{9}$/, format: "9 digits (e.g., 512345678)" }, // Poland
+                    "+46": { regex: /^\d{9}$/, format: "9 digits (e.g., 701234567)" }, // Sweden
+                    "+31": { regex: /^\d{9}$/, format: "9 digits (e.g., 612345678)" }, // Netherlands
+                    "+32": { regex: /^\d{9}$/, format: "9 digits (e.g., 412345678)" }, // Belgium
+                    "+43": { regex: /^\d{9}$/, format: "9 digits (e.g., 660123456)" }, // Austria
+                    "+351": { regex: /^\d{9}$/, format: "9 digits (e.g., 912345678)" }, // Portugal
+                    "+386": { regex: /^\d{8}$/, format: "8 digits (e.g., 31234567)" }, // Slovenia
+                    "+63": { regex: /^\d{10}$/, format: "10 digits (e.g., 9123456789)" }, // Philippines
+                    "+30": { regex: /^\d{10}$/, format: "10 digits (e.g., 6912345678)" }, // Greece
+                    "+64": { regex: /^\d{9,10}$/, format: "9 or 10 digits (e.g., 2123456789)" }, // New Zealand
+                    "+1758": { regex: /^\d{7}$/, format: "7 digits (e.g., 4567890)" }, // Saint Lucia
+                    "+972": { regex: /^\d{9}$/, format: "9 digits (e.g., 521234567)" } // Israel
                 };
 
                 if (phoneInput.value !== '') {
                     if (!regexPatterns[countryCode] || !regexPatterns[countryCode].regex.test(phoneInput.value)) {
                         errorLabel.innerText = `Enter a valid number. Format: ${regexPatterns[countryCode]?.format || "Invalid format"}`;
-                        flag = false;
+                        flag2 = false;
                     } else {
                         errorLabel.innerText = "";
+                        flag2 = true;
                     }
                 }
             });
 
-
-            /* alert(flag);*/
+            if (flag2 == true) {
+                flag = Page_ClientValidate('CusVal');
+            }
+            else {
+                flag = false;
+            }
+            //alert(flag);
             return flag;
         }
     </script>

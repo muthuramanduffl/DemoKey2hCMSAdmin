@@ -243,7 +243,7 @@
 
                                             </div>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator ClientIDMode="Static" EnableClientScript="true" SetFocusOnError="true" ControlToValidate="txtcarparking1" ValidationExpression="^[A-Za-z0-9\-]+$" Display="Dynamic" ValidationGroup="projval" ID="RequiredFieldValidator13" runat="server" ErrorMessage="Enter car parking slot 1"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ClientIDMode="Static" EnableClientScript="true" SetFocusOnError="true" ControlToValidate="txtcarparking1" Display="Dynamic" ValidationGroup="projval" ID="RequiredFieldValidator13" runat="server" ErrorMessage="Enter car parking slot 1"></asp:RequiredFieldValidator>
 
                                             </span>
                                         </div>
@@ -321,30 +321,41 @@
             var divcarp2 = document.getElementById('<%= divcarp2.ClientID %>');
             var divcarp3 = document.getElementById('<%= divcarp3.ClientID %>');
 
+
+
+            //RequiredFieldValidator13
+
             // Add an onchange event listener
             dropdown.addEventListener('change', function () {
-                var selectedValue = dropdown.value; // Get the selected value 
+               
+                var selectedValue = dropdown.value; // Get the selected value
+
+              
+
+
+
                 if (selectedValue === "1") {
                     divcarp1.style.display = 'block'; 
                     divcarp2.style.display = 'none';  
                     divcarp3.style.display = 'none'; 
-                    ValidatorEnable(req1, true); 
+                    req1.style.display = 'none'; 
+                   // ValidatorEnable(req1, true); 
                     ValidatorEnable(req2, false);
                     ValidatorEnable(req3, false); 
                 } else if (selectedValue === "2") {
                     divcarp1.style.display = 'block'; 
                     divcarp2.style.display = 'block'; 
                     divcarp3.style.display = 'none'; 
-                    ValidatorEnable(req1, true); 
-                    ValidatorEnable(req2, true);
+                  //  ValidatorEnable(req1, true); 
+                  //  ValidatorEnable(req2, true);
                     ValidatorEnable(req3, false); 
                 } else if (selectedValue === "3") {
                     divcarp1.style.display = 'block'; 
                     divcarp2.style.display = 'block'; 
                     divcarp3.style.display = 'block';  
-                    ValidatorEnable(req1, true); 
-                    ValidatorEnable(req2, true);
-                    ValidatorEnable(req3, true); 
+                  //  ValidatorEnable(req1, true); 
+                  //  ValidatorEnable(req2, true);
+                   // ValidatorEnable(req3, true); 
                 } else {
                     // Hide all divs if no valid selection
                     divcarp1.style.display = 'none';
@@ -496,7 +507,7 @@
         });
     </script>
      
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
         function keyupFunction(inputId) {
             var projectName = $('#' + inputId).val();
             var messageDiv = $('#projectValidationMessage');
@@ -535,6 +546,6 @@
             //    messageDiv.text("Invalid ClientID.").css("color", "red");
             //}
         }
-    </script>
+    </script>--%>
 </asp:Content>
 

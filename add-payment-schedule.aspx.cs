@@ -18,6 +18,7 @@ public partial class adminkey2hcom_AddPaymentSchedule : System.Web.UI.Page
     public static string Userid;
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         Userid = CU.GetClientLoginID();
 
         if (!IsPostBack)
@@ -330,8 +331,8 @@ public partial class adminkey2hcom_AddPaymentSchedule : System.Web.UI.Page
         } 
         if (string.IsNullOrEmpty(labelerror))
         {
-            if (Request.QueryString["PSID"] == null)
-            {
+            //if (Request.QueryString["PSID"] == null)
+            //{
                 int ret = KCD.CheckFlatCostDetailsExistAllCostLabelParameterByFlatID(Convert.ToInt32(ddlFlatNumber.SelectedValue));
                 if (ret != 2)
                 {
@@ -408,43 +409,7 @@ public partial class adminkey2hcom_AddPaymentSchedule : System.Web.UI.Page
                             </script>");
                     ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
                 }
-            }
-            else
-            {
-                int ret = 0;
-                DataTable dt = KD.ViewFilterCustomerPaymentSchedule("", "", "", "");
-                if (dt.Rows.Count > 1)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                     "Swal.fire({ " +
-                        "    title: 'Payment schedule details updated successfully', " +
-                        "    icon: 'success', " +
-                        "    allowOutsideClick: 'true', " +
-                        "    customClass: { " +
-                        "        confirmButton: 'handle-btn-success', " +
-                        "        icon: 'handle-icon-clr' " +
-                        "    } " +
-                        "}).then((result) => { " +
-                        "        window.location.href = 'view-payment-schedule.aspx'; " + 
-                        "});",
-                        true); 
-                }
-                else
-                {
-                    string script = string.Format(@"  <script>
-                        Swal.fire({{
-                            title: 'Payment schedule details couldn't be updated due to a server or network issue. Please try again in some time!',
-                            confirmButtonText: 'OK',
-                            customClass: {{
-                                confirmButton: 'handle-btn-success'
-                            }}
-                        }}).then((result) => {{
-                                window.location.href = 'add-payment-schedule.aspx?FlatID={0}'; 
-                        }});
-                    </script>", Convert.ToString(Request.QueryString["FlatID"]));
-                    ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
-                }
-            }
+            //}
         }
         else
         {
