@@ -41,6 +41,7 @@ public partial class adminkey2hcom_AddCustomizationDemend : System.Web.UI.Page
                 int flatIdValue = 0;
                 if (int.TryParse(Request.QueryString["FlatID"], out flatIdValue))
                 {
+                    lblDisplaytext.Text = "Edit Customization Demand";
                     if (!IsPostBack)
                     {
                         BindFlatID(flatIdValue.ToString());
@@ -56,7 +57,7 @@ public partial class adminkey2hcom_AddCustomizationDemend : System.Web.UI.Page
             else
             { 
                 divrptCustomers.Style["Display"] = "none";
-                lblDisplaytext.Text = "Add Customization";
+                lblDisplaytext.Text = "Add Customization Demand";
 
                 // SetDropdownAttributes(false);
             }

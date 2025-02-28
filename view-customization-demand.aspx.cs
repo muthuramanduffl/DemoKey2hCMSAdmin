@@ -167,7 +167,7 @@ public partial class adminkey2hcom_ViewCustomizationDemand : System.Web.UI.Page
             {
                 blockID = ddlblocknumber.SelectedValue;
             }
-             dt = KCZWD.ViewAllFlatCustomerDemands(projectid, blockID, FlatID, "", "", clientId);
+            dt = KCZWD.ViewAllFlatCustomerDemands(projectid, blockID, FlatID, "", "", clientId);
         }
         catch (Exception ex)
         {
@@ -196,12 +196,12 @@ public partial class adminkey2hcom_ViewCustomizationDemand : System.Web.UI.Page
             {
                 int ID = Convert.ToInt32(e.CommandArgument);
                 int ret = 0;
-                ret = KD.DeleteAllFlatCostDetails(ID);
-                if (ret >= 1)
+                ret = KCZWD.DeleteAllCustomisationCustomisationDemandsByFlatIDAndAddedBy(ID, clientId);
+                if (ret == -1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                      "Swal.fire({ " +
-                     "  title: 'Customization work details has been deleted', " +
+                     "  title: 'Customization demand details has been deleted', " +
                      "  confirmButtonText: 'OK', " +
                      "  customClass: { " +
                      "    confirmButton: 'handle-btn-success' " +
@@ -214,7 +214,7 @@ public partial class adminkey2hcom_ViewCustomizationDemand : System.Web.UI.Page
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                       "Swal.fire({ " +
-                      "  title: 'Your customization work details not deleted. please try again', " +
+                      "  title: 'Your customization demand details not deleted. please try again', " +
                       "  confirmButtonText: 'OK' " +
                      "  customClass: { " +
                      "    confirmButton: 'handle-btn-success' " +
@@ -226,7 +226,7 @@ public partial class adminkey2hcom_ViewCustomizationDemand : System.Web.UI.Page
             }
             catch (Exception ex)
             {
-                CI.StoreExceptionMessage("view-customization-work.aspx", "Repeater1_ItemCommand Delete", ex.Message, "Not Fixed");
+                CI.StoreExceptionMessage("view-customization-demand.aspx", "Repeater1_ItemCommand Delete", ex.Message, "Not Fixed");
             }
         }
     }

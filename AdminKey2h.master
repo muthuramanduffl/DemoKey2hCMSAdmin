@@ -251,13 +251,13 @@
                                 <li id="subMenuaddscreenpage" runat="server">
                                     <a href="add-project-home-screen.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
-                                        Update project home screen
+                                        Update Project Home Screen
                                     </a>
                                 </li>
                                 <li id="subMenuviewscreenpage" runat="server">
                                     <a href="view-project-home-screen.aspx">
                                         <i class="bi bi-kanban" aria-hidden="true"></i>
-                                        view project home screen
+                                        View Project Home Screen
                                     </a>
                                 </li>
                                 <li id="subMenuBulkFlat" runat="server">

@@ -60,7 +60,7 @@ public class Key2hCustomisationWorkApproval
                 command.Parameters.Add(new SqlParameter("@ApprovalStatus", CWA.strApprovalStatus));
                 command.Parameters.Add(new SqlParameter("@Remarks", CWA.strRemarks));
                 command.Parameters.Add(new SqlParameter("@Amount", CWA.strAmount));
-                command.Parameters.Add(new SqlParameter("@ClientApprovedstatus", "Pending"));
+                command.Parameters.Add(new SqlParameter("@ClientApprovedstatus", CWA.strClientApprovalStatus));
                 command.Parameters.Add(new SqlParameter("@ApprovedBy", "Dashboard"));
                 command.Parameters.Add(new SqlParameter("@AddedBy", CWA.strAddedBy));
                 command.Parameters.Add(new SqlParameter("@AddedDate", Utility.IndianTime));
@@ -394,7 +394,31 @@ public class Key2hCustomisationWorkApproval
         return exists;
     }
 
+    public int DeleteAllCustomisationWorkApprovalByFlatIDAndAddedBy(int FlatID, string AddedBy)
+    {
 
+
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("DeleteAllCustomisationWorkApprovalByFlatIDAndAddedBy", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@FlatID", FlatID));
+                command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
+                rowsAffected = command.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+        return rowsAffected;
+    }
 
 
 }

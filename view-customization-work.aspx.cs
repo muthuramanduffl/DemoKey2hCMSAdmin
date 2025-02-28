@@ -196,8 +196,8 @@ public partial class adminkey2hcom_ViewCustomizationWork : System.Web.UI.Page
             {
                 int ID = Convert.ToInt32(e.CommandArgument);
                 int ret = 0;
-               // ret = KCZW.DeleteFlatCustomizationWorksTitle(ID);
-                if (ret >= 1)
+                ret = KCZW.DeleteAllCustomisationWorksByFlatIDAndAddedBy(ID, clientId);
+                if (ret ==-1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                      "Swal.fire({ " +

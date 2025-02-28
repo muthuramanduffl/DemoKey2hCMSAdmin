@@ -197,8 +197,8 @@ public partial class view_customization_work_approval : System.Web.UI.Page
             {
                 int ID = Convert.ToInt32(e.CommandArgument);
                 int ret = 0;
-                ret = KCWA.DeleteCustomisationWorkApprovalByCWAIDandaddedby(Convert.ToString(ID), clientId);
-                if (ret >= 1)
+                ret = KCWA.DeleteAllCustomisationWorkApprovalByFlatIDAndAddedBy(ID, clientId);
+                if (ret == -1)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                      "Swal.fire({ " +

@@ -41,7 +41,7 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
                 ddlprojectname.DataTextField = "ProjectName";
                 ddlprojectname.DataValueField = "ProjectID";
                 ddlprojectname.DataBind();
-                ddlprojectname.Items.Insert(0, new ListItem("All", "")); 
+                ddlprojectname.Items.Insert(0, new ListItem("All", ""));
             }
             else
             {
@@ -112,7 +112,7 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
         catch (Exception ex)
         {
             CI.StoreExceptionMessage("view-customization-transaction.aspx", "ViewFlatNameByFlatID", ex.Message, "Not Fixed");
-        } 
+        }
         return Block;
     }
     public void Bind()
@@ -165,12 +165,12 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
             {
                 blockID = ddlblocknumber.SelectedValue;
             }
-            dt = KWT.ViewAllFlatCustomisationTransaction(projectid, FlatID, blockID, "","",clientId);
+            dt = KWT.ViewAllFlatCustomisationTransaction(projectid, FlatID, blockID, "", "", clientId);
         }
         catch (Exception ex)
         {
             CI.StoreExceptionMessage("view-customization-transaction.aspx", "Get", ex.Message, "Not Fixed");
-        } 
+        }
         return dt;
     }
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -190,7 +190,41 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
         }
         else if (e.CommandName == "Delete")
         {
-           
+            int ret = 0;
+            try
+            {
+                int ID = Convert.ToInt32(e.CommandArgument);
+                ret = KWT.DeleteAllCustomisationTransactionByFlatIDAndAddedBy(ID, clientId);
+                if (ret==-1)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                       "Swal.fire({ " +
+                       "  title: 'Customization transaction details has been deleted ', " +
+                       "  confirmButtonText: 'OK', " +
+                       "  customClass: { " +
+                       "    confirmButton: 'handle-btn-success' " + "  } " +
+                       "}).then((result) => { " +
+                       "   window.location.href = '" + Request.Url.AbsolutePath + "'; " +
+                       "});", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                     "Swal.fire({ " +
+                     "  title: 'Customization transaction details has been details not deleted. please try again', " +
+                     "  confirmButtonText: 'OK' " +
+                    "  customClass: { " +
+                    "    confirmButton: 'handle-btn-success' " +
+                    "  } " +
+                     "}).then((result) => { " +
+                     "  window.location.href = '" + Request.Url.AbsolutePath + "'; " +
+                     "});", true);
+                }
+            }
+            catch (Exception ex)
+            {
+                CI.StoreExceptionMessage("view-customization-transaction.aspx", "Repeater1_ItemCommand Delete", ex.Message, "Not Fixed");
+            }
         }
     }
     protected void ddlprojectname_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,7 +239,7 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
         {
             if (!string.IsNullOrEmpty(ddlprojectname.SelectedValue))
             {
-                DataTable DT = KB.ViewBlockbyProjectID(Convert.ToInt32(ddlprojectname.SelectedValue)); 
+                DataTable DT = KB.ViewBlockbyProjectID(Convert.ToInt32(ddlprojectname.SelectedValue));
                 if (DT != null && DT.Rows.Count > 0)
                 {
                     ddlblocknumber.DataSource = DT;
@@ -242,14 +276,14 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
         {
             if (!string.IsNullOrEmpty(ddlblocknumber.SelectedValue))
             {
-                DataTable DT = KF.ViewAllflatByBlockID(Convert.ToInt32(ddlblocknumber.SelectedValue)); 
+                DataTable DT = KF.ViewAllflatByBlockID(Convert.ToInt32(ddlblocknumber.SelectedValue));
                 if (DT != null && DT.Rows.Count > 0)
                 {
                     ddflatNumber.DataSource = DT;
                     ddflatNumber.DataTextField = "FlatName";
                     ddflatNumber.DataValueField = "FlatID";
                     ddflatNumber.DataBind();
-                    ddflatNumber.Items.Insert(0, new ListItem("All", "")); 
+                    ddflatNumber.Items.Insert(0, new ListItem("All", ""));
                 }
                 else
                 {
@@ -282,6 +316,6 @@ public partial class adminkey2hcom_ViewCustomizationTransaction : System.Web.UI.
     {
         ddlprojectname.SelectedIndex = 0;
         Bindblock();
-        BindFlat(); 
+        BindFlat();
     }
 }

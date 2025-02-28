@@ -212,17 +212,10 @@ public partial class addprojecthomescreen : System.Web.UI.Page
 
         if (string.IsNullOrEmpty(labelerror))
         {
-
-
             int ret = 0;
             ret = Updateprojecthomescreen();
             if (ret == 1)
-            {
-             
-
-
-
-
+            {            
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
                 "Swal.fire({ " +
                   "  title: 'Project home screen details updated successfully', " +
@@ -235,8 +228,6 @@ public partial class addprojecthomescreen : System.Web.UI.Page
                   "}).then((result) => { " +
                   "  window.location.href = '" + "view-project-home-screen.aspx" + "'; " +
                   "});", true);
-
-
             }
             else
             {
@@ -253,9 +244,7 @@ public partial class addprojecthomescreen : System.Web.UI.Page
 </script>");
 
                 ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, false);
-
             }
-
         }
         else
         {

@@ -786,12 +786,23 @@ public partial class adminkey2hcom_AddCustomizationTransaction : System.Web.UI.P
         try
         {
             string cID = string.Empty;
-            string clientId = HttpContext.Current.Session["clientId"] as string;
-            if (!string.IsNullOrEmpty(clientId))
+            HttpCookie LoginIDCookie = HttpContext.Current.Request.Cookies["clientid"];
+            if (LoginIDCookie != null)
             {
-                cID = clientId;
+                if (!string.IsNullOrEmpty(LoginIDCookie.Value) && LoginIDCookie.Value.Contains("clientid="))
+                {
+                    cID = LoginIDCookie.Value.Replace("clientid=", "");
+                }
+                else
+                {
+                    HttpContext.Current.Response.Redirect("index.aspx");
+                }
             }
-            
+            else
+            {
+                HttpContext.Current.Response.Redirect("index.aspx", false);
+            }
+
             double numericValue = 0;
             int estimateAmount = 0;
             

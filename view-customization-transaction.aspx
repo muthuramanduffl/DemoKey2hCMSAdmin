@@ -167,7 +167,7 @@
                                                             CommandArgument='<%# DataBinder.Eval(Container.DataItem, "FlatID") %>'>
                                                             <i class="bi bi-pencil-square b5-icon-et-dlt"></i>
                                                         </asp:LinkButton>
-                                                        <a class="swtAltCancel" style="display:none">
+                                                        <a class="swtAltCancel">
                                                             <i class="dlt-img bi bi-trash b5-icon-et-dlt" data-bs-toggle="tooltip" title="Delete"></i>
                                                         </a>
                                                         <asp:LinkButton ID="LinkButton2" CausesValidation="false" runat="server" class="dlt-img hidden" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("FlatID") %>' Style="display: none">

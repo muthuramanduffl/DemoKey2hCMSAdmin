@@ -169,4 +169,31 @@ public class Key2hcustomizationdemend
         return rowaffected;
     }
 
+
+    public int DeleteAllCustomisationCustomisationDemandsByFlatIDAndAddedBy(int FlatID, string AddedBy)
+    {
+
+
+        string connetionString = null;
+        SqlConnection cnn;
+        connetionString = GetSqlConnection();
+        cnn = new SqlConnection(connetionString);
+        int rowsAffected = 0;
+        try
+        {
+            using (SqlCommand command = new SqlCommand("DeleteAllCustomisationCustomisationDemandsByFlatIDAndAddedBy", cnn))
+            {
+                cnn.Open();
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@FlatID", FlatID));
+                command.Parameters.Add(new SqlParameter("@AddedBy", AddedBy));
+                rowsAffected = command.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+        return rowsAffected;
+    }
+
 }

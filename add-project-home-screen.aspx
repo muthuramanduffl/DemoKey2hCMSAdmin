@@ -243,7 +243,7 @@
                                                 <input type="hidden" id="hdnsplacescreen" clientidmode="Static" runat="server" class="ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ClientIDMode="Static" ControlToValidate="uploadflashscreen" ValidationGroup="projval" runat="server" ErrorMessage="Upload flash Screen"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Display="Dynamic" ClientIDMode="Static" ControlToValidate="uploadflashscreen" ValidationGroup="projval" runat="server" ErrorMessage="Upload flash Screen"></asp:RequiredFieldValidator>
                                                 <asp:Label ID="lblsplacescreen" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="Div1" style="display: none">

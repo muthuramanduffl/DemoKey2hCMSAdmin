@@ -126,7 +126,7 @@ public partial class adminkey2hcom_ViewDemand : System.Web.UI.Page
             DataTable dt = KC.AlreadyExistProjectdetails(Convert.ToInt32(ProjectID), Convert.ToInt32(BlockID), Convert.ToInt32(FlatID));
             if (dt != null && dt.Rows.Count > 0)
             {
-                strcustomername = dt.Rows[0]["ApplicantFirstName"].ToString() + " " + dt.Rows[0]["ApplicantLastName"].ToString();
+                strcustomername = dt.Rows[0]["ApplicantFirstName"].ToString();
             }
         }
         catch (Exception ex)

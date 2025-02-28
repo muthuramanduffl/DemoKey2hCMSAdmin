@@ -151,7 +151,7 @@ public partial class add_customization_work_approval : System.Web.UI.Page
     {
         try
         {
-            DataTable dt = KCZW.ViewAllFlatCustomizationWorks("", "", ID, "", "");
+            DataTable dt = KCWA.ViewAllFlatCustomizationWorksApproval("", "", ID, "", "");
             if (dt != null && dt.Rows.Count > 0)
             {
                 if (!string.IsNullOrEmpty(dt.Rows[0]["ProjectID"].ToString()) && dt.Rows[0]["ProjectID"] != null)
@@ -737,7 +737,7 @@ public partial class add_customization_work_approval : System.Web.UI.Page
                 KCWA.strRemarks = txtRemarks.Text;
                 KCWA.strCustomizationDetails = strfilename;
                 KCWA.strCustomizationWork = txtWorkTitle.Text;
-                KCWA.strClientApprovalStatus = "Pending";
+                KCWA.strClientApprovalStatus = ddlApprovalstatus.SelectedItem.Text;
                 KCWA.strApprovalStatus = ddlApprovalstatus.SelectedItem.Text;
                 KCWA.strFlatID = ddlFlatNumber.SelectedValue;
                 KCWA.strAmount = txtAmount.Text;

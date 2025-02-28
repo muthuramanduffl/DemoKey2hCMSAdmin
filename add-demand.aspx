@@ -108,7 +108,7 @@
                                                     </div>
                                                     <span class="error">
                                                         <asp:Label ID="lbldoesnotexist" runat="server" Text="" Display="Dynamic"></asp:Label>
-                                                        <asp:LinkButton ID="linkbtnGoPS" runat="server" Style="Display:none" OnClick="linkbtnGoPS_Click">                                                         
+                                                        <asp:LinkButton ID="linkbtnGoPS" runat="server" Style="display: none" OnClick="linkbtnGoPS_Click">                                                         
                                                             Click here
                                                         </asp:LinkButton>
                                                     </span>
@@ -163,20 +163,26 @@
                                                     <div class="input-icon input-icon-sm right">
                                                         <label>Upload <span class="text-danger">*</span></label>
                                                         <i class="bi bi-file-earmark-zip b5-icon"></i>
-                                                        <asp:FileUpload ID="flDemandUpload" ClientIDMode="Static" accept=".pdf" class="form-control input-sm FluploadPDF" autocomplete="off" placeholder="" runat="server" />
+                                                        <asp:FileUpload ID="flDemandUpload" ClientIDMode="Static" accept=".pdf"
+                                                            class="form-control input-sm FluploadPDF" runat="server" />
                                                         <span class="handle-file-request">(PDF file only, max size of 1500 KB)</span>
                                                     </div>
+
                                                     <asp:HiddenField ID="hdndemandUpload" runat="server" />
+
                                                     <span class="error">
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="val" Display="Dynamic"
-                                                            ControlToValidate="flDemandUpload" InitialValue="" ErrorMessage="Upload PDF"> </asp:RequiredFieldValidator>
-                                                        <asp:Label ID="lblflDemandUpload" CssClass="lblflDemandUpload " runat="server" ForeColor="#d41111" Text="" Display="Dynamic"></asp:Label>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ValidationGroup="val"
+                                                            ControlToValidate="flDemandUpload" InitialValue="" ErrorMessage="Upload PDF"> 
+                                                        </asp:RequiredFieldValidator>
+                                                        <asp:Label ID="lblflDemandUpload" ClientIDMode="Static" CssClass="lblflDemandUpload" runat="server" ForeColor="#d41111" Text="" Display="Dynamic"></asp:Label>
                                                     </span>
-                                                    <span class="error"></span>
-                                                    <div class="view-demand-upload-img view-demand-upload btn-view-pop mt-3  ViewFluploadPDF btn-view" runat="server" id="viewproscreenbtn" style="display: none">
-                                                        <i class="bi bi-eye"></i>View PDF
+
+                                                    <div class="view-demand-upload-img view-demand-upload btn-view-pop mt-3 ViewFluploadPDF btn-view"
+                                                        id="viewproscreenbtn" style="display: none">
+                                                        <i class="bi bi-eye">View PDF</i>
                                                     </div>
                                                 </div>
+
 
                                             </div>
                                             <div class="card-footer mx-2 pb-4">
@@ -217,7 +223,7 @@
                                                                     <th class="w-sno">#</th>
                                                                     <th>Payment Stages</th>
                                                                     <th>View PDF</th>
-                                                                    <th style="display:none">Action</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -242,8 +248,8 @@
                                                                     </asp:Label>
                                                                 </div>
                                                             </td>
-                                                            <td style="display:none">
-                                                                <a class="me-3 btnEdit" onclick="editRow(this)">
+                                                            <td>
+                                                                <a class="me-3 btnEdit" onclick="editRow(this)" style="display:none">
                                                                     <i class="bi bi-pencil-square b5-icon-et-dlt" data-bs-toggle="tooltip" aria-label="Edit" data-bs-original-title="Edit"></i>
                                                                 </a>
                                                                 <asp:LinkButton ID="LinkButton1" OnClientClick="updateRow(this)" CssClass="btnUpdate me-3 " CommandArgument='<%# Eval("DemandID") %>' OnCommand="LinkButton1_Click" runat="server" Style="display: none">
@@ -292,7 +298,7 @@
             </div>
         </div>
     </div>
-     
+
     <footer class="footer">
         <div class="container-fluid">
             <nav class="pull-left">
@@ -310,7 +316,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     
+
     <script type="text/javascript">
         function validatePage() {
             var flag = Page_ClientValidate('projval')
@@ -325,102 +331,111 @@
         }
     </script>
 
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            function initializeFileUpload() {
-                var fileUploader = document.querySelector('.FluploadPDF');
-                var viewLogoBtn = document.querySelector('.ViewFluploadPDF');
-                var errorLabel = document.querySelector('.lblflDemandUpload');
-                var screensrc = null;
-                var fileType = null;
 
-                if (!fileUploader || !viewLogoBtn || !errorLabel) {
+    <%--
+    <script>
+        function validatePDFUpload(fileInput) {
+            var files = fileInput.files;
+            var allowedFiles = [".pdf"]; // Only allow PDF files
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var ext = file.name.split('.').pop().toLowerCase();
+
+                if (allowedFiles.includes("." + ext)) {
+                    var size = parseFloat(file.size / 1024).toFixed(2); // Size in KB
+                    if (size > 1024) { // Check if the file size exceeds 1 MB (1024 KB)
+                        alert("File size is too high, please select a PDF smaller than 1 MB.");
+                        fileInput.value = ''; // Clear the file input
+                    } else {
+                        
+                    }
+                } else {
+                    alert("Please select a PDF file only.");
+                    fileInput.value = ''; // Clear the file input to prevent further processing
+                }
+            }
+        }
+
+      
+    </script>--%>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function initFileUpload() {
+                const fileUploader = document.getElementById('<%= flDemandUpload.ClientID %>');
+                const viewPDFBtn = document.querySelector('.ViewFluploadPDF');
+                const fileSizeErrorLabel = document.getElementById('<%= lblflDemandUpload.ClientID %>');
+
+                const maxPDFFileSize = 1024 * 1024; // 1MB for PDF
+                const allowedPDFExtensions = [".pdf"];
+                let pdfFile = null;
+
+                if (!fileUploader || !viewPDFBtn || !fileSizeErrorLabel) {
                     console.error("Required elements not found in the DOM.");
                     return;
                 }
 
-                function resetUploader() {
-                    screensrc = null;
-                    fileType = null;
-                    viewLogoBtn.style.display = 'none';
-                    errorLabel.textContent = '';
+                // File Upload Event
+                fileUploader.addEventListener('change', function (event) {
+                    if (event.target.files.length === 0) {
+                        fileSizeErrorLabel.textContent = 'No file selected!';
+                        return;
+                    }
+                    handleFileUpload(event, allowedPDFExtensions, maxPDFFileSize, viewPDFBtn, "Please select a valid PDF file.");
+                });
+
+                // Function to handle File Upload
+                function handleFileUpload(event, allowedExtensions, maxFileSize, viewBtn, errorMessage) {
+                    const file = event.target.files[0];
+                    fileSizeErrorLabel.textContent = '';
+                    viewBtn.style.display = 'none';
+
+                    if (!file) return;
+
+                    const fileExtension = `.${file.name.split('.').pop().toLowerCase()}`;
+
+                    if (!allowedExtensions.includes(fileExtension)) {
+                        fileSizeErrorLabel.textContent = errorMessage;
+                        event.target.value = ''; // Reset file input
+                        return;
+                    }
+
+                    if (file.size > maxFileSize) {
+                        fileSizeErrorLabel.textContent = `File size must be under ${maxFileSize / 1024} KB`;
+                        event.target.value = ''; // Reset file input
+                        return;
+                    }
+
+                    pdfFile = file;
+                    viewBtn.style.display = 'inline-block';
                 }
 
-                fileUploader.addEventListener('change', function (event) {
-                    var input = event.target;
-                    var file = input.files[0];
-                    var validFileType = 'application/pdf';
+                // View Button Click Event for PDF
+                viewPDFBtn.addEventListener('click', function () {
+                    if (!pdfFile) return;
 
-                    errorLabel.textContent = '';
-
-                    if (!file) {
-                        resetUploader();
-                        errorLabel.textContent = "No file selected.";
-                        return;
-                    }
-
-                    if (file.type !== validFileType) {
-                        resetUploader();
-                        errorLabel.textContent = "Invalid file type. Only PDF files are allowed.";
-                        return;
-                    }
-
-                    if (file.size > 1500 * 1024) { // 800 KB
-                        resetUploader();
-                        errorLabel.textContent = "PDF size must be less than 1500 KB";
-                        return;
-                    }
-
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        screensrc = e.target.result;
-                        fileType = file.type;
-                        viewLogoBtn.style.display = 'inline-block';
-                        viewLogoBtn.src = 'path/to/pdf-icon.png'; // Adjust this to the actual icon path
-                    };
-
-                    reader.onerror = function (err) {
-                        console.error("Error reading file:", err);
-                        resetUploader();
-                    };
-
-                    reader.readAsDataURL(file);
-                });
-
-                fileUploader.addEventListener('click', function () {
-                    resetUploader();
-                });
-
-                viewLogoBtn.addEventListener('click', function () {
-                    if (!screensrc) {
-                        errorLabel.textContent = "No file uploaded yet!";
-                        resetUploader();
-                        return;
-                    }
-
-                    if (fileType === 'application/pdf') {
-                        var newWindow = window.open('', '_blank');
-                        if (newWindow) {
-                            newWindow.document.write(`
-                        <html>
-                            <head><title>PDF Preview</title></head>
-                            <body style="margin: 0;">
-                                <embed src="${screensrc}" width="100%" height="100%">
-                            </body>
-                        </html>
-                    `);
-                            newWindow.document.close();
-                        } else {
-                            alert('Popup blocked! Please allow popups for this website.');
-                        }
-                    }
+                    const pdfBlob = new Blob([pdfFile], { type: "application/pdf" });
+                    const pdfURL = URL.createObjectURL(pdfBlob);
+                    window.open(pdfURL, "_blank");
                 });
             }
 
-            initializeFileUpload();
-        });
+            // Initialize on page load
+            initFileUpload();
 
+            // Reinitialize after every partial postback inside UpdatePanel
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+                initFileUpload();
+            });
+        });
     </script>
+
+
+
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
@@ -433,7 +448,7 @@
             if (!fileUploaders || !viewLogoBtns || !errorLabels) {
                 console.error("Required elements not found in the DOM.");
                 return;
-            } 
+            }
             fileUploaders.forEach(function (fileUploader, index) {
 
                 fileUploader.addEventListener('change', function (event) {
@@ -442,33 +457,33 @@
                     var validFileType = 'application/pdf';
                     var viewLogoBtn = viewLogoBtns[index];
                     var errorLabel = errorLabels[index];
-                    fileType[index] = file ? file.type : null; 
-                    errorLabel.textContent = ''; 
+                    fileType[index] = file ? file.type : null;
+                    errorLabel.textContent = '';
                     if (!file) {
                         resetUploader(viewLogoBtn, errorLabel, index);
                         errorLabel.textContent = "No file selected.";
                         return;
-                    } 
+                    }
                     if (file.type !== validFileType) {
                         resetUploader(viewLogoBtn, errorLabel, index);
                         errorLabel.textContent = "Invalid file type. Only PDF files are allowed.";
                         return;
-                    } 
+                    }
                     if (file.size > 1500 * 1024) {
                         resetUploader(viewLogoBtn, errorLabel, index);
                         errorLabel.textContent = "PDF size must be less than 1500 KB";
                         return;
-                    } 
+                    }
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         screensrc[index] = e.target.result;
                         viewLogoBtn.style.display = 'inline-block';
                         viewLogoBtn.src = 'path/to/pdf-icon.png';
-                    }; 
+                    };
                     reader.onerror = function (err) {
                         console.error("Error reading file:", err);
                         screensrc[index] = null;
-                    }; 
+                    };
                     reader.readAsDataURL(file);
                 });
 
@@ -483,7 +498,7 @@
                         errorLabel.textContent = "No file uploaded yet!";
                         resetUploader(viewLogoBtns[index], errorLabel, index);
                         return;
-                    } 
+                    }
                     if (fileType[index] === 'application/pdf') {
                         var newWindow = window.open('', '_blank');
                         if (newWindow) {
@@ -516,9 +531,9 @@
 
     <script type="text/javascript">
         function editRow(btn) {
-            const row = btn.closest('tr'); 
+            const row = btn.closest('tr');
             row.querySelector('.btnEdit').style.display = 'none';
-            row.querySelector('.view-pdf').style.display = 'none'; 
+            row.querySelector('.view-pdf').style.display = 'none';
             row.querySelector('.btnUpdate').style.display = 'inline';
             row.querySelector('.btnCancel').style.display = 'inline';
             row.querySelector('.upload-pdf').style.display = 'inline';
@@ -530,13 +545,13 @@
             row.querySelector('.btnEdit').style.display = 'inline';
             row.querySelector('.btnUpdate').style.display = 'none';
             row.querySelector('.btnCancel').style.display = 'none';
-            row.querySelector('.upload-pdf').style.display = 'none'; 
+            row.querySelector('.upload-pdf').style.display = 'none';
             const errorLabel = row.querySelector('.error-label');
             if (errorLabel) {
                 errorLabel.textContent = '';
             }
         }
-         
+
         function updateRow(btn) {
             //Swal.fire({
             //    title: 'Demand details updated successfully',
@@ -553,7 +568,7 @@
             row.querySelector('.btnCancel').style.display = 'none';
             row.querySelector('.upload-pdf').style.display = 'none';
         }
-         
+
         function deleteRow(btn) {
             Swal.fire({
                 title: 'Are you sure you want to delete?',
@@ -566,15 +581,15 @@
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const row = btn.closest('tr'); 
+                    const row = btn.closest('tr');
                     if (!row) {
                         alert('Button is not inside a <tr> element!');
                         return;
-                    } 
+                    }
                     const hiddenFieldDemandID = row.querySelector('#hdnid');
                     const demandID = hiddenFieldDemandID ? hiddenFieldDemandID.value : '';
                     const ddlFlat = document.getElementById('<%= ddlFlatNumber.ClientID %>');
-                    var Selected = ddlFlat.value; 
+                    var Selected = ddlFlat.value;
                     if (!demandID) {
                         alert('Missing necessary data (DemandID)!');
                         return;
@@ -582,7 +597,7 @@
                     if (!Selected) {
                         alert('Missing flat number!');
                         return;
-                    } 
+                    }
                     $.ajax({
                         type: 'POST',
                         url: 'add-demand.aspx/DeleteDemand',
@@ -592,7 +607,7 @@
                         success: function (response) {
                             console.log('Success callback triggered');
                             row.remove();
-                            loadRepeaterData(Selected); 
+                            loadRepeaterData(Selected);
                             const table = document.getElementById('tblCustomers');
                             if (table) {
                                 const rows = table.querySelectorAll('tbody tr');
@@ -604,7 +619,7 @@
                                 }
                             } else {
                                 console.error('Table with ID tblCustomers not found.');
-                            } 
+                            }
                             //Swal.fire({
                             //    title: 'Demand details have been deleted as requested', confirmButtonText: 'Ok',
                             //    customClass: {
@@ -617,19 +632,19 @@
                             console.error('AJAX Error:', textStatus, errorThrown);
                             alert('Error deleting row!');
                         }
-                    }); 
+                    });
                 } else {
                     return;
                 }
             });
         }
-         
+
         function checkRowCountAndToggleDisplay() {
             var dropflatname = document.getElementById('<%= ddlFlatNumber.ClientID %>');
             if (!dropflatname) {
                 alert('Dropdown not found!');
                 return;
-            } 
+            }
             const ddlblock = document.getElementById('<%= ddlBlockNumber.ClientID %>');
             const ddlproject = document.getElementById('<%= ddlProName.ClientID %>');
             const repeaterContainer = document.getElementById('<%= divDemandList.ClientID %>').closest('div');
@@ -637,7 +652,7 @@
             if (!selectedValue) {
                 repeaterContainer.style.display = 'none';
                 return;
-            } 
+            }
             $.ajax({
                 type: 'POST',
                 url: 'add-demand.aspx/GetRowCount',
@@ -671,8 +686,8 @@
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
             checkRowCountAndToggleDisplay();
         });
-         
-</script>
+
+    </script>
 
     <script type="text/javascript">
         function loadRepeaterData(selectedValue) {
@@ -731,7 +746,7 @@
                     alert('Error loading repeater data!');
                 }
             });
-        }  
+        }
     </script>
 
     <script type="text/javascript">
@@ -744,7 +759,7 @@
         });
 
         function attachSweetAlert() {
-            const cancelButton = document.querySelector('.swtAltCancel-Refresh'); 
+            const cancelButton = document.querySelector('.swtAltCancel-Refresh');
             if (cancelButton) {
                 cancelButton.addEventListener('click', function () {
                     Swal.fire({

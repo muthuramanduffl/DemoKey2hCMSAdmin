@@ -597,6 +597,9 @@
                             if (!repeaterBody) {
                                 return;
                             }
+
+                         
+
                             repeaterBody.innerHTML = ''; 
                             const fragment = document.createDocumentFragment(); 
                             data.forEach((item, index) => {
