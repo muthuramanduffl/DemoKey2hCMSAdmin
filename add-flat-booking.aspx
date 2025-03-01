@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <link rel="stylesheet" href="assets/css/dtsel.css" />
+    <link rel="stylesheet" href="assets/css/demo.css" />
     <style>
         .btn-view-pop {
             top: 5px;
@@ -564,8 +565,8 @@
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivAadhar" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
-                                                <i class="bi bi-x"></i>Remove 
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
+                                                <i class="bi bi-x">Remove </i>
                                             </div>
                                         </div>
                                         <div class="col-sm-4 col-xl-3 pt-3">
@@ -586,7 +587,7 @@
                                             <div class="view-pan btn-view btn-view-pop" runat="server" clientidmode="Static" id="DivPan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
 
@@ -962,7 +963,7 @@
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="divaadhar2" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -984,7 +985,7 @@
                                             <div class="view-pan btn-view btn-view-pop" runat="server" clientidmode="Static" id="divcoappliantpan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -1034,7 +1035,7 @@
                                             <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="divpaaadhar" style="display: none">
                                                 <i class="bi bi-eye"></i>View Aadhar Card
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -1055,7 +1056,7 @@
                                             <div class="view-pan btn-view btn-view-pop" clientidmode="Static" runat="server" id="divpapan" style="display: none">
                                                 <i class="bi bi-eye"></i>View PAN Card
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -1277,7 +1278,7 @@
                                         <div class="view-aadhar btn-view btn-view-pop" clientidmode="Static" runat="server" id="div1" style="display: none">
                                             <i class="bi bi-eye"></i>View 
                                         </div>
-                                        <div class="btn-view-pop btn-remove" style="display: none;">
+                                        <div class="btn-view-pop btn-remove  align-t-10" style="display: none;">
                                             <i class="bi bi-x"></i>Remove 
                                         </div>
                                     </div>
@@ -2505,6 +2506,7 @@
                 });
 
                 viewLogoBtns[index].addEventListener('click', function () {
+                   
                     if (!screensrc[index]) {
                         errorLabels[index].textContent = "No file uploaded yet!";
                         resetUploader(viewLogoBtns[index], removeBtns[index], errorLabels[index], index);
@@ -2540,22 +2542,24 @@
                 });
             });
 
-            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
+            function resetUploader(viewLogoBtn, removeBtn, errorLabel, index) {
                 screensrc[index] = null;
                 document.querySelectorAll('.file-upload')[index].value = '';
                 viewLogoBtn.src = '';
                 viewLogoBtn.style.display = 'none';
+                removeBtn.innerHTML = '<i class="bi bi-x"></i> Remove'; 
+
                 removeBtn.style.display = 'none';
+
                 errorLabel.textContent = '';
-                //   console.log("Reset uploader, hiding remove button.");
 
                 if (index === 0) {
-
                     document.getElementById('hdnApplicantAadhar').value = '';
                 } else if (index === 1) {
                     document.getElementById('hdnApplicantPAN').value = '';
                 }
             }
+
         });
 
         window.bindImageToPreview = bindImageToPreview;

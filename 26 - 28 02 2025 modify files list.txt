@@ -1,0 +1,75 @@
+Customization-related Files:
+
+add-customization-demend.aspx
+add-customization-demend.aspx.cs
+add-customization-transaction.aspx
+add-customization-transaction.aspx.cs
+add-customization-work-approval.aspx
+add-customization-work-approval.aspx.cs
+view-customization-demand.aspx
+view-customization-demand.aspx.cs
+view-customization-transaction.aspx
+view-customization-transaction.aspx.cs
+view-customization-work-approval.aspx
+view-customization-work-approval.aspx.cs
+view-customization-work.aspx
+view-customization-work.aspx.cs
+
+Demand and Payment Files:
+add-demand.aspx
+add-demand.aspx.cs
+add-payment-transaction.aspx
+add-payment-transaction.aspx.cs
+view-demand.aspx
+view-demand.aspx.cs
+
+Project Home Screen Files:
+add-project-home-screen.aspx
+add-project-home-screen.aspx.cs
+view-project-home-screen.aspx
+view-project-home-screen.aspx.cs
+
+Admin Files:
+AdminKey2h.master
+AdminKey2h.master.cs
+
+Amenities and Cost Details Files:
+add-amenities.aspx
+add-amenities.aspx.cs
+add-cost-details.aspx
+add-cost-details.aspx.cs
+
+Flat Booking and Quality Reports Files:
+add-flat-booking.aspx
+add-flat-booking.aspx.cs
+add-flat-quality-reports.aspx
+add-flat-quality-reports.aspx.cs
+add-flat.aspx
+add-flat.aspx.cs
+view-flat-booking.aspx
+view-flat-booking.aspx.cs
+add-quality-reports.aspx
+add-quality-reports.aspx.cs
+
+
+Payment Schedule Files:
+add-payment-schedule.aspx
+add-payment-schedule.aspx.cs
+
+Completion.aspx
+Completion.aspx.cs
+
+
+Class Files:
+Key2hCustomizationTransaction.cs
+Key2hcustomizationdemend.cs
+Key2hProject.cs
+Key2hAmenities.cs
+
+
+
+Web config file.
+
+
+
+

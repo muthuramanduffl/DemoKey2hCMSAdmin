@@ -20,7 +20,7 @@ span, p, th, td, div{font-family: Oswald, sans-serif;} */
 	border-bottom-left-radius: 5px;
 	transition: all .5s;
 }
-
+.align-t-10{top:4px !important;}
 .custom-template.open {
 	right: 0px;
 }

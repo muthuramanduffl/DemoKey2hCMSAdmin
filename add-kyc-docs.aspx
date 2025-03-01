@@ -675,7 +675,10 @@
 
             if (viewLogoBtns[index] && removeBtns[index] && fileInputs[index]) {
                 viewLogoBtns[index].style.display = 'none';
+                removeBtns[index].innerHTML = '<i class="bi bi-x"></i> Remove';
                 removeBtns[index].style.display = 'none';
+               
+
                 fileInputs[index].value = ''; // Reset file input
             }
         }

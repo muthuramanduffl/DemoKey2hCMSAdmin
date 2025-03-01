@@ -74,7 +74,13 @@
         .image-preview {
             transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
         }
+
+        .align-t-10 {
+            top: 4px !important;
+        }
     </style>
+    <link rel="stylesheet" href="assets/css/demo.css" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="content">
@@ -111,14 +117,14 @@
                                         <div class="col-sm-4 col-xl-3 pt-3">
                                             <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                                                 <ContentTemplate>--%>
-                                                    <div class="input-icon input-icon-sm right">
-                                                        <label>Project Name <span class="text-danger">*</span></label>
-                                                        <i class="bi bi-journal-bookmark-fill b5-icon"></i>
-                                                        <asp:DropDownList ID="ddlProName" AutoPostBack="true" OnSelectedIndexChanged="ddlProName_SelectedIndexChanged" class="bs-select form-control input-sm" runat="server">
-                                                            <asp:ListItem Value=""> </asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                <%--</ContentTemplate>
+                                            <div class="input-icon input-icon-sm right">
+                                                <label>Project Name <span class="text-danger">*</span></label>
+                                                <i class="bi bi-journal-bookmark-fill b5-icon"></i>
+                                                <asp:DropDownList ID="ddlProName" AutoPostBack="true" OnSelectedIndexChanged="ddlProName_SelectedIndexChanged" class="bs-select form-control input-sm" runat="server">
+                                                    <asp:ListItem Value=""> </asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <%--</ContentTemplate>
                                                 <Triggers>
                                                     <asp:AsyncPostBackTrigger ControlID="ddlProName" EventName="SelectedIndexChanged" />
                                                     <asp:AsyncPostBackTrigger ControlID="btnCancel" EventName="Click" />
@@ -142,12 +148,12 @@
                                                 <input type="hidden" id="hdnfluploadhighlight1" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblfluploadhighlight1" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight1" Display="Dynamic" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" id="Divhighlight1" style="display: none">
+                                            <div class="btn-view btn-view-pop align-t-10" clientidmode="Static" id="Divhighlight1" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -164,10 +170,10 @@
                                             <span class="error">
                                                 <asp:Label ID="lblfluploadhighlight2" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleDeedFinal" style="display: none">
+                                            <div class="btn-view btn-view-pop align-t-10" clientidmode="Static" runat="server" id="DivSaleDeedFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -182,12 +188,12 @@
                                                 <input type="hidden" id="hdnfluploadhighlight3" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblfluploadhighlight3" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight3" Display="Dynamic" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementDraft" style="display: none">
+                                            <div class="btn-view btn-view-pop align-t-10" clientidmode="Static" runat="server" id="DivSaleAgreementDraft" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -202,12 +208,12 @@
                                                 <input type="hidden" id="hdnfluploadhighlight4" clientidmode="Static" runat="server" class="hdnvalhiglights ermovehdnvalhiglights" value="">
                                             </div>
                                             <span class="error">
-                                                <asp:Label ID="lblfluploadhighlight4" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
+                                                <asp:Label ID="lblfluploadhighlight4" Display="Dynamic" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivSaleAgreementFinal" style="display: none">
+                                            <div class="btn-view btn-view-pop align-t-10" clientidmode="Static" runat="server" id="DivSaleAgreementFinal" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -227,7 +233,7 @@
                                             <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="DivAllotmentLetter" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x"></i>Remove 
                                             </div>
                                         </div>
@@ -246,10 +252,10 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" Display="Dynamic" ClientIDMode="Static" ControlToValidate="uploadflashscreen" ValidationGroup="projval" runat="server" ErrorMessage="Upload flash Screen"></asp:RequiredFieldValidator>
                                                 <asp:Label ID="lblsplacescreen" CssClass="lblFileUpload" runat="server" ForeColor="#d41111" Text=""></asp:Label>
                                             </span>
-                                            <div class="btn-view btn-view-pop" clientidmode="Static" runat="server" id="Div1" style="display: none">
+                                            <div class="btn-view btn-view-pop align-t-10" clientidmode="Static" runat="server" id="Div1" style="display: none">
                                                 <i class="bi bi-eye"></i>View 
                                             </div>
-                                            <div class="btn-view-pop btn-remove" style="display: none;">
+                                            <div class="btn-view-pop btn-remove align-t-10" style="display: none;">
                                                 <i class="bi bi-x">Remove</i>
                                             </div>
                                         </div>
@@ -276,22 +282,22 @@
 
 
                                     </div>
-                                   <%-- <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
+                                    <%-- <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
                                         <ContentTemplate>--%>
-                                            <div class="card-footer mx-2 pb-4">
-                                                <div class="d-flex justify-content-center">
-                                                    <asp:Button
-                                                        ID="btnSave" ClientIDMode="Static"
-                                                        runat="server" OnClick="btnSave_Click"
-                                                        Text="Add" ValidationGroup="projval"
-                                                        class="btn btn-sm handle-btn-success me-1 swtAltSubmit btnSave"
-                                                        OnClientClick="if (validatePage()) { this.value='Please wait..'; this.style.display='none'; document.getElementById('bWait').style.display = ''; } else { return false; }" Style="min-width: 67px;" />
-                                                    <button type="button" style="display: none" id="bWait" class="btn btn-secondary btn-sm me-1"><i class='fa fa-spinner fa-spin'></i>Please wait</button>
-                                                    <div class="btn btn-sm handle-btn-danger swtAltCancel-Refresh">Cancel</div>
-                                                    <asp:Button ID="btnCancel" ClientIDMode="Static" runat="server" Text="Cancel Project" OnClick="btnCancel_Click" Style="display: none;" />
-                                                </div>
-                                            </div>
-                                      <%--  </ContentTemplate>
+                                    <div class="card-footer mx-2 pb-4">
+                                        <div class="d-flex justify-content-center">
+                                            <asp:Button
+                                                ID="btnSave" ClientIDMode="Static"
+                                                runat="server" OnClick="btnSave_Click"
+                                                Text="Add" ValidationGroup="projval"
+                                                class="btn btn-sm handle-btn-success me-1 swtAltSubmit btnSave"
+                                                OnClientClick="if (validatePage()) { this.value='Please wait..'; this.style.display='none'; document.getElementById('bWait').style.display = ''; } else { return false; }" Style="min-width: 67px;" />
+                                            <button type="button" style="display: none" id="bWait" class="btn btn-secondary btn-sm me-1"><i class='fa fa-spinner fa-spin'></i>Please wait</button>
+                                            <div class="btn btn-sm handle-btn-danger swtAltCancel-Refresh">Cancel</div>
+                                            <asp:Button ID="btnCancel" ClientIDMode="Static" runat="server" Text="Cancel Project" OnClick="btnCancel_Click" Style="display: none;" />
+                                        </div>
+                                    </div>
+                                    <%--  </ContentTemplate>
                                         <Triggers>
                                             <asp:AsyncPostBackTrigger ControlID="ddlProName" EventName="SelectedIndexChanged" />
                                             <asp:AsyncPostBackTrigger ControlID="btnCancel" EventName="Click" />
@@ -398,7 +404,7 @@
                         }
                     });
 
-                    flag2= false; // Stop further execution
+                    flag2 = false; // Stop further execution
                 }
                 else {
                     flag2 = true;
@@ -416,7 +422,7 @@
             }
 
             flag = flag2;
-           
+
 
             return flag;
         }
@@ -510,6 +516,7 @@
                 screensrc[index] = null;
                 document.querySelectorAll('.file-upload')[index].value = '';
                 viewLogoBtn.style.display = 'none';
+                removeBtn.innerHTML = '<i class="bi bi-x"></i> Remove';
                 removeBtn.style.display = 'none';
                 errorLabel.textContent = '';
             }
@@ -648,20 +655,18 @@
                 });
             });
 
-            function resetUploader(viewLogoBtn, errorLabel, removeBtn, index) {
+            function resetUploader(viewLogoBtn, removeBtn, errorLabel, index) {
                 screensrc[index] = null;
                 document.querySelectorAll('.file-upload')[index].value = '';
                 document.querySelectorAll('.ermovehdnvalhiglights')[index].value = '';
                 viewLogoBtn.src = '';
                 viewLogoBtn.style.display = 'none';
+
+                // Ensure Bootstrap Icons are properly set
+                removeBtn.innerHTML = '<i class="bi bi-x"></i> Remove';
+
                 removeBtn.style.display = 'none';
                 errorLabel.textContent = '';
-                //   console.log("Reset uploader, hiding remove button.");
-
-
-
-
-                //
             }
         });
 

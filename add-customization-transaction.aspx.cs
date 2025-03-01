@@ -689,10 +689,21 @@ public partial class adminkey2hcom_AddCustomizationTransaction : System.Web.UI.P
         ClientDashboardError CE = new ClientDashboardError();
         Key2hCustomizationTransaction KWT = new Key2hCustomizationTransaction();
         List<Transaction> Transaction = new List<Transaction>();
-        string clientId = HttpContext.Current.Session["clientId"] as string;
-        if (string.IsNullOrEmpty(clientId))
+        HttpCookie LoginIDCookie = HttpContext.Current.Request.Cookies["clientid"];
+        if (LoginIDCookie != null)
         {
-            cID = clientId;
+            if (!string.IsNullOrEmpty(LoginIDCookie.Value) && LoginIDCookie.Value.Contains("clientid="))
+            {
+                cID = LoginIDCookie.Value.Replace("clientid=", "");
+            }
+            else
+            {
+                HttpContext.Current.Response.Redirect("index.aspx");
+            }
+        }
+        else
+        {
+            HttpContext.Current.Response.Redirect("index.aspx", false);
         }
         try
         {
@@ -705,7 +716,7 @@ public partial class adminkey2hcom_AddCustomizationTransaction : System.Web.UI.P
                     {
                         CTID = Convert.ToInt32(row["CTID"]),
                         PaymentMode = Convert.ToString(row["PaymentMode"]),
-                        WorkTitle = Convert.ToString(row["WorkTitle"]),
+                        WorkTitle = Convert.ToString(row["CustomizationWork"]),
                         PaidAmount = Convert.ToString(row["PaidAmount"]),
                         ReceiptPDF = Convert.ToString(row["ReceiptPDF"]),
                         PaymentUpdatedDate = row["PaymentUpdatedDate"] != DBNull.Value
